@@ -1,0 +1,19 @@
+{
+  "name": "Madame Française",
+  "short_name": "Madame Française",
+  "description": "A1 ve A2 seviyesinde kelime havuzları, kelimelere bağlı cümle ve paragraflar, sınavlar: Fransızca öğrenme uygulaması.",
+  "id": "./index.html",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "any",
+  "lang": "tr",
+  "background_color": "#faf6ee",
+  "theme_color": "#14307a",
+  "icons": [
+    { "src": "icons/icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
+    { "src": "icons/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" },
+    { "src": "icons/icon-maskable-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" },
+    { "src": "icons/icon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any" }
+  ]
+}
