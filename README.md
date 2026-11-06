@@ -1,7 +1,8 @@
 # Madame Française
 
-Türkçe konuşanlar için Fransızca öğrenme uygulaması (PWA), şimdilik A1 ve A2 seviyesinde. Kurulum veya derleme adımı yoktur; saf HTML/CSS/JS'dir.
+Türkçe konuşanlar için Fransızca öğrenme uygulaması (PWA), A1, A2 ve B1 seviyesinde. Kurulum veya derleme adımı yoktur; saf HTML/CSS/JS'dir.
 
+- **Temalar:** ev, aile, sağlık, yiyecek, doğa, hayvanlar, iş, toplum gibi 26 konu; her temanın kendi listesi ve sınavı vardır.
 - **Kelime havuzları:** fiil, isim, sıfat, zarf, bağlaç, edat, zamir, dönüşlü fiil, fiil kalıbı, kalıp ifade, sayı, zaman, Fransa kelimeleri; örnek cümlelerle. Fiillerde présent çekim tablosu vardır.
 - **Cümle ve paragraflar:** içindeki kelimeler havuzlara otomatik bağlanır (l', j', qu' gibi kısalmalar ve çekimli hâller dâhil); dokununca anlamı açılır.
 - **Sınavlar:** anlam, Texte à trous, yazım, cümle kurma, okuma ve kendi soruların; süreli sınav, yanlışları tekrar. Yazımda Türkçe klavyede olmayan harfler için aksan düğmeleri vardır.

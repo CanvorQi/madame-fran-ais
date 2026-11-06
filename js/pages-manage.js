@@ -128,7 +128,7 @@
         if (id && !rec) return null;
         const defaultPool = (rec && rec.pool) || query.get("pool") || "custom";
         const poolKind = (p) => (DB.pool(p) ? DB.pool(p).kind : "other");
-        const w = rec || { fr: query.get("fr") || "", tr: "", level: "A1", forms: "", note: "", ex: [{ fr: "", tr: "" }], kind: poolKind(defaultPool) };
+        const w = rec || { fr: query.get("fr") || "", tr: "", level: "A1", forms: "", note: "", ex: [{ fr: "", tr: "" }], kind: poolKind(defaultPool), theme: query.get("theme") || "" };
         return {
             nav: "add", title: rec ? "Kelimeyi düzenle" : "Kelime ekle",
             html: `<div class="page-head">${crumbs("Kelime")}<h1>${rec ? "Kelimeyi düzenle" : "Kelime ekle"}</h1></div>
@@ -142,6 +142,7 @@
                     <div class="form-row"><label for="kind">Tür</label><select class="input" id="kind">${Object.keys(DB.KINDS).map((k) => `<option value="${k}"${k === w.kind ? " selected" : ""}>${DB.KINDS[k]}</option>`).join("")}</select></div>
                     <div class="form-row"><label for="level">Seviye</label><select class="input" id="level">${levelOptions(w.level)}</select></div>
                 </div>
+                <div class="form-row"><label for="theme">Tema</label><select class="input" id="theme"><option value="">Temasız</option>${DB.themes().map((t) => `<option value="${esc(t.id)}"${t.id === w.theme ? " selected" : ""}>${esc(t.name)}</option>`).join("")}</select></div>
                 <div class="form-row"><label for="forms">Düzensiz biçimler</label><input class="input" id="forms" lang="fr" placeholder="belle, beaux, belles" value="${esc(w.forms)}">
                     <p class="hint">Metinlerde bu hâlleriyle de bulunması için. Düzenli -er ve -ir fiilleri, sıfat ve çoğul ekleri otomatik tanınır. Düzensiz fiilde sırayla yaz: je, tu, il, nous, vous, ils, ortaç (çekim tablosu da böyle oluşur).</p></div>
                 ${Pages.accentBar()}
@@ -158,7 +159,7 @@
                 document.getElementById("form").addEventListener("submit", async (e) => {
                     e.preventDefault();
                     const ex = Array.from(box.querySelectorAll(".ex-row")).map((r) => ({ fr: r.querySelector('[data-ex="fr"]').value.trim(), tr: r.querySelector('[data-ex="tr"]').value.trim() })).filter((x) => x.fr);
-                    const data = { id: rec ? rec.id : undefined, fr: val("fr"), tr: val("tr"), pool: val("pool"), kind: val("kind"), level: val("level"), forms: val("forms"), note: val("note"), ex };
+                    const data = { id: rec ? rec.id : undefined, fr: val("fr"), tr: val("tr"), pool: val("pool"), kind: val("kind"), theme: val("theme"), level: val("level"), forms: val("forms"), note: val("note"), ex };
                     const dup = DB.words().find((x) => x.id !== data.id && x.pool === data.pool && x.fr.toLowerCase() === data.fr.toLowerCase());
                     if (dup && !(await U.confirmDialog(`"${data.fr}" bu havuzda zaten var. Yine de eklensin mi?`, "Ekle"))) return;
                     const saved = DB.save("word", data);

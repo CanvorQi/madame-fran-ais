@@ -62,6 +62,9 @@
                 <div class="form-row"><span class="form-label">Havuzlar (boş bırakılırsa hepsi)</span><div class="chips">
                     ${DB.pools().filter((p) => DB.wordsIn(p.id).length).map((p) => `<label class="check" style="margin-right:10px"><input type="checkbox" name="pool" value="${esc(p.id)}"> ${esc(p.name)}</label>`).join("")}
                 </div></div>
+                <div class="form-row"><span class="form-label">Temalar (boş bırakılırsa hepsi)</span><div class="chips">
+                    ${DB.themes().filter((t) => DB.wordsInTheme(t.id).length).map((t) => `<label class="check" style="margin-right:10px"><input type="checkbox" name="theme" value="${esc(t.id)}"> ${esc(t.name)}</label>`).join("")}
+                </div></div>
                 <div class="form-grid">
                     <div class="form-row"><label for="count">Soru sayısı</label><select class="input" id="count"><option>10</option><option selected>20</option><option>30</option><option>40</option></select></div>
                     <div class="form-row"><label for="minutes">Süre</label><select class="input" id="minutes"><option value="0">Süresiz</option><option value="10">10 dakika</option><option value="20">20 dakika</option><option value="30">30 dakika</option><option value="45">45 dakika</option></select></div>
@@ -86,7 +89,7 @@
                     const types = values("type");
                     if (!types.length) { U.toast("En az bir soru türü seç"); return; }
                     Pages.startExam({
-                        title: "Özel Sınav", types, levels: values("level"), pools: values("pool"),
+                        title: "Özel Sınav", types, levels: values("level"), pools: values("pool"), themes: values("theme"),
                         count: +e.target.querySelector("#count").value, minutes: +e.target.querySelector("#minutes").value, instant: e.target.querySelector("#mode").value === "1",
                     });
                 });

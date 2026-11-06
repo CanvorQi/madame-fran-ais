@@ -30,7 +30,7 @@
             nav: "home", title: "",
             html: `<section class="hero">${FLAG}<div>
                 <h1>Fransızcayı adım adım öğren</h1>
-                <p>A1 ve A2 seviyesinde kelime havuzları, kelimelere bağlı cümle ve paragraflar, kendi içeriğinden sınavlar.</p>
+                <p>A1, A2 ve B1 seviyesinde tematik kelime havuzları, kelimelere bağlı cümle ve paragraflar, kendi içeriğinden sınavlar.</p>
                 <div class="row-actions">
                     <a class="btn" href="#/sinavlar">${icon("exam")} ${live ? "Sınava devam et" : "Sınava başla"}</a>
                     <a class="btn wh" href="#/kelimeler">${icon("book")} Kelimeler</a>
@@ -67,6 +67,7 @@
             case "home": return pageHome();
             case "kelimeler": return Pages.pools();
             case "havuz": return Pages.pool(id(a));
+            case "tema": return Pages.theme(id(a));
             case "kelime": return Pages.word(id(a));
             case "cumleler": return Pages.sentences();
             case "paragraflar": return Pages.paragraphs();

@@ -17,16 +17,34 @@
         </div>`;
     }
 
-    function plate(p) {
-        const words = DB.wordsIn(p.id);
+    function plateOf(p, words, href) {
         const known = words.filter((w) => DB.isKnown(w.id)).length;
         const pct = words.length ? Math.round((known / words.length) * 100) : 0;
-        return `<a class="plate" href="#/havuz/${encodeURIComponent(p.id)}"><div class="plate-in">
+        return `<a class="plate" href="${href}"><div class="plate-in">
             <div class="plate-top"><span class="plate-name" lang="${p.title ? "fr" : "tr"}">${esc(p.title || p.name)}</span><span class="plate-code">${esc(p.code || "")}</span></div>
             <div class="plate-sub">${esc(p.name)} · ${words.length} kelime</div>
             <div class="bar"><span style="width:${pct}%"></span></div>
         </div></a>`;
     }
+    const plate = (p) => plateOf(p, DB.wordsIn(p.id), `#/havuz/${encodeURIComponent(p.id)}`);
+    const themePlate = (t) => plateOf(t, DB.wordsInTheme(t.id), `#/tema/${encodeURIComponent(t.id)}`);
+
+    /* Rows under one heading per group; expects `words` already ordered by group. */
+    function groupedRows(words, groupOf) {
+        const groups = new Map();
+        words.forEach((w) => {
+            const g = groupOf(w);
+            if (!groups.has(g)) groups.set(g, []);
+            groups.get(g).push(w);
+        });
+        if (groups.size < 2) return `<div>${words.map(wordRow).join("")}</div>`;
+        return Array.from(groups, ([g, list]) => `<h2 class="section-title">${esc(g)}</h2><div>${list.map(wordRow).join("")}</div>`).join("");
+    }
+
+    const rankBy = (ids, idOf) => (a, b) => {
+        const rank = (w) => { const i = ids.indexOf(idOf(w)); return i < 0 ? ids.length : i; };
+        return rank(a) - rank(b);
+    };
 
     const search = (list, q) => {
         const n = U.norm(q);
@@ -40,13 +58,18 @@
     Pages.pools = function () {
         return {
             nav: "words", title: "Kelimeler",
-            html: `<div class="page-head"><h1>Kelime Havuzları</h1><p>Kelimeler türüne göre ayrıldı. Bir kelimeye dokununca örnek cümlelerini ve geçtiği metinleri görürsün.</p></div>
+            html: `<div class="page-head"><h1>Kelimeler</h1><p>Kelimeler temaya ve türe göre ayrıldı. Bir kelimeye dokununca örnek cümlelerini ve geçtiği metinleri görürsün.</p></div>
             <div class="toolbar">
                 <div class="search">${icon("search")}<input id="q" type="search" placeholder="Tüm havuzlarda ara (Fransızca ya da Türkçe)" aria-label="Kelime ara"></div>
                 <a class="btn ghost" href="#/ekle/havuz">${icon("plus")} Yeni havuz</a>
             </div>
             <div id="results"></div>
-            <div class="plate-grid" id="grid">${DB.pools().map(plate).join("")}</div>`,
+            <div id="grid">
+                <h2 class="section-title">Temalar</h2>
+                <div class="plate-grid">${DB.themes().filter((t) => DB.wordsInTheme(t.id).length).map(themePlate).join("")}</div>
+                <h2 class="section-title">Türe göre havuzlar</h2>
+                <div class="plate-grid">${DB.pools().map(plate).join("")}</div>
+            </div>`,
             after() {
                 const q = document.getElementById("q");
                 const results = document.getElementById("results");
@@ -63,24 +86,23 @@
         };
     };
 
-    Pages.pool = function (id) {
-        const pool = DB.pool(id);
-        if (!pool) return null;
+    /* Shared list page for pools and themes: search, status and level filters over grouped rows. */
+    function listPage(o) {
         const state = { q: "", level: "", status: "" };
-        const levels = DB.LEVELS.filter((l) => DB.wordsIn(id).some((w) => w.level === l));
+        const levels = DB.LEVELS.filter((l) => o.source().some((w) => w.level === l));
         return {
-            nav: "words", title: pool.name,
+            nav: "words", title: o.title,
             html: `<div class="page-head">
-                <div class="crumbs"><a href="#/kelimeler">Kelimeler</a> › ${esc(pool.name)}</div>
-                <h1>${esc(pool.name)}</h1>
+                <div class="crumbs"><a href="#/kelimeler">Kelimeler</a> › ${esc(o.title)}</div>
+                <h1>${esc(o.title)}</h1>
                 <div class="row-actions">
-                    <a class="btn" href="#/ekle/kelime?pool=${encodeURIComponent(id)}">${icon("plus")} Kelime ekle</a>
-                    <button class="btn navy" type="button" id="poolExam">${icon("exam")} Bu havuzdan sınav</button>
-                    ${pool.seed ? "" : `<a class="btn ghost" href="#/ekle/havuz/${encodeURIComponent(id)}">${icon("edit")} Düzenle</a>`}
+                    <a class="btn" href="#/ekle/kelime?${o.addQuery}">${icon("plus")} Kelime ekle</a>
+                    <button class="btn navy" type="button" id="poolExam">${icon("exam")} ${esc(o.examLabel)}</button>
+                    ${o.extraAction || ""}
                 </div>
             </div>
             <div class="toolbar">
-                <div class="search">${icon("search")}<input id="q" type="search" placeholder="Bu havuzda ara" aria-label="Havuzda ara"></div>
+                <div class="search">${icon("search")}<input id="q" type="search" placeholder="${esc(o.searchLabel)}" aria-label="${esc(o.searchLabel)}"></div>
                 <select class="input" id="status" style="width:auto" aria-label="Durum">
                     <option value="">Tümü</option><option value="known">Öğrendiklerim</option><option value="new">Öğreneceklerim</option>
                 </select>
@@ -93,11 +115,11 @@
                 const list = document.getElementById("list");
                 let limit = PAGE_SIZE;
                 const draw = () => {
-                    let words = search(DB.wordsIn(id), state.q);
+                    let words = search(o.source(), state.q);
                     if (state.level) words = words.filter((w) => w.level === state.level);
                     if (state.status) words = words.filter((w) => DB.isKnown(w.id) === (state.status === "known"));
                     list.innerHTML = words.length
-                        ? `<div>${words.slice(0, limit).map(wordRow).join("")}</div>${words.length > limit ? `<div class="row-actions end"><button class="btn ghost" type="button" id="more">Daha fazla göster</button></div>` : ""}`
+                        ? `${groupedRows(words.slice(0, limit), o.groupOf)}${words.length > limit ? `<div class="row-actions end"><button class="btn ghost" type="button" id="more">Daha fazla göster</button></div>` : ""}`
                         : `<div class="card empty">Bu görünümde kelime yok.</div>`;
                 };
                 draw();
@@ -111,11 +133,37 @@
                     e.currentTarget.querySelectorAll(".chip").forEach((c) => c.classList.toggle("on", c === b));
                     draw();
                 });
-                document.getElementById("poolExam").addEventListener("click", () => Pages.startExam({
-                    title: `${pool.name} sınavı`, pools: [id], levels: [], types: ["mean", "rmean", "gap", "write", "custom"], count: 10, instant: true, minutes: 0,
-                }));
+                document.getElementById("poolExam").addEventListener("click", () => Pages.startExam(Object.assign({
+                    title: `${o.title} sınavı`, levels: [], count: 10, instant: true, minutes: 0,
+                }, o.exam)));
             },
         };
+    }
+
+    Pages.pool = function (id) {
+        const pool = DB.pool(id);
+        if (!pool) return null;
+        const themeIds = DB.themes().map((t) => t.id);
+        const themed = (w) => (DB.theme(w.theme) ? DB.theme(w.theme).name : "Diğer");
+        return listPage({
+            title: pool.name, addQuery: `pool=${encodeURIComponent(id)}`, searchLabel: "Bu havuzda ara", examLabel: "Bu havuzdan sınav",
+            extraAction: pool.seed ? "" : `<a class="btn ghost" href="#/ekle/havuz/${encodeURIComponent(id)}">${icon("edit")} Düzenle</a>`,
+            source: () => DB.wordsIn(id).slice().sort(rankBy(themeIds, (w) => w.theme)),
+            groupOf: themed,
+            exam: { pools: [id], types: ["mean", "rmean", "gap", "write", "custom"] },
+        });
+    };
+
+    Pages.theme = function (id) {
+        const theme = DB.theme(id);
+        if (!theme) return null;
+        const poolIds = DB.pools().map((p) => p.id);
+        return listPage({
+            title: theme.name, addQuery: `theme=${encodeURIComponent(id)}`, searchLabel: "Bu temada ara", examLabel: "Bu temadan sınav",
+            source: () => DB.wordsInTheme(id).slice().sort(rankBy(poolIds, (w) => w.pool)),
+            groupOf: (w) => (DB.pool(w.pool) ? DB.pool(w.pool).name : "Diğer"),
+            exam: { themes: [id], pools: [], types: ["mean", "rmean", "gap", "write"] },
+        });
     };
 
     const exampleCard = (ex, id) => Pages.textCard({ fr: ex.fr, tr: ex.tr }, { hl: id });
@@ -124,6 +172,7 @@
         const w = DB.word(id);
         if (!w) return null;
         const pool = DB.pool(w.pool);
+        const theme = DB.theme(w.theme);
         const occ = Linker.occurrences(id);
         const seen = new Set(w.ex.map((e) => e.fr));
         const sentences = occ.s.map(DB.sentence).filter((s) => s && !seen.has(s.fr));
@@ -139,6 +188,7 @@
                 <div class="tr">${esc(w.tr)}</div>
                 <div class="word-meta">
                     <span class="badge red">${esc(w.level)}</span><span class="badge">${esc(DB.KINDS[w.kind] || "Diğer")}</span>
+                    ${theme ? `<a class="badge" href="#/tema/${encodeURIComponent(theme.id)}">${esc(theme.name)}</a>` : ""}
                     ${speakBtn(w.fr, "Dinle")}
                     <button class="btn sm ${DB.isKnown(id) ? "navy" : "ghost"}" type="button" id="known">${icon("check")} ${DB.isKnown(id) ? "Öğrendim" : "Öğrendim olarak işaretle"}</button>
                 </div>

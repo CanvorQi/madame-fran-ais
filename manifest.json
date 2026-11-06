@@ -1,7 +1,7 @@
 {
   "name": "Madame Française",
   "short_name": "Madame Française",
-  "description": "A1 ve A2 seviyesinde kelime havuzları, kelimelere bağlı cümle ve paragraflar, sınavlar: Fransızca öğrenme uygulaması.",
+  "description": "A1, A2 ve B1 seviyesinde tematik kelime havuzları, kelimelere bağlı cümle ve paragraflar, sınavlar: Fransızca öğrenme uygulaması.",
   "id": "./index.html",
   "start_url": "./index.html",
   "scope": "./",

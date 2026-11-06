@@ -6,7 +6,7 @@
     "use strict";
 
     const KEY = { user: "mfr_user", stats: "mfr_stats", exams: "mfr_exams", live: "mfr_live" };
-    const LEVELS = ["A1", "A2"];
+    const LEVELS = ["A1", "A2", "B1"];
     const KINDS = { verb: "Fiil", noun: "İsim", adj: "Sıfat", adv: "Zarf", other: "Diğer" };
     const EMPTY_USER = () => ({ words: [], sentences: [], paragraphs: [], questions: [], pools: [], hidden: {} });
     const LIST = { word: "words", sentence: "sentences", paragraph: "paragraphs", question: "questions", pool: "pools" };
@@ -21,7 +21,8 @@
     seedPools.forEach((p) => (SEED.words[p.id] || []).forEach((r) => {
         const ex = [{ fr: r[4], tr: r[5] }];
         if (r[7]) ex.push({ fr: r[7], tr: r[8] });
-        seedWords.push({ id: `${p.id}:${U.slug(r[0])}`, fr: r[0], tr: r[1], level: r[2], forms: r[3], ex, note: r[6] || "", pool: p.id, kind: p.kind, seed: true });
+        const id = `${p.id}:${U.slug(r[0])}`;
+        seedWords.push({ id, fr: r[0], tr: r[1], level: r[2], forms: r[3], ex, note: r[6] || "", pool: p.id, kind: p.kind, theme: SEED.themeOf[id] || "", seed: true });
     }));
     const seedOf = {
         words: seedWords,
@@ -40,7 +41,8 @@
             user[name].forEach((r) => {
                 if (user.hidden[r.id]) return;
                 const base = map.get(r.id);
-                map.set(r.id, base ? Object.assign({}, r, { seed: true, edited: true }) : r);
+                /* Edits saved before themes existed have no theme field and keep the seed's. */
+                map.set(r.id, base ? Object.assign({ theme: base.theme }, r, { seed: true, edited: true }) : r);
             });
             merged[name] = Array.from(map.values());
             byId[name] = {};
@@ -121,6 +123,7 @@
         words: (r) => (str(r.fr, 200).trim() && str(r.tr, 300).trim() ? {
             id: safeId(r.id), fr: str(r.fr, 200).trim(), tr: str(r.tr, 300).trim(), level: level(r.level), forms: str(r.forms, 300), note: str(r.note, 600),
             pool: str(r.pool, 120) || "custom", kind: KINDS[r.kind] ? r.kind : "other",
+            ...(typeof r.theme === "string" ? { theme: str(r.theme, 40) } : {}),
             ex: arr(r.ex).map((e) => ({ fr: str(e && e.fr), tr: str(e && e.tr) })).filter((e) => e.fr).slice(0, 20),
         } : null),
         sentences: (r) => (str(r.fr).trim() ? { id: safeId(r.id), fr: str(r.fr).trim(), tr: str(r.tr), level: level(r.level), topic: str(r.topic, 60) } : null),
@@ -184,6 +187,9 @@
         words: () => merged.words,
         word: (id) => byId.words[id],
         wordsIn: (pool) => merged.words.filter((w) => w.pool === pool),
+        themes: () => SEED.themes,
+        theme: (id) => SEED.themes.find((t) => t.id === id),
+        wordsInTheme: (theme) => merged.words.filter((w) => w.theme === theme),
         sentences: () => merged.sentences,
         sentence: (id) => byId.sentences[id],
         paragraphs: () => merged.paragraphs,

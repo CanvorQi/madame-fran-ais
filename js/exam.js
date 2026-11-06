@@ -87,13 +87,14 @@
     /* Builds shuffled candidates for each type, then takes them round-robin. */
     function build(cfg) {
         const levelOk = (x) => !cfg.levels || !cfg.levels.length || cfg.levels.includes(x.level);
-        let words = cfg.weak ? DB.weakWords() : DB.words().filter((w) => (!cfg.pools || !cfg.pools.length || cfg.pools.includes(w.pool)) && levelOk(w));
+        const themeOk = (w) => !cfg.themes || !cfg.themes.length || cfg.themes.includes(w.theme);
+        let words = cfg.weak ? DB.weakWords() : DB.words().filter((w) => (!cfg.pools || !cfg.pools.length || cfg.pools.includes(w.pool)) && themeOk(w) && levelOk(w));
         words = cfg.weak ? words : shuffle(words);
 
         const texts = () => {
             const fromSentences = DB.sentences().filter(levelOk);
             const fromWords = words.flatMap((w) => w.ex.map((e) => ({ fr: e.fr, tr: e.tr })));
-            const linked = cfg.pools && cfg.pools.length
+            const linked = (cfg.pools && cfg.pools.length) || (cfg.themes && cfg.themes.length)
                 ? fromWords
                 : fromSentences.concat(fromWords);
             return shuffle(linked);
