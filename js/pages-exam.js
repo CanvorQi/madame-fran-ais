@@ -7,7 +7,7 @@
     let current = null;
     let timerId = null;
 
-    const ALL = ["mean", "rmean", "gap", "write", "order", "read", "custom"];
+    const ALL = ["mean", "rmean", "gap", "write", "order", "read", "grammar", "custom"];
     const PRESETS = [
         { id: "quick", name: "Hızlı Test", sub: "10 karışık soru, anında geri bildirim", cls: "red", cfg: { title: "Hızlı Test", types: ALL, count: 10, instant: true, minutes: 0 } },
         { id: "gap", name: "Texte à trous", sub: "Cümlelerdeki boşlukları doldur", cfg: { title: "Texte à trous", types: ["gap"], count: 10, instant: true, minutes: 0 } },
@@ -65,6 +65,9 @@
                 <div class="form-row"><span class="form-label">Temalar (boş bırakılırsa hepsi)</span><div class="chips">
                     ${DB.themes().filter((t) => DB.wordsInTheme(t.id).length).map((t) => `<label class="check" style="margin-right:10px"><input type="checkbox" name="theme" value="${esc(t.id)}"> ${esc(t.name)}</label>`).join("")}
                 </div></div>
+                <div class="form-row"><span class="form-label">Dilbilgisi (boş bırakılırsa hepsi)</span><div class="chips">
+                    ${DB.grammar().filter((g) => DB.wordsInGram(g.id).length).map((g) => `<label class="check" style="margin-right:10px"><input type="checkbox" name="gram" value="${esc(g.id)}"> ${esc(g.name)}</label>`).join("")}
+                </div></div>
                 <div class="form-grid">
                     <div class="form-row"><label for="count">Soru sayısı</label><select class="input" id="count"><option>10</option><option selected>20</option><option>30</option><option>40</option></select></div>
                     <div class="form-row"><label for="minutes">Süre</label><select class="input" id="minutes"><option value="0">Süresiz</option><option value="10">10 dakika</option><option value="20">20 dakika</option><option value="30">30 dakika</option><option value="45">45 dakika</option></select></div>
@@ -89,7 +92,7 @@
                     const types = values("type");
                     if (!types.length) { U.toast("En az bir soru türü seç"); return; }
                     Pages.startExam({
-                        title: "Özel Sınav", types, levels: values("level"), pools: values("pool"), themes: values("theme"),
+                        title: "Özel Sınav", types, levels: values("level"), pools: values("pool"), themes: values("theme"), grams: values("gram"),
                         count: +e.target.querySelector("#count").value, minutes: +e.target.querySelector("#minutes").value, instant: e.target.querySelector("#mode").value === "1",
                     });
                 });
@@ -248,12 +251,15 @@
         }
     }
 
+    const academyBack = (v) => (typeof v === "string" && /^#\/akademi(\/[\w-]+)?$/.test(v) ? v : "");
+
     Pages.run = function () {
         if (!current) current = DB.live();
         if (!current) return { redirect: "#/sinavlar" };
+        const back = academyBack(current.cfg.back);
         return {
-            nav: "exams", title: current.cfg.title,
-            html: `<div class="page-head"><div class="crumbs"><a href="#/sinavlar">Sınavlar</a> › ${esc(current.cfg.title)}</div></div><div id="runner"></div>`,
+            nav: back ? "academy" : "exams", title: current.cfg.title,
+            html: `<div class="page-head"><div class="crumbs">${back ? `<a href="${back}">Akademi</a>` : `<a href="#/sinavlar">Sınavlar</a>`} › ${esc(current.cfg.title)}</div></div><div id="runner"></div>`,
             after() {
                 document.getElementById("runner").addEventListener("click", onRunnerClick);
                 drawRunner();
@@ -280,15 +286,18 @@
         if (!r) return null;
         const grade = Exam.gradeOf(r.pct);
         const wrong = r.items.filter((x) => !x.ok);
+        const back = academyBack(r.back);
+        const passed = r.pass ? r.pct >= r.pass : null;
         return {
-            nav: "exams", title: "Sonuç",
-            html: `<div class="page-head"><div class="crumbs"><a href="#/sinavlar">Sınavlar</a> › ${esc(r.title)}</div></div>
+            nav: back ? "academy" : "exams", title: "Sonuç",
+            html: `<div class="page-head"><div class="crumbs">${back ? `<a href="${back}">Akademi</a>` : `<a href="#/sinavlar">Sınavlar</a>`} › ${esc(r.title)}</div></div>
             <div class="card result-head">
                 <p class="muted">${esc(r.title)}</p>
                 <div class="result-grade" lang="fr">${esc(grade.name)}</div>
                 <p class="muted">${esc(grade.tr)}</p>
                 <p class="result-pct">%${r.pct} · ${r.correct} / ${r.total} doğru · ${Math.floor(r.secs / 60)} dk ${r.secs % 60} sn</p>
-                <div class="row-actions" style="justify-content:center"><a class="btn navy" href="#/sinavlar">Sınavlara dön</a></div>
+                ${passed === null ? "" : `<p class="result-pass ${passed ? "ok" : "bad"}">${passed ? `Tebrikler, geçtin! (Geçme notu %${r.pass})` : `Geçmek için en az %${r.pass} gerekiyor. Konuyu tekrar edip yeniden dene.`}</p>`}
+                <div class="row-actions" style="justify-content:center">${back ? `<a class="btn navy" href="${back}">Akademiye dön</a>` : `<a class="btn navy" href="#/sinavlar">Sınavlara dön</a>`}</div>
             </div>
             ${wrong.length ? `<h2 class="section-title">Yanlışların (${wrong.length})</h2>${r.items.map((x, i) => (x.ok ? "" : reviewCard(x, i))).join("")}` : ""}
             ${wrong.length < r.total ? `<h2 class="section-title">Doğruların (${r.total - wrong.length})</h2>${r.items.map((x, i) => (x.ok ? reviewCard(x, i) : "")).join("")}` : ""}`,

@@ -19,6 +19,7 @@
         close: "M6 6l12 12M18 6L6 18",
         translate: "M4 6h9M8 4v2c0 4-2 7-4 8M6 10c1 2 3 3 5 4M12 20l4-9 4 9M13.5 17h5",
         arrow: "M9 6l6 6-6 6",
+        cap: "M2 9l10-5 10 5-10 5zM6 11v5c3 2.5 9 2.5 12 0v-5M22 9v6",
     };
 
     const esc = (s) => String(s === null || s === undefined ? "" : s).replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));

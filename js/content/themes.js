@@ -29,7 +29,11 @@ SEED.themes = [
     { id: "france", name: "Fransa", title: "La France" },
     { id: "society", name: "Toplum ve Çevre", title: "La société" },
     { id: "arts", name: "Sanat ve Kültür", title: "La culture" },
-    { id: "opinions", name: "Fikir ve Tartışma", title: "Les opinions" }
+    { id: "opinions", name: "Fikir ve Tartışma", title: "Les opinions" },
+    { id: "emergency", name: "Acil Durumlar ve Güvenlik", title: "Les urgences" },
+    { id: "admin", name: "Resmi İşler", title: "L'administration" },
+    { id: "celebrations", name: "Bayram ve Kutlamalar", title: "Les fêtes" },
+    { id: "materials", name: "Malzemeler ve Nesneler", title: "Les matériaux" }
 ];
 
 SEED.themeOf = {};

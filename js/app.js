@@ -32,7 +32,8 @@
                 <h1>Fransızcayı adım adım öğren</h1>
                 <p>A1, A2 ve B1 seviyesinde tematik kelime havuzları, kelimelere bağlı cümle ve paragraflar, kendi içeriğinden sınavlar.</p>
                 <div class="row-actions">
-                    <a class="btn" href="#/sinavlar">${icon("exam")} ${live ? "Sınava devam et" : "Sınava başla"}</a>
+                    <a class="btn" href="#/akademi">${icon("cap")} Akademi</a>
+                    <a class="btn wh" href="#/sinavlar">${icon("exam")} ${live ? "Sınava devam et" : "Sınava başla"}</a>
                     <a class="btn wh" href="#/kelimeler">${icon("book")} Kelimeler</a>
                 </div></div></section>
             <div class="stat-row">
@@ -65,9 +66,11 @@
         const id = (v) => (v ? decodeURIComponent(v) : "");
         switch (page || "home") {
             case "home": return pageHome();
+            case "akademi": return b ? Pages.academyLesson(id(a), id(b)) : a ? Pages.academyUnit(id(a)) : Pages.academy();
             case "kelimeler": return Pages.pools();
             case "havuz": return Pages.pool(id(a));
             case "tema": return Pages.theme(id(a));
+            case "dilbilgisi": return Pages.grammar(id(a));
             case "kelime": return Pages.word(id(a));
             case "cumleler": return Pages.sentences();
             case "paragraflar": return Pages.paragraphs();

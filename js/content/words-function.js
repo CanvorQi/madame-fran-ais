@@ -238,7 +238,10 @@ SEED.words.pronominal = [
     ["se dépêcher", "acele etmek", "A2", "", "Dépêche-toi, le bus arrive !", "Acele et, otobüs geliyor!"],
     ["se trouver", "bulunmak", "A2", "", "La gare se trouve au centre-ville.", "Gar şehir merkezinde bulunuyor."],
     ["s'asseoir", "oturmak", "A2", "assieds, assieds, assied, asseyons, asseyez, asseyent, assis, fut=assiér", "Je m'assieds sur la chaise.", "Sandalyeye oturuyorum."],
-    ["s'amuser", "eğlenmek", "A2", "", "Les enfants s'amusent dans le jardin.", "Çocuklar bahçede eğleniyor."]
+    ["s'amuser", "eğlenmek", "A2", "", "Les enfants s'amusent dans le jardin.", "Çocuklar bahçede eğleniyor."],
+    ["se passer", "olmak, geçmek", "A2", "", "Qu'est-ce qui se passe ?", "Ne oluyor?", "L'histoire se passe à Paris: hikâye Paris'te geçiyor."],
+    ["se voir", "görüşmek", "A2", "vois, vois, voit, voyons, voyez, voient, vu, fut=verr", "On se voit demain ?", "Yarın görüşelim mi?"],
+    ["se mettre à", "-meye başlamak", "B1", "", "Il s'est mis à pleuvoir.", "Yağmur yağmaya başladı.", "Ardından mastar gelir."]
 ];
 
 SEED.words.verbal = [

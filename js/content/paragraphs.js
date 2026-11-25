@@ -112,3 +112,127 @@ SEED.paragraphs = [
         ]
     }
 ];
+
+/* Passages written for grammar groups (`gram`, see grammar.js) and for the newer themes (`topic` = theme name). */
+SEED.paragraphs.push(
+    {
+        id: "p13", title: "Mon quartier", level: "A1", topic: "Dilbilgisi", gram: ["prep-place", "adv-place", "presentatives"],
+        fr: "J'habite dans un petit quartier près du centre-ville. Il y a une boulangerie en face de ma maison et une pharmacie à côté de la boulangerie. Au bout de la rue, il y a un parc. C'est mon endroit préféré. Au milieu du parc, il y a une fontaine et les enfants jouent autour. La gare n'est pas loin : elle est là-bas, derrière l'église.",
+        tr: "Şehir merkezine yakın küçük bir mahallede oturuyorum. Evimin karşısında bir fırın, fırının yanında da bir eczane var. Sokağın sonunda bir park var. Orası en sevdiğim yer. Parkın ortasında bir çeşme var ve çocuklar etrafında oynuyor. Gar uzak değil: orada, kilisenin arkasında.",
+        q: [
+            { q: "Où est la boulangerie ?", o: ["Derrière l'église", "En face de la maison", "Au bout de la rue", "Dans le parc"], a: 1 },
+            { q: "Qu'est-ce qu'il y a au milieu du parc ?", o: ["Une fontaine", "Une gare", "Une pharmacie", "Une église"], a: 0 },
+            { q: "Où est la gare ?", o: ["À côté de la boulangerie", "Dans le parc", "Derrière l'église", "En face de la maison"], a: 2 }
+        ]
+    },
+    {
+        id: "p14", title: "Autrefois et aujourd'hui", level: "A2", topic: "Dilbilgisi", gram: ["imparfait", "passe-compose", "adv-time"],
+        fr: "Quand j'étais petite, j'habitais dans un village. Il n'y avait pas de supermarché, alors ma mère allait au marché tous les samedis. Nous n'avions pas de télévision, mais nous jouions souvent dehors. Un jour, mon père a trouvé un travail en ville et nous sommes partis. Aujourd'hui, j'habite à Lyon. La vie est différente, mais je pense souvent à mon village.",
+        tr: "Küçükken bir köyde otururdum. Süpermarket yoktu, bu yüzden annem her cumartesi pazara giderdi. Televizyonumuz yoktu ama sık sık dışarıda oynardık. Bir gün babam şehirde bir iş buldu ve taşındık. Bugün Lyon'da oturuyorum. Hayat farklı ama köyümü sık sık düşünüyorum.",
+        q: [
+            { q: "Où allait sa mère le samedi ?", o: ["Au supermarché", "Au marché", "En ville", "Au travail"], a: 1 },
+            { q: "Pourquoi sont-ils partis ?", o: ["Le village était triste", "Ils n'avaient pas de télévision", "Le père a trouvé un travail en ville", "La mère était malade"], a: 2 },
+            { q: "Où habite-t-elle aujourd'hui ?", o: ["Dans son village", "À Paris", "À Lyon", "À la campagne"], a: 2 }
+        ]
+    },
+    {
+        id: "p15", title: "Mes projets", level: "A2", topic: "Dilbilgisi", gram: ["futur-proche", "futur-simple", "conditionnel"],
+        fr: "Ce soir, je vais préparer ma valise, parce que demain je vais partir en France. Je vais suivre un cours de français à Nice pendant trois mois. Quand je parlerai bien, je chercherai un travail là-bas. L'année prochaine, mes parents viendront me voir. J'aimerais aussi visiter Paris, mais ce sera peut-être pour un autre voyage.",
+        tr: "Bu akşam bavulumu hazırlayacağım, çünkü yarın Fransa'ya gidiyorum. Üç ay boyunca Nice'te bir Fransızca kursuna katılacağım. İyi konuşunca orada iş arayacağım. Gelecek yıl annemle babam beni görmeye gelecek. Paris'i de gezmek isterdim ama bu belki başka bir yolculuğa kalır.",
+        q: [
+            { q: "Quand part-il en France ?", o: ["Ce soir", "Demain", "L'année prochaine", "Dans trois mois"], a: 1 },
+            { q: "Combien de temps dure le cours ?", o: ["Une semaine", "Un mois", "Trois mois", "Un an"], a: 2 },
+            { q: "Qui viendra le voir ?", o: ["Ses parents", "Ses amis", "Son professeur", "Sa sœur"], a: 0 }
+        ]
+    },
+    {
+        id: "p16", title: "Au café", level: "A1", topic: "Dilbilgisi", gram: ["articles", "conditionnel", "negation"],
+        fr: "— Bonjour, madame. Je voudrais un café et de l'eau, s'il vous plaît. — Vous voulez du lait dans votre café ? — Non merci, je ne prends pas de lait. Vous avez des croissants ? — Ah non, il n'y a plus de croissants, mais nous avons du pain et de la confiture. — Très bien, alors un peu de pain avec de la confiture. J'adore la confiture de fraises !",
+        tr: "— Merhaba hanımefendi. Bir kahve ve su rica ediyorum lütfen. — Kahvenize süt ister misiniz? — Hayır teşekkürler, süt almıyorum. Kruvasanınız var mı? — Ah hayır, kruvasan kalmadı ama ekmeğimiz ve reçelimiz var. — Çok iyi, o zaman biraz ekmek ve reçel. Çilek reçelini çok severim!",
+        q: [
+            { q: "Qu'est-ce qu'il commande d'abord ?", o: ["Un thé", "Un café et de l'eau", "Du lait", "Un croissant"], a: 1 },
+            { q: "Pourquoi il ne prend pas de croissant ?", o: ["Il n'aime pas ça", "C'est trop cher", "Il n'y en a plus", "Il n'a pas faim"], a: 2 },
+            { q: "Qu'est-ce qu'il adore ?", o: ["Le lait", "Le café", "La confiture de fraises", "Le pain"], a: 2 }
+        ]
+    },
+    {
+        id: "p17", title: "Deux frères", level: "A2", topic: "Dilbilgisi", gram: ["compare", "possessive", "stressed"],
+        fr: "Mon frère Karim et moi, nous sommes très différents. Il est plus grand que moi, mais je suis plus âgé que lui. Il parle mieux anglais, mais moi, je cuisine mieux. Sa chambre est toujours propre ; la mienne est moins rangée. Nos parents disent que nous sommes aussi gentils l'un que l'autre. Pour moi, c'est le meilleur frère du monde.",
+        tr: "Kardeşim Karim ve ben çok farklıyız. O benden daha uzun ama ben ondan daha büyüğüm. O daha iyi İngilizce konuşuyor ama ben daha iyi yemek yapıyorum. Onun odası hep temiz; benimki daha az derli toplu. Annemle babam ikimizin de eşit derecede iyi kalpli olduğunu söylüyor. Bana göre o dünyanın en iyi kardeşi.",
+        q: [
+            { q: "Qui est le plus grand ?", o: ["Karim", "Le narrateur", "Les deux", "Le père"], a: 0 },
+            { q: "Qui cuisine mieux ?", o: ["Karim", "La mère", "Le narrateur", "Personne"], a: 2 },
+            { q: "Comment est la chambre de Karim ?", o: ["Petite", "Toujours propre", "Moins rangée", "Sale"], a: 1 }
+        ]
+    },
+    {
+        id: "p18", title: "Le jour où j'ai perdu mon chien", level: "B1", topic: "Dilbilgisi", gram: ["relative", "question", "passe-compose", "imparfait"],
+        fr: "C'était un dimanche matin. Je me promenais au parc avec Filou, le chien que mes parents m'ont offert pour mes dix ans. Tout à coup, il a vu un chat et il est parti en courant. Je l'ai cherché partout. J'ai demandé à une dame qui lisait sur un banc : « Vous avez vu un petit chien noir ? » Elle m'a montré la rue où il était allé. Enfin, je l'ai trouvé devant la boulangerie dont il connaît bien l'odeur !",
+        tr: "Bir pazar sabahıydı. Annemle babamın on yaşıma hediye ettiği köpek Filou ile parkta geziniyordum. Birdenbire bir kedi gördü ve koşarak gitti. Onu her yerde aradım. Bankta kitap okuyan bir kadına sordum: \"Küçük siyah bir köpek gördünüz mü?\" Bana onun gittiği sokağı gösterdi. Sonunda onu, kokusunu çok iyi bildiği fırının önünde buldum!",
+        q: [
+            { q: "Pourquoi Filou est-il parti ?", o: ["Il avait faim", "Il a vu un chat", "Il avait peur", "Il voulait rentrer"], a: 1 },
+            { q: "Qui a aidé le narrateur ?", o: ["Un policier", "Le boulanger", "Une dame sur un banc", "Ses parents"], a: 2 },
+            { q: "Où était Filou ?", o: ["Au parc", "À la maison", "Devant la boulangerie", "Chez la dame"], a: 2 }
+        ]
+    },
+    {
+        id: "p19", title: "C'est qui ?", level: "A1", topic: "Dilbilgisi", gram: ["presentatives", "demonstrative", "subject"],
+        fr: "Regarde cette photo. Voici ma famille. Là, c'est mon père. Il est boulanger. À côté de lui, c'est ma mère. Elle est très drôle. Ces deux garçons, ce sont mes cousins. Et cette petite fille avec le chat, qui est-ce ? C'est moi ! Il y a aussi mon grand-père, mais il n'est pas sur la photo : c'est lui qui a pris la photo.",
+        tr: "Şu fotoğrafa bak. İşte ailem. Şurada babam var. O fırıncı. Onun yanındaki annem. Çok komiktir. Bu iki oğlan kuzenlerim. Peki kediyle duran bu küçük kız kim? Benim! Bir de dedem var ama fotoğrafta değil: fotoğrafı çeken o.",
+        q: [
+            { q: "Quel est le métier du père ?", o: ["Médecin", "Professeur", "Boulanger", "Policier"], a: 2 },
+            { q: "Qui sont les deux garçons ?", o: ["Ses frères", "Ses cousins", "Ses amis", "Ses voisins"], a: 1 },
+            { q: "Qui a pris la photo ?", o: ["La mère", "Le grand-père", "Le père", "Un cousin"], a: 1 }
+        ]
+    },
+    {
+        id: "p20", title: "Les règles de la maison", level: "A2", topic: "Dilbilgisi", gram: ["imperative", "object", "adv-freq"],
+        fr: "Bienvenue chez nous ! Voici quelques règles. Enlève tes chaussures à l'entrée. Ne laisse jamais la porte du jardin ouverte : le chien sort toujours. Si tu as faim, prends ce que tu veux dans le frigo, mais ferme-le bien. Le soir, ne fais pas de bruit après dix heures. Et surtout, sens-toi comme chez toi !",
+        tr: "Evimize hoş geldin! İşte birkaç kural. Ayakkabılarını girişte çıkar. Bahçe kapısını asla açık bırakma: köpek hep kaçar. Acıkırsan buzdolabından istediğini al ama kapağını iyice kapat. Akşamları saat ondan sonra gürültü yapma. Ve en önemlisi, kendini evinde hisset!",
+        q: [
+            { q: "Où faut-il enlever ses chaussures ?", o: ["Dans la chambre", "À l'entrée", "Dans le jardin", "Dans la cuisine"], a: 1 },
+            { q: "Pourquoi faut-il fermer la porte du jardin ?", o: ["Il fait froid", "Le chien sort", "Il y a des voleurs", "C'est la règle des voisins"], a: 1 },
+            { q: "Après quelle heure ne faut-il pas faire de bruit ?", o: ["Huit heures", "Neuf heures", "Dix heures", "Minuit"], a: 2 }
+        ]
+    },
+    {
+        id: "p21", title: "Un appel aux pompiers", level: "B1", topic: "Acil Durumlar ve Güvenlik", gram: ["question", "present"],
+        fr: "— Allô, les pompiers ? — Oui, qu'est-ce qui se passe ? — Il y a de la fumée dans l'appartement de mon voisin ! — Où habitez-vous ? — Au 12, rue Victor-Hugo, au troisième étage. — Il y a quelqu'un dans l'appartement ? — Je ne sais pas, personne ne répond. — Restez calme et sortez de l'immeuble. Ne prenez pas l'ascenseur, prenez l'escalier. Nous arrivons dans cinq minutes.",
+        tr: "— Alo, itfaiye mi? — Evet, ne oluyor? — Komşumun dairesinde duman var! — Nerede oturuyorsunuz? — Victor-Hugo Sokağı 12 numara, üçüncü kat. — Dairede biri var mı? — Bilmiyorum, kimse cevap vermiyor. — Sakin olun ve binadan çıkın. Asansöre binmeyin, merdiveni kullanın. Beş dakikaya oradayız.",
+        q: [
+            { q: "Qu'est-ce qu'il y a chez le voisin ?", o: ["De l'eau", "De la fumée", "Un voleur", "Un chien"], a: 1 },
+            { q: "À quel étage habite-t-il ?", o: ["Au premier", "Au deuxième", "Au troisième", "Au cinquième"], a: 2 },
+            { q: "Que faut-il prendre pour sortir ?", o: ["L'ascenseur", "L'escalier", "La fenêtre", "La voiture"], a: 1 }
+        ]
+    },
+    {
+        id: "p22", title: "Le titre de séjour", level: "B1", topic: "Resmi İşler", gram: ["presentatives", "passe-compose"],
+        fr: "Mehmet habite en France depuis un an. Son titre de séjour n'est plus valable le mois prochain, alors il doit le renouveler. Il a pris rendez-vous à la préfecture sur internet. Il faut apporter beaucoup de documents : le passeport, des photos, un justificatif de domicile et une attestation de travail. Le jour du rendez-vous, il a fait la queue pendant deux heures. Heureusement, son dossier était complet.",
+        tr: "Mehmet bir yıldır Fransa'da yaşıyor. Oturma izni gelecek ay geçerliliğini yitiriyor, bu yüzden yenilemesi gerekiyor. İnternetten valilikte randevu aldı. Birçok belge götürmek gerekiyor: pasaport, fotoğraflar, ikametgâh belgesi ve çalışma belgesi. Randevu günü iki saat sıra bekledi. Neyse ki dosyası eksiksizdi.",
+        q: [
+            { q: "Depuis combien de temps Mehmet habite-t-il en France ?", o: ["Un mois", "Six mois", "Un an", "Deux ans"], a: 2 },
+            { q: "Comment a-t-il pris rendez-vous ?", o: ["Par téléphone", "Sur internet", "À la mairie", "Par lettre"], a: 1 },
+            { q: "Combien de temps a-t-il attendu ?", o: ["Dix minutes", "Une heure", "Deux heures", "Toute la journée"], a: 2 }
+        ]
+    },
+    {
+        id: "p23", title: "La fête du Sacrifice à Lyon", level: "A2", topic: "Bayram ve Kutlamalar", gram: ["indefinite", "object"],
+        fr: "Chaque année, pour la fête du Sacrifice, toute la famille se réunit chez ma tante à Lyon. Le matin, tout le monde met de beaux vêtements. Nous rendons visite aux grands-parents et nous leur souhaitons une bonne fête. Ma tante prépare plusieurs plats et quelques desserts. Les enfants reçoivent de l'argent et des bonbons. Chacun apporte quelque chose : moi, j'apporte toujours des fleurs.",
+        tr: "Her yıl Kurban Bayramı'nda bütün aile Lyon'da teyzemin evinde toplanır. Sabah herkes güzel kıyafetler giyer. Büyükanne ve büyükbabamızı ziyaret eder, bayramlarını kutlarız. Teyzem birçok yemek ve birkaç tatlı hazırlar. Çocuklar para ve şeker alır. Herkes bir şey getirir: ben hep çiçek getiririm.",
+        q: [
+            { q: "Où se réunit la famille ?", o: ["Chez les grands-parents", "Chez la tante", "Au restaurant", "Chez le narrateur"], a: 1 },
+            { q: "Que reçoivent les enfants ?", o: ["Des livres", "Des fleurs", "De l'argent et des bonbons", "Des vêtements"], a: 2 },
+            { q: "Qu'est-ce que le narrateur apporte ?", o: ["Un gâteau", "Des fleurs", "Du vin", "Des bonbons"], a: 1 }
+        ]
+    },
+    {
+        id: "p24", title: "Le déménagement", level: "B1", topic: "Malzemeler ve Nesneler", gram: ["demonstrative", "relative"],
+        fr: "Samedi, nous déménageons. Il faut mettre toutes nos affaires dans des cartons. Ce carton-ci est pour les livres, celui-là pour la vaisselle. Attention, les verres sont fragiles : il faut les envelopper dans du papier. La vieille table en bois que mon grand-père a construite vient avec nous. Les outils dont nous avons besoin pour monter les meubles sont dans la boîte rouge.",
+        tr: "Cumartesi taşınıyoruz. Bütün eşyalarımızı kolilere koymak gerekiyor. Bu koli kitaplar için, şu da tabak çanak için. Dikkat, bardaklar kırılgan: onları kâğıda sarmak gerekiyor. Dedemin yaptığı eski tahta masa da bizimle geliyor. Mobilyaları kurmak için ihtiyacımız olan aletler kırmızı kutuda.",
+        q: [
+            { q: "Quand déménagent-ils ?", o: ["Lundi", "Vendredi", "Samedi", "Dimanche"], a: 2 },
+            { q: "Qui a construit la table ?", o: ["Le père", "Le grand-père", "Un voisin", "Le narrateur"], a: 1 },
+            { q: "Où sont les outils ?", o: ["Dans le garage", "Dans la boîte rouge", "Dans le carton des livres", "Sous la table"], a: 1 }
+        ]
+    }
+);

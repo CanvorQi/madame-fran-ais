@@ -152,6 +152,13 @@ html[data-theme="dark"] .btn.navy { background: #2c49a8; }
 .btn.danger-text { background: transparent; color: var(--red); border-color: var(--red); }
 .row-actions { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 14px; align-items: center; }
 .row-actions.end { justify-content: flex-end; }
+.pager { display: flex; justify-content: space-between; gap: 10px; margin-top: 28px; padding-top: 16px; border-top: 1px solid var(--line); }
+.pager .btn { max-width: 48%; padding: 8px 14px; }
+.pager .btn span { display: flex; flex-direction: column; min-width: 0; }
+.pager svg { flex-shrink: 0; }
+.pager .next span { text-align: right; }
+.pager small { font-size: 12px; font-weight: 600; opacity: .75; }
+.pager .prev svg { transform: rotate(180deg); }
 .spacer { flex: 1; }
 
 /* ---------- Hero ---------- */
@@ -229,12 +236,50 @@ html[data-theme="dark"] .chip.on { background: #2c49a8; border-color: #2c49a8; }
     border: 1px solid var(--line); color: var(--ink-soft); white-space: nowrap;
 }
 .badge.red { border-color: var(--red); color: var(--red); }
+.badge.ok { border-color: var(--green); color: var(--green); }
+.badge .ic { width: 12px; height: 12px; vertical-align: -1px; }
+
+/* ---------- Academy ---------- */
+.academy-head .bar { margin-top: 8px; }
+.unit-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 280px), 1fr)); gap: 12px; }
+.unit-grid .card + .card { margin-top: 0; }
+.unit-card { display: flex; flex-direction: column; gap: 8px; color: inherit; }
+.unit-card.done { border-color: var(--green); }
+.unit-card .bar { margin-top: auto; }
+.unit-top { display: flex; align-items: center; gap: 12px; }
+.unit-top h3 { font-size: 19px; }
+.unit-top p { color: var(--ink-soft); font-size: 14px; }
+.unit-top .tick { margin-left: auto; }
+.unit-no {
+    flex-shrink: 0; width: 36px; height: 36px; border-radius: 50%; display: grid; place-items: center;
+    background: var(--navy); color: #fff; font-weight: 800;
+}
+.unit-no .ic { width: 18px; height: 18px; }
+.level-exam { background: var(--surface-2); }
+.level-exam .row-actions { margin-top: auto; }
+.lesson-row { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 10px; }
+.lesson-row .row-actions { margin-top: 0; }
+.lesson-main { display: flex; align-items: center; gap: 12px; min-width: 0; }
+.lesson-main h3 { font-size: 17px; margin-bottom: 4px; }
+.lesson-main .word-meta { display: flex; flex-wrap: wrap; gap: 4px; margin: 0; }
+.result-pass { margin-top: 10px; font-weight: 700; }
+.result-pass.ok { color: var(--green); }
+.result-pass.bad { color: var(--red); }
 
 /* ---------- Word detail ---------- */
 .word-head h1 { font-size: clamp(34px, 8vw, 52px); word-break: break-word; }
 .word-head .tr { font-size: 21px; margin-top: 4px; }
 .word-meta { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 10px; align-items: center; }
 .conj { display: grid; grid-template-rows: repeat(3, auto); grid-auto-flow: column; gap: 2px 18px; max-width: 520px; background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); padding: 12px 16px; font-family: var(--serif); font-size: 18px; }
+.conj-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 320px), 1fr)); gap: 12px; margin-top: 10px; }
+.conj-card h3 { font-size: 16px; margin-bottom: 6px; }
+.conj-card h3 small { font-weight: 500; color: var(--ink-soft); font-size: 13px; }
+.conj-card .conj { max-width: none; font-size: 16px; }
+.rule h3 { font-size: 18px; margin-bottom: 6px; }
+.rule .conj { margin-top: 10px; font-size: 16px; }
+.rule-ex { margin-top: 10px; padding-left: 12px; border-left: 3px solid var(--line); }
+.rule-ex .fr { font-size: 17px; line-height: 1.5; }
+.rule-ex .hint { margin-top: 0; }
 .note { margin-top: 12px; padding: 9px 12px; background: var(--surface-2); border-left: 3px solid var(--gold); font-size: 15px; }
 
 /* ---------- Text cards and linked words ---------- */

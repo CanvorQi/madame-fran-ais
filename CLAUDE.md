@@ -7,12 +7,12 @@ No build, no dependencies. `python -m http.server 8000` then http://localhost:80
 No test suite or linter.
 
 ## Structure
-- `index.html` shell; script load order matters: `util → seed-* → linker → data → exam → pages-* → app`.
+- `index.html` shell; script load order matters: `util → content/* → linker → data → exam → pages-* → app`.
 - `css/style.css` design tokens (tricolore palette, Paris plaques) on `:root` and `html[data-theme="dark"]`.
-- `js/content/` seed data: `words-content.js`, `words-function.js`, `themes.js` (themes, tagging of existing words), `words-themed.js` (new words added per theme), `sentences.js`, `paragraphs.js`.
+- `js/content/` seed data: `words-content.js`, `words-function.js`, `themes.js` (themes, tagging of existing words), `words-themed.js` (new words added per theme), `grammar.js` (grammar groups with `rules`; a word may be in several, seed-only; seed sentences/paragraphs join a group via `gram`), `academy.js` (Akademi units → lessons → quiz rows; progress in `mfr_academy`, keyed `unit/lesson`), `sentences.js`, `paragraphs.js`.
 - `js/linker.js` word-form generation (conjugation, agreement, plurals), elision-aware text-to-word linking, occurrence index.
 - `js/data.js` merged data (seed + user), CRUD, stats, backup. `js/exam.js` question generation and grading.
-- `js/pages-*.js` views; `js/app.js` router, theme, PWA.
+- `js/pages-*.js` views (`pages-academy.js`: Akademi); `js/app.js` router, theme, PWA.
 
 ## Rules
 - UI text is Turkish; content is metropolitan French. Spaces before `? ! : ;` follow French typography.

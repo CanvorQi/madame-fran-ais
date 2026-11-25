@@ -28,6 +28,7 @@
     }
     const plate = (p) => plateOf(p, DB.wordsIn(p.id), `#/havuz/${encodeURIComponent(p.id)}`);
     const themePlate = (t) => plateOf(t, DB.wordsInTheme(t.id), `#/tema/${encodeURIComponent(t.id)}`);
+    const gramPlate = (g) => plateOf(g, DB.wordsInGram(g.id), `#/dilbilgisi/${encodeURIComponent(g.id)}`);
 
     /* Rows under one heading per group; expects `words` already ordered by group. */
     function groupedRows(words, groupOf) {
@@ -67,6 +68,10 @@
             <div id="grid">
                 <h2 class="section-title">Temalar</h2>
                 <div class="plate-grid">${DB.themes().filter((t) => DB.wordsInTheme(t.id).length).map(themePlate).join("")}</div>
+                <h2 class="section-title">Dilbilgisi</h2>
+                <div class="plate-grid">${DB.grammar().filter((g) => !g.cat && DB.wordsInGram(g.id).length).map(gramPlate).join("")}</div>
+                <h2 class="section-title">Fiil Zamanları</h2>
+                <div class="plate-grid">${DB.grammar().filter((g) => g.cat === "tense" && DB.wordsInGram(g.id).length).map(gramPlate).join("")}</div>
                 <h2 class="section-title">Türe göre havuzlar</h2>
                 <div class="plate-grid">${DB.pools().map(plate).join("")}</div>
             </div>`,
@@ -95,12 +100,14 @@
             html: `<div class="page-head">
                 <div class="crumbs"><a href="#/kelimeler">Kelimeler</a> › ${esc(o.title)}</div>
                 <h1>${esc(o.title)}</h1>
+                ${o.intro ? `<p>${esc(o.intro)}</p>` : ""}
                 <div class="row-actions">
                     <a class="btn" href="#/ekle/kelime?${o.addQuery}">${icon("plus")} Kelime ekle</a>
                     <button class="btn navy" type="button" id="poolExam">${icon("exam")} ${esc(o.examLabel)}</button>
                     ${o.extraAction || ""}
                 </div>
             </div>
+            ${o.top || ""}
             <div class="toolbar">
                 <div class="search">${icon("search")}<input id="q" type="search" placeholder="${esc(o.searchLabel)}" aria-label="${esc(o.searchLabel)}"></div>
                 <select class="input" id="status" style="width:auto" aria-label="Durum">
@@ -110,7 +117,9 @@
             <div class="chips" id="levels" style="margin-bottom:14px">
                 <button class="chip on" type="button" data-l="">Tüm seviyeler</button>${levels.map((l) => `<button class="chip" type="button" data-l="${l}">${l}</button>`).join("")}
             </div>
-            <div id="list"></div>`,
+            <div id="list"></div>
+            ${o.bottom || ""}
+            ${pager(o.siblings)}`,
             after() {
                 const list = document.getElementById("list");
                 let limit = PAGE_SIZE;
@@ -140,6 +149,38 @@
         };
     }
 
+    /* Previous / next pages among the plates of one Kelimeler section. */
+    function siblingsOf(list, id, hrefOf) {
+        const i = list.findIndex((x) => x.id === id);
+        const at = (j) => (i >= 0 && list[j] ? { href: hrefOf(list[j].id), name: list[j].name } : null);
+        return { prev: at(i - 1), next: at(i + 1) };
+    }
+
+    function pager(s) {
+        if (!s || (!s.prev && !s.next)) return "";
+        return `<nav class="pager" aria-label="Önceki ve sonraki başlık">
+            ${s.prev ? `<a class="btn ghost prev" href="${esc(s.prev.href)}">${icon("arrow")}<span><small>Önceki</small>${esc(s.prev.name)}</span></a>` : "<span></span>"}
+            ${s.next ? `<a class="btn ghost next" href="${esc(s.next.href)}"><span><small>Sonraki</small>${esc(s.next.name)}</span>${icon("arrow")}</a>` : ""}
+        </nav>`;
+    }
+
+    function rulesHtml(rules) {
+        if (!rules || !rules.length) return "";
+        return `<h2 class="section-title">Kurallar</h2>${rules.map((r) => `<section class="card rule">
+            <h3>${esc(r.h)}</h3>${r.p ? `<p>${esc(r.p)}</p>` : ""}
+            ${r.table ? `<div class="conj" lang="fr">${r.table.map((t) => `<span>${esc(t)}</span>`).join("")}</div>` : ""}
+            ${(r.ex || []).map(([fr, tr]) => `<div class="rule-ex"><p class="fr" lang="fr">${Linker.linkify(fr)}</p><p class="hint">${esc(tr)}</p></div>`).join("")}
+        </section>`).join("")}<h2 class="section-title">Kelimeler</h2>`;
+    }
+
+    Pages.pager = pager;
+    Pages.rulesHtml = rulesHtml;
+
+    function textsHtml(sentences, paragraphs) {
+        return (sentences.length ? `<h2 class="section-title">Örnek cümleler</h2>${sentences.map((s) => Pages.textCard(s)).join("")}` : "")
+            + (paragraphs.length ? `<h2 class="section-title">Okuma parçaları</h2>${paragraphs.map(Pages.paragraphRow).join("")}` : "");
+    }
+
     Pages.pool = function (id) {
         const pool = DB.pool(id);
         if (!pool) return null;
@@ -150,6 +191,7 @@
             extraAction: pool.seed ? "" : `<a class="btn ghost" href="#/ekle/havuz/${encodeURIComponent(id)}">${icon("edit")} Düzenle</a>`,
             source: () => DB.wordsIn(id).slice().sort(rankBy(themeIds, (w) => w.theme)),
             groupOf: themed,
+            siblings: siblingsOf(DB.pools(), id, (x) => `#/havuz/${encodeURIComponent(x)}`),
             exam: { pools: [id], types: ["mean", "rmean", "gap", "write", "custom"] },
         });
     };
@@ -162,7 +204,24 @@
             title: theme.name, addQuery: `theme=${encodeURIComponent(id)}`, searchLabel: "Bu temada ara", examLabel: "Bu temadan sınav",
             source: () => DB.wordsInTheme(id).slice().sort(rankBy(poolIds, (w) => w.pool)),
             groupOf: (w) => (DB.pool(w.pool) ? DB.pool(w.pool).name : "Diğer"),
+            bottom: textsHtml(DB.sentences().filter((s) => s.topic === theme.name), DB.paragraphs().filter((p) => p.topic === theme.name)),
+            siblings: siblingsOf(DB.themes().filter((t) => DB.wordsInTheme(t.id).length), id, (x) => `#/tema/${encodeURIComponent(x)}`),
             exam: { themes: [id], pools: [], types: ["mean", "rmean", "gap", "write"] },
+        });
+    };
+
+    Pages.grammar = function (id) {
+        const g = DB.gram(id);
+        if (!g) return null;
+        const poolIds = DB.pools().map((p) => p.id);
+        return listPage({
+            title: g.name, intro: g.info, addQuery: "", searchLabel: "Bu grupta ara", examLabel: "Bu gruptan sınav",
+            top: rulesHtml(g.rules),
+            bottom: textsHtml(DB.sentences().filter((s) => (s.gram || []).includes(id)), DB.paragraphs().filter((p) => (p.gram || []).includes(id))),
+            siblings: siblingsOf(DB.grammar().filter((x) => DB.wordsInGram(x.id).length), id, (x) => `#/dilbilgisi/${encodeURIComponent(x)}`),
+            source: () => DB.wordsInGram(id).slice().sort(rankBy(poolIds, (w) => w.pool)),
+            groupOf: (w) => (DB.pool(w.pool) ? DB.pool(w.pool).name : "Diğer"),
+            exam: { grams: [id], pools: [], types: ["mean", "rmean", "gap", "write"] },
         });
     };
 
@@ -189,15 +248,20 @@
                 <div class="word-meta">
                     <span class="badge red">${esc(w.level)}</span><span class="badge">${esc(DB.KINDS[w.kind] || "Diğer")}</span>
                     ${theme ? `<a class="badge" href="#/tema/${encodeURIComponent(theme.id)}">${esc(theme.name)}</a>` : ""}
+                    ${(w.gram || []).map(DB.gram).filter(Boolean).map((g) => `<a class="badge" href="#/dilbilgisi/${encodeURIComponent(g.id)}">${esc(g.name)}</a>`).join("")}
                     ${speakBtn(w.fr, "Dinle")}
                     <button class="btn sm ${DB.isKnown(id) ? "navy" : "ghost"}" type="button" id="known">${icon("check")} ${DB.isKnown(id) ? "Öğrendim" : "Öğrendim olarak işaretle"}</button>
                 </div>
                 ${w.note ? `<div class="note">${esc(w.note)}</div>` : ""}
                 ${!conj && others.length ? `<p class="hint" lang="fr">Biçimler: ${esc(others.slice(0, 14).join(", "))}</p>` : ""}
             </div>
-            ${conj ? `<h2 class="section-title">Çekim (présent)</h2>
-                <div class="conj" lang="fr">${conj.rows.map((r) => `<span>${esc(r)}</span>`).join("")}</div>
-                <p class="hint">Geçmiş ortaç (participe passé): <span lang="fr">${esc(conj.pp)}</span></p>` : ""}
+            ${conj ? `<h2 class="section-title">Çekimler</h2>
+                <p class="hint">Geçmiş ortaç (participe passé): <span lang="fr">${esc(conj.pp)}</span> · Yardımcı fiil: <span lang="fr">${esc(conj.aux)}</span></p>
+                <div class="conj-grid">${conj.tenses.map((t) => {
+                    const g = DB.gram(t.id);
+                    return `<section class="conj-card"><h3>${g ? `<a href="#/dilbilgisi/${encodeURIComponent(g.id)}">${esc(t.name)}</a>` : esc(t.name)}${g ? ` <small>${esc(g.name)}</small>` : ""}</h3>
+                        <div class="conj" lang="fr">${t.rows.map((r) => `<span>${esc(r)}</span>`).join("")}</div></section>`;
+                }).join("")}</div>` : ""}
             <h2 class="section-title">Örnek cümleler</h2>
             ${w.ex.length ? w.ex.map((e) => exampleCard(e, id)).join("") : `<div class="card empty">Örnek cümle yok. <a href="#/ekle/kelime/${encodeURIComponent(id)}">Ekle</a></div>`}
             ${sentences.length ? `<h2 class="section-title">Geçtiği cümleler</h2>${sentences.slice(0, 12).map((s) => Pages.textCard(s, { hl: id })).join("")}` : ""}

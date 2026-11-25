@@ -5,7 +5,7 @@
 (function () {
     "use strict";
 
-    const KEY = { user: "mfr_user", stats: "mfr_stats", exams: "mfr_exams", live: "mfr_live" };
+    const KEY = { user: "mfr_user", stats: "mfr_stats", exams: "mfr_exams", live: "mfr_live", academy: "mfr_academy" };
     const LEVELS = ["A1", "A2", "B1"];
     const KINDS = { verb: "Fiil", noun: "İsim", adj: "Sıfat", adv: "Zarf", other: "Diğer" };
     const EMPTY_USER = () => ({ words: [], sentences: [], paragraphs: [], questions: [], pools: [], hidden: {} });
@@ -14,6 +14,7 @@
     let user = Object.assign(EMPTY_USER(), U.store.get(KEY.user, {}));
     let stats = U.store.get(KEY.stats, {});
     let exams = U.store.get(KEY.exams, []);
+    let academy = U.store.get(KEY.academy, {});
 
     /* Seed rows -> records. Ids are derived from the pool and word, so they stay stable. */
     const seedPools = SEED.pools.map((p) => Object.assign({ seed: true }, p));
@@ -22,7 +23,7 @@
         const ex = [{ fr: r[4], tr: r[5] }];
         if (r[7]) ex.push({ fr: r[7], tr: r[8] });
         const id = `${p.id}:${U.slug(r[0])}`;
-        seedWords.push({ id, fr: r[0], tr: r[1], level: r[2], forms: r[3], ex, note: r[6] || "", pool: p.id, kind: p.kind, theme: SEED.themeOf[id] || "", seed: true });
+        seedWords.push({ id, fr: r[0], tr: r[1], level: r[2], forms: r[3], ex, note: r[6] || "", pool: p.id, kind: p.kind, theme: SEED.themeOf[id] || "", gram: SEED.gramOf[id] || [], seed: true });
     }));
     const seedOf = {
         words: seedWords,
@@ -41,8 +42,8 @@
             user[name].forEach((r) => {
                 if (user.hidden[r.id]) return;
                 const base = map.get(r.id);
-                /* Edits saved before themes existed have no theme field and keep the seed's. */
-                map.set(r.id, base ? Object.assign({ theme: base.theme }, r, { seed: true, edited: true }) : r);
+                /* Edits saved before themes existed have no theme field and keep the seed's; grammar groups are seed-only. */
+                map.set(r.id, base ? Object.assign({ theme: base.theme }, r, { gram: base.gram, seed: true, edited: true }) : r);
             });
             merged[name] = Array.from(map.values());
             byId[name] = {};
@@ -105,6 +106,14 @@
         exams = [result].concat(exams).slice(0, 30);
         U.store.set(KEY.exams, exams);
     }
+    /* ---------- Academy progress: best score per lesson quiz / unit exam, keyed "unit/lesson" ---------- */
+    const academyScore = (key) => academy[key] || null;
+    function recordAcademy(key, pct) {
+        const prev = academy[key] || { best: 0, tries: 0 };
+        academy[key] = { best: Math.max(prev.best, pct), last: pct, tries: prev.tries + 1, date: Date.now() };
+        U.store.set(KEY.academy, academy);
+    }
+
     const live = () => U.store.get(KEY.live, null);
     const setLive = (v) => { if (v) U.store.set(KEY.live, v); else U.store.del(KEY.live); };
 
@@ -138,7 +147,7 @@
     };
 
     function exportData() {
-        return { app: "madame-francaise", version: 1, exportedAt: new Date().toISOString(), user, stats, exams };
+        return { app: "madame-francaise", version: 1, exportedAt: new Date().toISOString(), user, stats, exams, academy };
     }
 
     /* Merges a backup into current data; incoming records win on equal ids. Returns added count. */
@@ -165,6 +174,15 @@
             });
             flushStats();
         }
+        if (data.academy && typeof data.academy === "object") {
+            Object.keys(data.academy).forEach((k) => {
+                const s = data.academy[k] || {};
+                if (!/^[\w-]{1,40}\/[\w-]{1,40}$/.test(k)) return;
+                const best = Math.max(0, Math.min(100, +s.best || 0));
+                academy[k] = { best: Math.max(best, academy[k] ? academy[k].best : 0), last: Math.max(0, Math.min(100, +s.last || 0)), tries: Math.max(0, +s.tries || 0), date: +s.date || 0 };
+            });
+            U.store.set(KEY.academy, academy);
+        }
         persist();
         return added;
     }
@@ -190,6 +208,9 @@
         themes: () => SEED.themes,
         theme: (id) => SEED.themes.find((t) => t.id === id),
         wordsInTheme: (theme) => merged.words.filter((w) => w.theme === theme),
+        grammar: () => SEED.grammar,
+        gram: (id) => SEED.grammar.find((g) => g.id === id),
+        wordsInGram: (gram) => merged.words.filter((w) => (w.gram || []).includes(gram)),
         sentences: () => merged.sentences,
         sentence: (id) => byId.sentences[id],
         paragraphs: () => merged.paragraphs,
@@ -200,7 +221,7 @@
         hiddenCount: () => Object.keys(user.hidden).length,
         topics: () => Array.from(new Set(merged.sentences.concat(merged.paragraphs).map((x) => x.topic).filter(Boolean))).sort(),
         save, remove, revert, stat, isKnown, setKnown, recordAnswer, flushStats, weakWords,
-        exams: () => exams, exam: (id) => exams.find((e) => e.id === id), addExam, live, setLive,
+        exams: () => exams, exam: (id) => exams.find((e) => e.id === id), addExam, live, setLive, academyScore, recordAcademy,
         exportData, importData, clearUser, restoreHidden,
     };
 })();

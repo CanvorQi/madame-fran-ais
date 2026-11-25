@@ -54,7 +54,8 @@
             const present = f.list.slice(0, 6);
             const pp = f.list[6];
             const imp = f.imp || present[3].replace(/ons$/, "");
-            return { present, pp, all: [...present, ...participle(pp), ...imperfect(imp), ...future(f.fut || inf.replace(/e$/, "")), ...f.list.slice(7)] };
+            const fut = f.fut || inf.replace(/e$/, "");
+            return { present, pp, impS: imp, impN: imp, fut, all: [...present, ...participle(pp), ...imperfect(imp), ...future(f.fut || inf.replace(/e$/, "")), ...f.list.slice(7)] };
         }
         if (f.list.length) return null;
         const stem = inf.slice(0, -2);
@@ -62,12 +63,12 @@
             const soft = stem.endsWith("g") ? `${stem}e` : stem.endsWith("c") ? `${stem.slice(0, -1)}ç` : stem;
             const present = [`${stem}e`, `${stem}es`, `${stem}e`, `${soft}ons`, `${stem}ez`, `${stem}ent`];
             const pp = `${stem}é`;
-            return { present, pp, all: [...present, ...participle(pp), ...imperfect(soft, stem), ...future(inf)] };
+            return { present, pp, impS: soft, impN: stem, fut: inf, all: [...present, ...participle(pp), ...imperfect(soft, stem), ...future(inf)] };
         }
         if (inf.endsWith("ir")) {
             const present = [`${stem}is`, `${stem}is`, `${stem}it`, `${stem}issons`, `${stem}issez`, `${stem}issent`];
             const pp = `${stem}i`;
-            return { present, pp, all: [...present, ...participle(pp), ...imperfect(`${stem}iss`), ...future(inf)] };
+            return { present, pp, impS: `${stem}iss`, impN: `${stem}iss`, fut: inf, all: [...present, ...participle(pp), ...imperfect(`${stem}iss`), ...future(inf)] };
         }
         return null;
     }
@@ -91,18 +92,58 @@
         return out;
     }
 
-    /* Present table for the word page; expressions ("avoir faim") have none. */
+    /* Verbs whose passé composé takes être (plus every pronominal verb). */
+    const ETRE_VERBS = new Set(["aller", "venir", "arriver", "partir", "entrer", "sortir", "monter", "descendre", "naître", "mourir", "rester", "tomber", "retourner", "rentrer", "devenir", "revenir"]);
+    const AUX = { avoir: ["ai", "as", "a", "avons", "avez", "ont"], être: ["suis", "es", "est", "sommes", "êtes", "sont"] };
+    /* Subjunctive and imperative stems that no rule produces. */
+    const SUBJ = {
+        être: ["sois", "sois", "soit", "soyons", "soyez", "soient"], avoir: ["aie", "aies", "ait", "ayons", "ayez", "aient"],
+        aller: ["aille", "ailles", "aille", "allions", "alliez", "aillent"], faire: ["fasse", "fasses", "fasse", "fassions", "fassiez", "fassent"],
+        pouvoir: ["puisse", "puisses", "puisse", "puissions", "puissiez", "puissent"], savoir: ["sache", "saches", "sache", "sachions", "sachiez", "sachent"],
+        vouloir: ["veuille", "veuilles", "veuille", "voulions", "vouliez", "veuillent"],
+    };
+    const IMPERATIVE = { être: ["sois", "soyons", "soyez"], avoir: ["aie", "ayons", "ayez"], savoir: ["sache", "sachons", "sachez"], vouloir: ["veuille", "veuillons", "veuillez"] };
+    const IMP_PRONOUN = ["toi", "nous", "vous"];
+
+    /* Tables for the word page: one entry per tense, six persons each (imperative: three).
+       Verbal phrases ("avoir faim", "se brosser les dents") conjugate their verb and keep the rest. */
     function conjugation(word) {
         if (word.kind !== "verb") return null;
         const { reflexive, inf, rest } = verbParts(word.fr.toLowerCase().trim());
-        if (rest || !inf) return null;
-        const c = conjugate(inf, word.forms);
+        if (!inf) return null;
+        const c = conjugate(inf, word.forms || verbTable.get(inf) || "");
         if (!c) return null;
-        const rows = c.present.map((form, i) => {
-            const body = reflexive ? withPronoun(REFLEXIVE[i], form) : form;
-            return withPronoun(PERSONS[i], body);
-        });
-        return { rows, pp: c.pp };
+        const tail = (f) => (rest ? `${f} ${rest}` : f);
+        const row = (forms) => forms.map((form, i) => withPronoun(PERSONS[i], tail(reflexive ? withPronoun(REFLEXIVE[i], form) : form)));
+        const ends = (stem, list) => list.map((e) => stem + e);
+
+        const etre = reflexive || ETRE_VERBS.has(inf);
+        /* "elle s'est brossé les dents": a direct object after the verb blocks agreement. */
+        const agree = etre && !/^(les?|la|l'|compte)\b/.test(rest);
+        const ppOf = (i) => (!agree ? c.pp : i < 3 ? `${c.pp}(e)` : c.pp.endsWith("s") ? `${c.pp}(es)` : `${c.pp}(e)s`);
+        const passe = AUX[etre ? "être" : "avoir"].map((aux, i) => `${aux} ${ppOf(i)}`);
+
+        const sub = SUBJ[inf] || (() => {
+            const s = c.present[5].replace(/ent$/, "");
+            return [`${s}e`, `${s}es`, `${s}e`, `${c.impN}ions`, `${c.impN}iez`, `${s}ent`];
+        })();
+        const subRows = row(sub).map((r) => (/^(il|ils)\b/.test(r) ? `qu'${r}` : `que ${r}`));
+
+        let imper = IMPERATIVE[inf] || [c.present[1].replace(/(?<=e)s$|^(va)s$/, "$1"), c.present[3], c.present[4]];
+        imper = imper.map((f, i) => tail(reflexive ? `${f}-${IMP_PRONOUN[i]}` : f));
+
+        return {
+            pp: c.pp, aux: etre ? "être" : "avoir",
+            tenses: [
+                { id: "present", name: "Présent", rows: row(c.present) },
+                { id: "passe-compose", name: "Passé composé", rows: row(passe) },
+                { id: "imparfait", name: "Imparfait", rows: row([...ends(c.impS, ["ais", "ais", "ait"]), ...ends(c.impN, ["ions", "iez"]), `${c.impS}aient`]) },
+                { id: "futur-simple", name: "Futur simple", rows: row(ends(c.fut, ["ai", "as", "a", "ons", "ez", "ont"])) },
+                { id: "conditionnel", name: "Conditionnel", rows: row(ends(c.fut, ["ais", "ais", "ait", "ions", "iez", "aient"])) },
+                { id: "subjonctif", name: "Subjonctif", rows: subRows },
+                { id: "imperative", name: "Impératif", rows: imper },
+            ],
+        };
     }
 
     function adjForms(w) {
