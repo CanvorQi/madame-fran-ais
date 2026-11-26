@@ -86,6 +86,12 @@
         const raw = word.forms || (verbTable.get(inf) || "");
         const c = conjugate(inf, raw);
         const list = (c ? [inf, ...c.all] : [inf, ...parseForms(raw).list]).concat(SUBJ[inf] || [], IMPERATIVE[inf] || []);
+        if (c) {
+            /* Subjunctive je/tu/ils from the ils stem ("comprennes"), and the present participle ("écoutant"). */
+            const ils = c.present[5];
+            if (!SUBJ[inf] && ils.endsWith("ent")) list.push(ils.replace(/ent$/, "e"), ils.replace(/ent$/, "es"));
+            list.push(GERUND[inf] || `${c.impS}ant`);
+        }
         const tail = (f) => (rest ? `${f} ${rest}` : f);
         const out = list.map(tail);
         if (reflexive) list.forEach((f) => ["me", "te", "se", "nous", "vous"].forEach((p) => out.push(tail(withPronoun(p, f)))));
@@ -104,6 +110,7 @@
     };
     const IMPERATIVE = { être: ["sois", "soyons", "soyez"], avoir: ["aie", "ayons", "ayez"], savoir: ["sache", "sachons", "sachez"], vouloir: ["veuille", "veuillons", "veuillez"] };
     const IMP_PRONOUN = ["toi", "nous", "vous"];
+    const GERUND = { avoir: "ayant", savoir: "sachant" };
 
     /* Tables for the word page: one entry per tense, six persons each (imperative: three).
        Verbal phrases ("avoir faim", "se brosser les dents") conjugate their verb and keep the rest. */

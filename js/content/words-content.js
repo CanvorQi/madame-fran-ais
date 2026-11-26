@@ -105,7 +105,7 @@ SEED.words.verbs = [
     ["choisir", "seçmek", "A1", "", "Je choisis le poisson.", "Balığı seçiyorum.", "", "Tu dois choisir une couleur.", "Bir renk seçmelisin."],
     ["réussir", "başarmak, geçmek", "A2", "", "Elle réussit toujours ses examens.", "Sınavlarını hep geçer.", "", "Je veux réussir mon examen.", "Sınavımı geçmek istiyorum."],
     ["grandir", "büyümek", "A2", "", "Les enfants grandissent vite.", "Çocuklar çabuk büyür."],
-    ["pleuvoir", "yağmur yağmak", "A1", "pleut, pleuvait, pleuvra, plu", "Il pleut beaucoup à Brest.", "Brest'e çok yağmur yağar.", "Yalnızca il ile kullanılır: il pleut."],
+    ["pleuvoir", "yağmur yağmak", "A1", "pleut, pleuvait, pleuvra, plu, pleuvrait, pleuve","Il pleut beaucoup à Brest.", "Brest'e çok yağmur yağar.", "Yalnızca il ile kullanılır: il pleut."],
     ["neiger", "kar yağmak", "A2", "neige, neigeait, neigera, neigé", "Il neige en montagne.", "Dağda kar yağıyor.", "Yalnızca il ile kullanılır: il neige."]
 ];
 

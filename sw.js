@@ -4,7 +4,7 @@
  * Bump CACHE_NAME after changing files so users receive the new version.
  */
 const CACHE_PREFIX = "madame-francaise-";
-const CACHE_NAME = CACHE_PREFIX + "v16";
+const CACHE_NAME = CACHE_PREFIX + "v17";
 const APP_SHELL = [
     "./",
     "./index.html",

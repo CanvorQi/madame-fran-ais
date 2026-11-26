@@ -241,7 +241,7 @@ SEED.words.pronouns = [
     ["rien", "hiçbir şey", "A2", "", "Il n'y a rien sur la table.", "Masada hiçbir şey yok."],
     ["quelqu'un", "birisi", "A2", "", "Il y a quelqu'un ?", "Kimse var mı?"],
     ["chaque", "her bir", "A2", "", "Je lis chaque soir.", "Her akşam okurum."],
-    ["autre", "başka, diğer", "A1", "", "Je voudrais une autre chemise.", "Başka bir gömlek rica ediyorum."],
+    ["autre", "başka, diğer", "A1", "autres","Je voudrais une autre chemise.", "Başka bir gömlek rica ediyorum."],
     ["même", "aynı", "A1", "", "Nous avons le même sac.", "Aynı çantaya sahibiz."],
     ["y", "oraya, orada", "A2", "", "J'y vais demain.", "Oraya yarın gidiyorum."]
 ];

@@ -234,5 +234,85 @@ SEED.paragraphs.push(
             { q: "Qui a construit la table ?", o: ["Le père", "Le grand-père", "Un voisin", "Le narrateur"], a: 1 },
             { q: "Où sont les outils ?", o: ["Dans le garage", "Dans la boîte rouge", "Dans le carton des livres", "Sous la table"], a: 1 }
         ]
+    },
+    {
+        id: "p25", title: "Une journée au zoo", level: "A2", topic: "Hayvanlar",
+        fr: "Dimanche, nous sommes allés au zoo avec les enfants. D'abord, nous avons vu les singes : ils sautaient partout et ils mangeaient des bananes. Ensuite, nous avons regardé les lions. Ils dormaient sous un arbre. Ma fille a adoré la girafe parce qu'elle a un très long cou. Mon fils, lui, préfère les animaux de la ferme : il a nourri une chèvre et un âne. À la fin de la journée, tout le monde était fatigué mais content.",
+        tr: "Pazar günü çocuklarla hayvanat bahçesine gittik. Önce maymunları gördük: her yerde zıplıyor ve muz yiyorlardı. Sonra aslanlara baktık. Bir ağacın altında uyuyorlardı. Kızım zürafaya bayıldı çünkü çok uzun bir boynu var. Oğlum ise çiftlik hayvanlarını tercih ediyor: bir keçiyi ve bir eşeği besledi. Günün sonunda herkes yorgun ama mutluydu.",
+        q: [
+            { q: "Que faisaient les singes ?", o: ["Ils dormaient", "Ils sautaient et mangeaient", "Ils nageaient", "Ils criaient"], a: 1 },
+            { q: "Quel animal la fille a-t-elle adoré ?", o: ["Le lion", "Le singe", "La girafe", "La chèvre"], a: 2 },
+            { q: "Qu'a fait le fils ?", o: ["Il a nourri des animaux", "Il a dessiné un lion", "Il a dormi", "Il a acheté une glace"], a: 0 }
+        ]
+    },
+    {
+        id: "p26", title: "Mes couleurs préférées", level: "A1", topic: "Renkler ve Şekiller",
+        fr: "J'adore les couleurs vives. Ma chambre est jaune et orange. Mon lit est bleu et j'ai un grand tapis rouge et rond. Sur le mur, il y a un miroir carré et une photo de la mer. La mer est turquoise. Mon frère, lui, préfère les couleurs foncées : sa chambre est grise et noire. Il dit que c'est plus calme.",
+        tr: "Canlı renklere bayılırım. Odam sarı ve turuncu. Yatağım mavi ve büyük, kırmızı, yuvarlak bir halım var. Duvarda kare bir ayna ve denizin bir fotoğrafı var. Deniz turkuaz. Erkek kardeşim ise koyu renkleri tercih ediyor: odası gri ve siyah. Bunun daha sakin olduğunu söylüyor.",
+        q: [
+            { q: "De quelle couleur est la chambre ?", o: ["Grise et noire", "Jaune et orange", "Bleue et blanche", "Verte"], a: 1 },
+            { q: "Quelle est la forme du tapis ?", o: ["Carré", "Rond", "Ovale", "Rectangulaire"], a: 1 },
+            { q: "Quelles couleurs le frère préfère-t-il ?", o: ["Les couleurs vives", "Les couleurs foncées", "Le rose", "Le turquoise"], a: 1 }
+        ]
+    },
+    {
+        id: "p27", title: "Un week-end à Cannes", level: "B1", topic: "Sanat ve Kültür",
+        fr: "L'année dernière, j'ai eu la chance d'aller au festival de Cannes avec une amie journaliste. Nous avons vu trois films en deux jours. Le premier était un chef-d'œuvre : à la fin, le public a applaudi pendant dix minutes et la réalisatrice était très émue. En revanche, le deuxième film était un peu compliqué et je n'ai pas tout compris. Le soir, nous nous promenions sur la Croisette en espérant voir des acteurs célèbres. Je n'ai vu personne, mais ça valait la peine !",
+        tr: "Geçen yıl gazeteci bir arkadaşımla Cannes Festivali'ne gitme şansım oldu. İki günde üç film izledik. İlki bir başyapıttı: sonunda seyirciler on dakika alkışladı ve yönetmen çok duygulandı. Buna karşılık ikinci film biraz karmaşıktı ve her şeyi anlamadım. Akşamları ünlü oyuncuları görme umuduyla Croisette'te geziniyorduk. Kimseyi görmedim ama zahmetine değdi!",
+        q: [
+            { q: "Combien de films ont-ils vus ?", o: ["Un", "Deux", "Trois", "Dix"], a: 2 },
+            { q: "Comment était le deuxième film ?", o: ["Un chef-d'œuvre", "Un peu compliqué", "Très drôle", "Trop long"], a: 1 },
+            { q: "Le narrateur a-t-il vu des acteurs ?", o: ["Oui, beaucoup", "Oui, un seul", "Non, personne", "On ne sait pas"], a: 2 }
+        ]
+    },
+    {
+        id: "p28", title: "Ville ou campagne ?", level: "B1", topic: "Fikir ve Tartışma",
+        fr: "Beaucoup de gens se demandent s'il vaut mieux vivre en ville ou à la campagne. En ville, on trouve facilement du travail et les transports sont pratiques. En revanche, la vie est chère et il y a souvent du bruit. À la campagne, l'air est pur et les gens sont plus tranquilles ; cependant, il faut une voiture pour tout faire. À mon avis, il n'y a pas de bonne réponse : tout dépend de l'âge et du travail de chacun. Moi, je préfère la ville, à condition d'avoir un parc près de chez moi.",
+        tr: "Birçok insan şehirde mi yoksa kırsalda mı yaşamanın daha iyi olduğunu merak eder. Şehirde kolayca iş bulunur ve ulaşım pratiktir. Buna karşılık hayat pahalıdır ve sık sık gürültü olur. Kırsalda hava temizdir ve insanlar daha sakindir; ancak her şey için araba gerekir. Bence doğru bir cevap yok: her şey kişinin yaşına ve işine bağlı. Ben, evimin yakınında bir park olması şartıyla şehri tercih ediyorum.",
+        q: [
+            { q: "Quel est un avantage de la ville ?", o: ["L'air pur", "Le calme", "Les transports pratiques", "La vie pas chère"], a: 2 },
+            { q: "Qu'est-ce qu'il faut à la campagne ?", o: ["Un vélo", "Une voiture", "Un grand appartement", "Beaucoup d'argent"], a: 1 },
+            { q: "Que préfère l'auteur ?", o: ["La campagne", "La ville avec un parc", "La montagne", "La mer"], a: 1 }
+        ]
+    },
+    {
+        id: "p29", title: "Les soldes", level: "A2", topic: "Giyim ve Aksesuar",
+        fr: "En janvier, c'est la période des soldes en France. Samedi, je suis allée en ville avec ma sœur. Dans la vitrine d'une petite boutique, j'ai vu un manteau beige magnifique. Sur l'étiquette, le prix était de cent euros, mais avec les soldes, il coûtait seulement soixante euros ! Je l'ai essayé : la taille était parfaite. Ma sœur a acheté une jupe rayée et un pull uni. Nous avons dépensé beaucoup d'argent, mais nous étions très contentes.",
+        tr: "Ocakta Fransa'da indirim dönemidir. Cumartesi kız kardeşimle şehre gittim. Küçük bir butiğin vitrininde harika bej bir palto gördüm. Etikette fiyat yüz euroydu ama indirimle sadece altmış euroya geliyordu! Denedim: beden mükemmeldi. Kız kardeşim çizgili bir etek ve düz bir kazak aldı. Çok para harcadık ama çok mutluyduk.",
+        q: [
+            { q: "Quand sont les soldes ?", o: ["En janvier", "En mai", "En août", "En décembre"], a: 0 },
+            { q: "Combien coûtait le manteau avec les soldes ?", o: ["Cent euros", "Quatre-vingts euros", "Soixante euros", "Quarante euros"], a: 2 },
+            { q: "Qu'a acheté la sœur ?", o: ["Un manteau", "Une jupe et un pull", "Des chaussures", "Une robe"], a: 1 }
+        ]
+    },
+    {
+        id: "p30", title: "Protéger la planète", level: "B1", topic: "Toplum ve Çevre",
+        fr: "Dans notre immeuble, nous avons décidé de faire des efforts pour l'environnement. Désormais, nous trions nos déchets et nous évitons les sacs en plastique. Pour économiser l'électricité, nous éteignons la lumière quand nous quittons une pièce. Beaucoup de voisins prennent les transports en commun au lieu de la voiture. Bien sûr, ce ne sont que de petits gestes ; néanmoins, si tout le monde fait un effort, la situation peut changer. Il ne faut pas attendre que les autres le fassent.",
+        tr: "Apartmanımızda çevre için çaba göstermeye karar verdik. Artık çöplerimizi ayrıştırıyor ve plastik poşetlerden kaçınıyoruz. Elektrikten tasarruf etmek için bir odadan çıkarken ışığı kapatıyoruz. Komşuların çoğu araba yerine toplu taşıma kullanıyor. Elbette bunlar küçük davranışlar; yine de herkes çaba gösterirse durum değişebilir. Başkalarının yapmasını beklememek gerekir.",
+        q: [
+            { q: "Qu'est-ce qu'ils évitent ?", o: ["Les transports", "Les sacs en plastique", "Les voisins", "La lumière"], a: 1 },
+            { q: "Que font-ils pour économiser l'électricité ?", o: ["Ils éteignent la lumière", "Ils achètent des bougies", "Ils déménagent", "Ils dorment tôt"], a: 0 },
+            { q: "Selon le texte, que faut-il faire ?", o: ["Attendre les autres", "Ne rien changer", "Faire un effort soi-même", "Acheter une voiture"], a: 2 }
+        ]
+    },
+    {
+        id: "p31", title: "Une lettre à mon amie", level: "B1", topic: "Duygular ve Karakter",
+        fr: "Chère Julie, je t'écris de Lyon, où je vis depuis trois mois. Au début, je me sentais un peu seule et j'avais du mal à comprendre l'accent des gens. J'étais souvent épuisée et parfois déçue. Mais petit à petit, je me suis habituée. Mes collègues sont très gentils et ma voisine, une dame âgée, m'invite souvent à prendre le thé. Je suis reconnaissante pour leur patience. Maintenant, je suis heureuse ici, même si tu me manques beaucoup. Viens me voir dès que tu peux ! Je t'embrasse, Zeynep.",
+        tr: "Sevgili Julie, sana üç aydır yaşadığım Lyon'dan yazıyorum. Başta kendimi biraz yalnız hissediyordum ve insanların aksanını anlamakta zorlanıyordum. Sık sık bitkin, bazen de hayal kırıklığına uğramış oluyordum. Ama yavaş yavaş alıştım. İş arkadaşlarım çok iyi ve yaşlı bir hanım olan komşum beni sık sık çaya davet ediyor. Sabırları için minnettarım. Şimdi burada mutluyum, seni çok özlesem de. Olabildiğince çabuk beni görmeye gel! Sevgiler, Zeynep.",
+        q: [
+            { q: "Depuis combien de temps Zeynep vit-elle à Lyon ?", o: ["Un mois", "Trois mois", "Un an", "Trois ans"], a: 1 },
+            { q: "Qu'est-ce qui était difficile au début ?", o: ["Trouver un travail", "Comprendre l'accent", "Faire la cuisine", "Prendre le métro"], a: 1 },
+            { q: "Qui invite Zeynep à prendre le thé ?", o: ["Sa collègue", "Julie", "Sa voisine", "Sa mère"], a: 2 }
+        ]
+    },
+    {
+        id: "p32", title: "Un nouveau téléphone", level: "A2", topic: "Teknoloji ve Medya",
+        fr: "Mon vieux téléphone est tombé en panne la semaine dernière, alors j'en ai acheté un nouveau. Il est très rapide et l'écran est grand. Le matin, je lis les informations en prenant mon petit déjeuner. Le soir, je regarde des vidéos ou j'envoie des messages à mes amis. Mais il y a un problème : je passe trop de temps sur mon téléphone ! Maintenant, je le laisse dans le salon quand je vais dormir. Le sommeil, c'est important.",
+        tr: "Eski telefonum geçen hafta bozuldu, ben de yeni bir tane aldım. Çok hızlı ve ekranı büyük. Sabahları kahvaltımı yaparken haberleri okuyorum. Akşamları video izliyor ya da arkadaşlarıma mesaj gönderiyorum. Ama bir sorun var: telefonda çok fazla zaman geçiriyorum! Artık uyumaya giderken onu salonda bırakıyorum. Uyku önemlidir.",
+        q: [
+            { q: "Pourquoi a-t-il acheté un nouveau téléphone ?", o: ["Il l'a perdu", "Le vieux est tombé en panne", "C'était son anniversaire", "Il voulait un grand écran"], a: 1 },
+            { q: "Que fait-il le matin ?", o: ["Il regarde des vidéos", "Il lit les informations", "Il envoie des messages", "Il dort"], a: 1 },
+            { q: "Où laisse-t-il son téléphone la nuit ?", o: ["Dans sa chambre", "Dans la cuisine", "Dans le salon", "Au bureau"], a: 2 }
+        ]
     }
 );
