@@ -209,6 +209,72 @@ SEED.grammar = [
             { h: "ne ile kullanılanlar", p: "rien, personne, aucun cümlede ne ile birlikte gelir.", ex: [["Je n'ai aucune idée.", "Hiçbir fikrim yok."], ["Personne ne répond.", "Kimse cevap vermiyor."]] }
         ]
     },
+    {
+        id: "adjectives", name: "Sıfatlar: Uyum ve Yer", title: "Les adjectifs",
+        info: "Sıfat nitelediği ismin cinsiyetine ve sayısına uyar; çoğu isimden sonra gelir.",
+        rules: [
+            { h: "Dişil yapımı", p: "Genel kural: eril hâle -e eklenir (petit → petite). Zaten -e ile biten sıfat değişmez (jeune, facile). Dişilde son ünsüz okunmaya başlar: petit [peti] → petite [petit].", ex: [["Il est petit. / Elle est petite.", "O küçük. (eril / dişil)"], ["un livre facile / une question facile", "kolay bir kitap / kolay bir soru"]] },
+            { h: "Düzensiz dişiller", p: "-eux → -euse (heureux → heureuse), -if → -ive (sportif → sportive), -er → -ère (cher → chère), -el, -en, -on → ünsüz ikizleşir (italien → italienne, bon → bonne, gentil → gentille). Ezberlenecekler: blanc → blanche, long → longue, frais → fraîche.", table: ["heureux → heureuse", "sportif → sportive", "cher → chère", "italien → italienne", "bon → bonne", "blanc → blanche"] },
+            { h: "Çoğul", p: "Genelde -s eklenir ve okunmaz. -s ya da -x ile biten değişmez (français, heureux). -al → -aux (national → nationaux), -eau → -eaux (beau → beaux). Eril ve dişil isimleri birlikte nitelerken sıfat eril çoğul olur.", ex: [["des amis français", "Fransız arkadaşlar"], ["les monuments nationaux", "ulusal anıtlar"], ["Paul et Marie sont contents.", "Paul ve Marie memnun."]] },
+            { h: "Yeri: çoğu isimden sonra", p: "Renk, milliyet, şekil ve uzun sıfatlar isimden sonra gelir. Türkçenin tersidir.", ex: [["une robe rouge", "kırmızı bir elbise"], ["un restaurant italien", "bir İtalyan restoranı"], ["un livre intéressant", "ilginç bir kitap"]] },
+            { h: "İsimden önce gelenler", p: "Kısa ve sık kullanılan sıfatlar isimden önce gelir. Akılda tutmak için dört grup: güzellik (beau, joli), yaş (jeune, vieux, nouveau), iyilik (bon, mauvais), büyüklük (grand, petit, gros). Sıra bildirenler de önde: premier, dernier.", ex: [["un petit chat noir", "küçük siyah bir kedi"], ["une jolie maison blanche", "beyaz, güzel bir ev"], ["C'est mon premier jour.", "Bu benim ilk günüm."]] },
+            { h: "bel, nouvel, vieil", p: "beau, nouveau ve vieux, sesli harf ya da sessiz h ile başlayan eril tekil isimden önce bel, nouvel, vieil olur. Çoğulda değişmez: beaux, nouveaux, vieux.", ex: [["un bel homme", "yakışıklı bir adam"], ["un nouvel appartement", "yeni bir daire"], ["un vieil ami", "eski bir arkadaş"]] },
+            { h: "Yeri değişince anlamı değişenler", p: "Bazı sıfatlar isimden önce mecazi, sonra gerçek anlam taşır: un grand homme (büyük bir insan) / un homme grand (uzun boylu bir adam). mon ancien professeur (eski öğretmenim) / une maison ancienne (tarihî ev). mon cher ami (sevgili dostum) / un sac cher (pahalı çanta).", ex: [["C'est mon ancien collègue.", "Bu benim eski iş arkadaşım."], ["J'habite dans un quartier ancien.", "Eski (tarihî) bir semtte oturuyorum."]] },
+            { h: "Değişmeyen renkler", p: "Bir meyve ya da nesne adından gelen renkler cinsiyet ve sayıya uymaz: orange, marron. İki kelimelik renkler de değişmez: bleu clair, vert foncé.", ex: [["des chaussures marron", "kahverengi ayakkabılar"], ["une chemise bleu clair", "açık mavi bir gömlek"]] }
+        ]
+    },
+    {
+        id: "pronominal", name: "Dönüşlü Fiiller", title: "Les verbes pronominaux",
+        info: "Özneyle aynı kişiyi gösteren bir zamirle (me, te, se...) çekilen fiiller.",
+        rules: [
+            { h: "Yapım", p: "Dönüşlü zamir özneye uyar ve çekimli fiilden önce gelir. Sesli harf önünde me, te, se → m', t', s'.", table: ["je me lève", "tu te lèves", "il / elle se lève", "nous nous levons", "vous vous levez", "ils / elles se lèvent"] },
+            { h: "Üç anlam", p: "1) Dönüşlü: eylem özneye döner (se laver: yıkanmak). 2) Karşılıklı: birbirini (s'aimer, se téléphoner). 3) Kalıplaşmış: anlam ayrıca öğrenilir (s'appeler, se rendre compte, se passer).", ex: [["Je me lave.", "Yıkanıyorum."], ["Ils s'aiment.", "Birbirlerini seviyorlar."], ["Comment tu t'appelles ?", "Adın ne?"]] },
+            { h: "Dönüşlü mü, değil mi?", p: "Aynı fiil zamirsiz de kullanılabilir; o zaman eylem başkasına yöneliktir.", ex: [["Je lave la voiture. / Je me lave.", "Arabayı yıkıyorum. / Yıkanıyorum."], ["Je réveille les enfants. / Je me réveille.", "Çocukları uyandırıyorum. / Uyanıyorum."]] },
+            { h: "Passé composé: être ile", p: "Bütün dönüşlü fiiller être ile çekilir ve ortaç genelde özneye uyar. Fiilden sonra doğrudan nesne gelirse (les mains, les dents) ortaç uymaz.", ex: [["Elle s'est levée tôt.", "Erken kalktı."], ["Nous nous sommes promenés.", "Gezindik."], ["Elle s'est lavé les mains.", "Ellerini yıkadı."]] },
+            { h: "Olumsuz ve emir", p: "Olumsuzda ne zamirden önce gelir. Olumlu emirde zamir fiilden sonra tireyle gelir ve te → toi olur; olumsuz emirde önde kalır.", ex: [["Je ne me lève pas.", "Kalkmıyorum."], ["Dépêche-toi !", "Acele et!"], ["Ne t'inquiète pas.", "Merak etme."]] },
+            { h: "Mastarda", p: "Zamir mastarın önüne gelir ve yine özneye uyar.", ex: [["Je vais me coucher.", "Yatacağım."], ["Nous voulons nous reposer.", "Dinlenmek istiyoruz."]] },
+            { h: "Vücut bölümleri", p: "Türkçedeki iyelik yerine dönüşlü zamir ve belirli artikel kullanılır: ellerimi yıkıyorum → je me lave les mains.", ex: [["Je me brosse les dents.", "Dişlerimi fırçalıyorum."], ["Il s'est cassé la jambe.", "Bacağını kırdı."]] }
+        ]
+    },
+    {
+        id: "connectors", name: "Bağlaçlar ve Bağlayıcılar", title: "Les connecteurs logiques",
+        info: "Fikirleri birbirine bağlar: neden, sonuç, karşıtlık, amaç ve zaman.",
+        rules: [
+            { h: "Ekleme ve seçme", p: "et (ve), ou (veya), aussi (de, da), de plus (üstelik), d'ailleurs (zaten).", ex: [["Il fait froid ; de plus, il pleut.", "Hava soğuk; üstelik yağmur yağıyor."]] },
+            { h: "Neden", p: "parce que: çünkü, en sık kullanılan; pourquoi sorusuna cevap verir. car: yazı dilinde, cümle başına gelmez. comme: -dığı için, cümle başında. puisque: madem, karşı tarafın da bildiği neden. İsimle: grâce à (olumlu), à cause de (olumsuz).", ex: [["Je reste à la maison parce que je suis malade.", "Evde kalıyorum çünkü hastayım."], ["Comme il pleut, je prends le bus.", "Yağmur yağdığı için otobüse biniyorum."], ["Puisque tu es là, aide-moi.", "Madem buradasın, bana yardım et."], ["Le train est en retard à cause de la neige.", "Tren kar yüzünden gecikti."]] },
+            { h: "Sonuç", p: "donc (bu yüzden), alors (o zaman, konuşmada), c'est pourquoi (işte bu yüzden).", ex: [["Je suis fatigué, donc je vais me coucher.", "Yorgunum, bu yüzden yatacağım."], ["Il a beaucoup travaillé ; c'est pourquoi il a réussi.", "Çok çalıştı; işte bu yüzden başardı."]] },
+            { h: "Karşıtlık", p: "mais (ama), pourtant (yine de), cependant (bununla birlikte, yazı), par contre (buna karşın, konuşma), alors que / tandis que (oysa, iki şeyi karşılaştırırken).", ex: [["J'aime le thé, par contre je n'aime pas le café.", "Çayı severim, buna karşın kahveyi sevmem."], ["Il est riche, pourtant il n'est pas heureux.", "Zengin, yine de mutlu değil."], ["Je travaille alors que tu dors !", "Sen uyurken (oysa) ben çalışıyorum!"]] },
+            { h: "Taviz", p: "même si (-sa bile) + indicatif. bien que (-mesine rağmen) + subjonctif. malgré (-e rağmen) + isim.", ex: [["Même s'il pleut, je sors.", "Yağmur yağsa bile çıkıyorum."], ["Bien qu'il pleuve, je sors.", "Yağmur yağmasına rağmen çıkıyorum."], ["Je sors malgré la pluie.", "Yağmura rağmen çıkıyorum."]] },
+            { h: "Amaç", p: "pour / afin de + mastar (özne aynıysa). pour que + subjonctif (özne farklıysa).", ex: [["Je travaille pour gagner de l'argent.", "Para kazanmak için çalışıyorum."], ["Je parle lentement pour que tu comprennes.", "Anlayasın diye yavaş konuşuyorum."]] },
+            { h: "Zaman", p: "quand / lorsque (-dığında), pendant que (-iken), dès que (-er -mez). Gelecekten söz ederken quand ve dès que ardından futur gelir.", ex: [["Dès que j'arrive, je t'appelle.", "Varır varmaz seni ararım."], ["Quand tu seras à Paris, écris-moi.", "Paris'te olunca bana yaz."]] },
+            { h: "Sıralama", p: "Anlatıyı düzenlemek için: d'abord (önce), ensuite / puis (sonra), enfin (en sonunda). Yazıda: premièrement, deuxièmement, en conclusion.", ex: [["D'abord on visite le musée, ensuite on mange, enfin on rentre.", "Önce müzeyi geziyoruz, sonra yemek yiyoruz, en sonunda dönüyoruz."]] }
+        ]
+    },
+    {
+        id: "verb-prep", name: "Fiil + Edat (à / de)", title: "Les verbes et leurs prépositions",
+        info: "Bir fiilden sonra mastar ya da nesne gelirken hangi edatın kullanılacağı fiile bağlıdır; fiille birlikte öğrenilir.",
+        rules: [
+            { h: "Edatsız + mastar", p: "Tercih, istek, yetenek ve hareket fiilleri mastarı doğrudan alır: aimer, adorer, préférer, détester, vouloir, pouvoir, devoir, savoir, aller, venir, il faut.", ex: [["J'aime voyager.", "Seyahat etmeyi severim."], ["Je sais nager.", "Yüzmeyi bilirim."], ["Il faut partir.", "Gitmek gerekiyor."]] },
+            { h: "à + mastar", p: "commencer à, apprendre à, réussir à, continuer à, aider quelqu'un à, s'habituer à, penser à.", ex: [["J'apprends à conduire.", "Araba kullanmayı öğreniyorum."], ["Il a réussi à ouvrir la porte.", "Kapıyı açmayı başardı."], ["Tu m'aides à porter ce sac ?", "Bu çantayı taşımama yardım eder misin?"]] },
+            { h: "de + mastar", p: "décider de, essayer de, oublier de, refuser de, accepter de, arrêter de, finir de, rêver de, avoir besoin de, avoir envie de, avoir peur de. Sesli harf önünde d'.", ex: [["J'essaie de comprendre.", "Anlamaya çalışıyorum."], ["J'ai oublié d'acheter du pain.", "Ekmek almayı unuttum."], ["Il a arrêté de fumer.", "Sigarayı bıraktı."]] },
+            { h: "Kişiye söyleme ve isteme", p: "dire, demander, conseiller, permettre: à + kişi, de + mastar.", ex: [["Je demande à Paul de m'aider.", "Paul'den bana yardım etmesini istiyorum."], ["Le médecin m'a dit de me reposer.", "Doktor bana dinlenmemi söyledi."]] },
+            { h: "Edat anlamı değiştirir", p: "penser à: birini / bir şeyi düşünmek; penser de: hakkında fikri olmak. jouer à: oyun ve spor; jouer de: çalgı. parler à: biriyle konuşmak; parler de: bir şeyden söz etmek.", ex: [["Je pense à toi.", "Seni düşünüyorum."], ["Qu'est-ce que tu penses de ce film ?", "Bu film hakkında ne düşünüyorsun?"], ["Il joue au tennis et de la guitare.", "Tenis oynuyor ve gitar çalıyor."]] },
+            { h: "Türkçeden farklı olanlar", p: "Bazı fiiller Türkçede -e / -den alırken Fransızcada edatsızdır ya da tersi: regarder la télé (televizyona bakmak), attendre le bus (otobüsü beklemek), écouter la radio, chercher ses clés. téléphoner à quelqu'un (birini aramak), obéir à, ressembler à.", ex: [["J'attends le bus.", "Otobüsü bekliyorum."], ["Je téléphone à ma mère.", "Annemi arıyorum."], ["Il ressemble à son père.", "Babasına benziyor."]] },
+            { h: "Zamirle", p: "à + şey → y; de + şey → en. Kişiler için à → lui / leur, de → de lui / d'elle.", ex: [["Tu penses à ton examen ? — Oui, j'y pense.", "Sınavını düşünüyor musun? — Evet, düşünüyorum."], ["Tu as besoin de ce livre ? — Oui, j'en ai besoin.", "Bu kitaba ihtiyacın var mı? — Evet, var."]] }
+        ]
+    },
+    {
+        id: "reported", name: "Dolaylı Anlatım", title: "Le discours indirect",
+        info: "Birinin söylediğini aktarmak: « Je suis fatigué. » → Il dit qu'il est fatigué.",
+        rules: [
+            { h: "Düz cümle: que", p: "dire, expliquer, répondre, penser + que. Zamirler ve iyelikler aktaran kişiye göre değişir.", ex: [["Marie dit : « Je suis malade. » → Marie dit qu'elle est malade.", "Marie « Hastayım » diyor. → Marie hasta olduğunu söylüyor."], ["Il dit : « J'aime mon travail. » → Il dit qu'il aime son travail.", "İşini sevdiğini söylüyor."]] },
+            { h: "Evet / hayır sorusu: si", p: "Evet ya da hayır cevaplı soru si ile aktarılır; est-ce que düşer. Sesli harf önünde si il → s'il.", ex: [["« Tu viens ? » → Il demande si je viens.", "Gelip gelmediğimi soruyor."], ["Je me demande s'il va pleuvoir.", "Yağmur yağacak mı diye merak ediyorum."]] },
+            { h: "Soru kelimesiyle", p: "où, quand, comment, pourquoi, combien, qui aynen kalır; cümle düz sıraya döner. qu'est-ce que → ce que, qu'est-ce qui → ce qui.", ex: [["« Où habites-tu ? » → Il demande où j'habite.", "Nerede oturduğumu soruyor."], ["« Qu'est-ce que tu veux ? » → Elle demande ce que je veux.", "Ne istediğimi soruyor."], ["« Qu'est-ce qui se passe ? » → Il demande ce qui se passe.", "Ne olduğunu soruyor."]] },
+            { h: "Emir: de + mastar", p: "Emir cümlesi dire / demander de + mastar ile aktarılır.", ex: [["« Ferme la porte ! » → Il me dit de fermer la porte.", "Kapıyı kapatmamı söylüyor."], ["« Ne parlez pas ! » → Le professeur nous demande de ne pas parler.", "Öğretmen konuşmamamızı istiyor."]] },
+            { h: "Geçmişte aktarma: zaman uyumu", p: "Aktaran fiil geçmişteyse (il a dit) zamanlar bir adım geri gider: présent → imparfait, passé composé → plus-que-parfait, futur → conditionnel. imparfait ve conditionnel değişmez.", table: ["« Je suis fatigué. » → Il a dit qu'il était fatigué.", "« J'ai fini. » → Il a dit qu'il avait fini.", "« Je viendrai. » → Il a dit qu'il viendrait.", "« Je vais partir. » → Il a dit qu'il allait partir.", "« J'étais malade. » → Il a dit qu'il était malade.", "« Je voudrais un café. » → Il a dit qu'il voudrait un café."] },
+            { h: "Zaman ve yer ifadeleri", p: "Geçmişte aktarırken: aujourd'hui → ce jour-là, hier → la veille, demain → le lendemain, ici → là, maintenant → à ce moment-là.", ex: [["Elle a dit : « Je pars demain. » → Elle a dit qu'elle partait le lendemain.", "Ertesi gün gideceğini söyledi."]] }
+        ]
+    },
 
     /* ---------- Verb tenses ---------- */
     {
@@ -292,6 +358,41 @@ SEED.grammar = [
             { h: "Zorunluluk: il faut que", p: "il faut que ardından her zaman subjonctif gelir.", ex: [["Il faut que tu partes maintenant.", "Şimdi gitmen gerekiyor."], ["Il faut que je fasse mes devoirs.", "Ödevlerimi yapmam gerekiyor."]] },
             { h: "İstek ve duygu", p: "vouloir que, aimer que, être content que, avoir peur que... İki öznenin farklı olması gerekir; aynıysa mastar kullanılır.", ex: [["Je veux que tu viennes.", "Gelmeni istiyorum."], ["Je veux venir.", "Gelmek istiyorum."], ["Je suis content que tu sois là.", "Burada olmana sevindim."]] },
             { h: "Bağlaçlar", p: "pour que (-sın diye), bien que (-mesine rağmen), avant que (-meden önce) ardından subjonctif gelir.", ex: [["Je parle lentement pour que tu comprennes.", "Anlayasın diye yavaş konuşuyorum."], ["Bien qu'il soit fatigué, il travaille.", "Yorgun olmasına rağmen çalışıyor."]] }
+        ]
+    },
+    {
+        id: "plus-que-parfait", cat: "tense", name: "Miş'li Geçmiş (Plus-que-parfait)", title: "Le plus-que-parfait",
+        info: "Geçmişteki bir olaydan daha önce olmuş olan: -mıştı.",
+        rules: [
+            { h: "Kullanım", p: "Geçmişte anlatılan bir andan önce tamamlanmış eylemler. Türkçedeki -mıştı karşılığıdır.", ex: [["Quand je suis arrivé, le film avait déjà commencé.", "Vardığımda film çoktan başlamıştı."], ["Il était fatigué parce qu'il avait mal dormi.", "Yorgundu çünkü kötü uyumuştu."]] },
+            { h: "Yapım", p: "avoir ya da être (imparfait) + geçmiş ortaç. Hangi yardımcı fiilin seçileceği passé composé ile aynıdır.", table: ["j'avais fini", "tu avais fini", "il avait fini", "nous avions fini", "vous aviez fini", "ils avaient fini"] },
+            { h: "être ile", p: "Hareket fiilleri ve dönüşlü fiiller être ile çekilir; ortaç özneye uyar.", ex: [["Elle était déjà partie.", "O çoktan gitmişti."], ["Nous nous étions rencontrés à Lyon.", "Lyon'da tanışmıştık."]] },
+            { h: "Zaman çizelgesi", p: "plus-que-parfait (önce olan) → passé composé (olay) → présent. Olayların sırası tersten anlatılırken çok kullanılır.", ex: [["J'ai retrouvé les clés que j'avais perdues.", "Kaybettiğim anahtarları buldum."]] },
+            { h: "Pişmanlık: si + plus-que-parfait", p: "Tek başına keşke anlamı verir. Gerçekleşmemiş geçmiş koşulda sonuç conditionnel passé ile kurulur (avoir / être conditionnel + ortaç).", ex: [["Si j'avais su !", "Keşke bilseydim!"], ["Si tu m'avais appelé, je serais venu.", "Beni arasaydın gelirdim."]] }
+        ]
+    },
+    {
+        id: "gerondif", cat: "tense", name: "Ulaç (Gérondif)", title: "Le gérondif",
+        info: "en + -ant: -arak, -erken. İki eylemi aynı özneyle bağlar.",
+        rules: [
+            { h: "Yapım", p: "nous biçiminden -ons atılır, -ant eklenir ve önüne en gelir: nous parlons → en parlant, nous finissons → en finissant. Düzensizler: être → en étant, avoir → en ayant, savoir → en sachant.", table: ["parler → en parlant", "finir → en finissant", "faire → en faisant", "prendre → en prenant", "lire → en lisant", "être → en étant"] },
+            { h: "Eşzamanlılık: -erken", p: "İki eylem aynı anda olur ve özneleri aynıdır.", ex: [["Je chante en cuisinant.", "Yemek yaparken şarkı söylerim."], ["Il est tombé en courant.", "Koşarken düştü."]] },
+            { h: "Yol ve yöntem: -arak", p: "Bir şeyin nasıl yapıldığını ya da nasıl olduğunu söyler.", ex: [["On apprend une langue en pratiquant.", "Bir dil pratik yaparak öğrenilir."], ["Il a réussi en travaillant beaucoup.", "Çok çalışarak başardı."]] },
+            { h: "Koşul: -arsa", p: "Bir koşulu kısaca ifade eder.", ex: [["En partant maintenant, tu arriveras à l'heure.", "Şimdi çıkarsan zamanında varırsın."]] },
+            { h: "tout en", p: "Eşzamanlılığı vurgular ya da iki eylem arasında bir çelişki gösterir.", ex: [["Il mange tout en regardant la télé.", "Hem yemek yiyor hem televizyon izliyor."], ["Tout en étant riche, il vit simplement.", "Zengin olduğu hâlde sade yaşıyor."]] },
+            { h: "Özne aynı olmalı", p: "Gérondif her zaman ana cümlenin öznesine bağlanır. Özneler farklıysa quand ya da pendant que kullanılır.", ex: [["Je t'ai vu en sortant du métro.", "Metrodan çıkarken (ben) seni gördüm."], ["Je t'ai vu quand tu sortais du métro.", "Sen metrodan çıkarken seni gördüm."]] }
+        ]
+    },
+    {
+        id: "passive", cat: "tense", name: "Edilgen Çatı (Voix passive)", title: "La voix passive",
+        info: "Eylemi yapanı değil, eylemden etkileneni öne çıkarır: -ılmak, -ilmek.",
+        rules: [
+            { h: "Yapım", p: "être (istenen zamanda) + geçmiş ortaç. Ortaç özneye uyar. Eylemi yapan par ile verilir.", ex: [["La souris est mangée par le chat.", "Fare kedi tarafından yeniliyor."], ["Cette maison a été construite en 1900.", "Bu ev 1900'de inşa edildi."]] },
+            { h: "Zaman être ile verilir", p: "Ana fiil hep ortaç kalır; zamanı être gösterir.", table: ["présent: la lettre est écrite", "passé composé: la lettre a été écrite", "imparfait: la lettre était écrite", "futur: la lettre sera écrite", "futur proche: la lettre va être écrite", "conditionnel: la lettre serait écrite"] },
+            { h: "par mı, de mı?", p: "Eylem bildiren fiillerde par, duygu ve durum bildirenlerde (aimer, respecter, connaître, couvrir) de kullanılır.", ex: [["Ce professeur est aimé de ses élèves.", "Bu öğretmen öğrencileri tarafından seviliyor."], ["La table est couverte de livres.", "Masa kitaplarla kaplı."]] },
+            { h: "Konuşmada on", p: "Yapan belli değilse ya da önemli değilse Fransızcada edilgen yerine çoğu zaman on kullanılır.", ex: [["On parle français ici.", "Burada Fransızca konuşulur."], ["On m'a volé mon portefeuille.", "Cüzdanım çalındı."]] },
+            { h: "se + fiil ile edilgen anlam", p: "Genel kural ve alışkanlıkları anlatırken dönüşlü yapı edilgen anlam verir.", ex: [["Ce vin se boit frais.", "Bu şarap soğuk içilir."], ["Ça ne se fait pas.", "Bu yapılmaz."]] },
+            { h: "Yalnızca geçişli fiiller", p: "Edilgen yapı sadece doğrudan nesne alan fiillerle kurulur. téléphoner à, obéir à gibi fiillerin edilgeni olmaz; on kullanılır.", ex: [["On m'a téléphoné.", "Bana telefon edildi."]] }
         ]
     }
 ];
@@ -469,6 +570,50 @@ SEED.addGrammar("indefinite", "pronouns", [
     ["n'importe quoi", "herhangi bir şey; saçmalık", "B1", "", "Il dit n'importe quoi.", "Saçmalıyor."]
 ]);
 
+/* ---------- Adjectives, pronominal verbs, connectors, verb + preposition, reported speech ---------- */
+SEED.setGrammar("adjectives", "adjectives", ["grand", "petit", "bon", "mauvais", "beau", "joli", "vieux", "jeune", "nouveau", "cher", "heureux", "gentil", "long", "blanc", "italien", "national", "français", "premier", "dernier", "ancien", "orange", "marron"]);
+SEED.addGrammar("adjectives", "adjectives", [
+    ["sportif", "sportif, spor seven", "A2", "", "Mon frère est très sportif.", "Erkek kardeşim çok sportif.", "Dişili: sportive (-if → -ive)."],
+    ["actif", "faal, hareketli", "B1", "", "Ma grand-mère est encore très active.", "Büyükannem hâlâ çok hareketli.", "Dişili: active."]
+]);
+
+SEED.setGrammar("pronominal", "pronominal", ["se lever", "se coucher", "se laver", "se réveiller", "s'habiller", "s'appeler", "se brosser les dents", "se promener", "se reposer", "se dépêcher", "s'asseoir", "s'amuser", "se passer", "se voir", "se rencontrer", "s'aimer", "se téléphoner", "se rendre compte", "s'inquiéter", "se casser"]);
+
+SEED.setGrammar("connectors", "conjunctions", ["et", "ou", "mais", "donc", "alors", "parce que", "comme", "quand", "pendant que", "si", "cependant", "pourtant", "puisque", "lorsque", "tandis que", "sinon", "bien que"]);
+SEED.setGrammar("connectors", "prepositions", ["à cause de", "grâce à", "malgré", "afin de", "pour"]);
+SEED.setGrammar("connectors", "adverbs", ["d'abord", "puis", "ensuite", "enfin", "aussi"]);
+SEED.setGrammar("connectors", "expressions", ["de plus", "d'ailleurs", "au contraire", "en effet", "par exemple", "c'est-à-dire", "en fait"]);
+SEED.addGrammar("connectors", "conjunctions", [
+    ["car", "çünkü", "A2", "", "Je reste ici, car il pleut.", "Burada kalıyorum, çünkü yağmur yağıyor.", "Yazı dilinde kullanılır; cümle başına gelmez."],
+    ["même si", "-se bile", "B1", "même s'", "Même si c'est difficile, je continue.", "Zor olsa bile devam ediyorum.", "Ardından indicatif gelir."],
+    ["alors que", "oysa, -iken", "B1", "alors qu'", "Il travaille alors que tout le monde dort.", "Herkes uyurken o çalışıyor."],
+    ["dès que", "-er -mez", "B1", "dès qu'", "Dès que je rentre, je prends une douche.", "Eve döner dönmez duş alırım.", "Gelecekten söz ederken futur ile: dès que j'arriverai."]
+]);
+SEED.addGrammar("connectors", "expressions", [
+    ["par contre", "buna karşın, öte yandan", "A2", "", "La ville est belle ; par contre, elle est chère.", "Şehir güzel; buna karşın pahalı.", "Konuşma dilinde sık kullanılır."],
+    ["c'est pourquoi", "işte bu yüzden", "B1", "", "Il était malade, c'est pourquoi il n'est pas venu.", "Hastaydı, işte bu yüzden gelmedi."]
+]);
+
+SEED.setGrammar("verb-prep", "verbs", ["aimer", "préférer", "commencer", "apprendre", "réussir", "essayer", "oublier", "finir", "penser", "jouer", "demander", "aider", "dire", "attendre", "regarder", "écouter", "décider", "refuser", "accepter"]);
+SEED.setGrammar("verb-prep", "verbal", ["avoir besoin de", "avoir envie de", "avoir peur", "rendre visite à"]);
+SEED.setGrammar("verb-prep", "pronominal", ["s'habituer", "s'intéresser", "s'occuper", "se souvenir", "se mettre à"]);
+SEED.addGrammar("verb-prep", "verbs", [
+    ["continuer", "devam etmek", "A2", "", "Je continue à apprendre le français.", "Fransızca öğrenmeye devam ediyorum.", "continuer à ya da continuer de + mastar."],
+    ["arrêter", "durdurmak, bırakmak", "A2", "", "Arrête de parler !", "Konuşmayı kes!", "Bir eylemi bırakmak: arrêter de + mastar."],
+    ["rêver", "rüya görmek, hayal etmek", "B1", "", "Je rêve de visiter le Japon.", "Japonya'yı gezmeyi hayal ediyorum.", "rêver de + isim ya da mastar."]
+]);
+
+SEED.setGrammar("reported", "verbs", ["dire", "demander", "répondre", "expliquer", "penser"]);
+SEED.setGrammar("reported", "conjunctions", ["que", "si"]);
+SEED.setGrammar("reported", "pronominal", ["se demander"]);
+SEED.setGrammar("reported", "nouns", ["la veille", "le lendemain"]);
+SEED.addGrammar("reported", "verbs", [
+    ["raconter", "anlatmak", "A2", "", "Il m'a raconté qu'il avait perdu son travail.", "Bana işini kaybettiğini anlattı."]
+]);
+SEED.addGrammar("reported", "pronouns", [
+    ["ce que", "-dığı şey, ne", "B1", "ce qu'", "Dis-moi ce que tu veux.", "Ne istediğini söyle.", "Dolaylı soruda qu'est-ce que yerine; özne olduğunda ce qui."]
+]);
+
 /* ---------- Tense markers and helper verbs ---------- */
 SEED.setGrammar("present", "adverbs", ["maintenant", "aujourd'hui", "toujours", "souvent"]);
 SEED.setGrammar("present", "verbs", ["être", "avoir", "faire"]);
@@ -512,6 +657,21 @@ SEED.setGrammar("conditionnel", "verbs", ["pouvoir", "vouloir", "devoir"]);
 
 SEED.setGrammar("subjonctif", "expressions", ["il faut"]);
 SEED.setGrammar("subjonctif", "conjunctions", ["bien que"]);
+SEED.setGrammar("plus-que-parfait", "adverbs", ["déjà"]);
+SEED.setGrammar("plus-que-parfait", "verbs", ["être", "avoir"]);
+SEED.addGrammar("plus-que-parfait", "adverbs", [
+    ["auparavant", "önceden, daha önce", "B1", "", "Je n'avais jamais vu la mer auparavant.", "Daha önce denizi hiç görmemiştim."]
+]);
+
+SEED.setGrammar("gerondif", "prepositions", ["en"]);
+SEED.addGrammar("gerondif", "expressions", [
+    ["tout en", "hem ... hem; -diği hâlde", "B1", "", "Elle travaille tout en écoutant de la musique.", "Hem çalışıyor hem müzik dinliyor.", "Ardından gérondif biçimi (-ant) gelir."]
+]);
+
+SEED.setGrammar("passive", "verbs", ["être", "construire", "organiser", "vendre", "écrire", "ouvrir"]);
+SEED.setGrammar("passive", "prepositions", ["par", "de"]);
+SEED.setGrammar("passive", "pronouns", ["on"]);
+
 SEED.addGrammar("subjonctif", "conjunctions", [
     ["pour que", "-sın diye, -mesi için", "B1", "pour qu'", "Je t'explique pour que tu comprennes.", "Anlayasın diye sana açıklıyorum.", "Ardından subjonctif gelir."],
     ["avant que", "-meden önce", "B1", "avant qu'", "Rentre avant qu'il pleuve.", "Yağmur yağmadan eve dön.", "Ardından subjonctif gelir."]

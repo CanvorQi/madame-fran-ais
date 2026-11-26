@@ -348,6 +348,48 @@ SEED.academy = [
             }
         ]
     },
+    {
+        id: "a2-5", level: "A2", title: "Bien construire", name: "Sıfatlar, Dönüşlü Fiiller ve Edatlar",
+        desc: "Sıfat uyumunu, dönüşlü fiilleri ve fiillerden sonra gelen à / de edatlarını öğren.",
+        lessons: [
+            {
+                id: "l1", name: "Sıfatlar: uyum ve yer", theme: "description", levels: ["A1", "A2"], gram: "adjectives",
+                quiz: [
+                    ["Elle est très ___. (heureux)", ["heureux", "heureuse", "heureuxe", "heureuses"], 1, "-eux → -euse: heureuse."],
+                    ["Doğru sıralama hangisi?", ["une rouge robe", "une robe rouge", "rouge une robe", "une robe la rouge"], 1, "Renkler isimden sonra gelir: une robe rouge."],
+                    ["Hangisi doğru?", ["un grand chat noir", "un chat grand noir", "un noir grand chat", "un chat noir grand"], 0, "grand isimden önce, renk sonra gelir."],
+                    ["C'est un ___ appartement.", ["beau", "bel", "belle", "beaux"], 1, "Sesli harfle başlayan eril tekil isimden önce: bel."],
+                    ["des chaussures ___ (kahverengi)", ["marrons", "marron", "marronnes", "marronne"], 1, "Bir nesne adından gelen renk değişmez: marron."],
+                    ["les monuments ___ (ulusal)", ["nationals", "nationales", "nationaux", "nationauxs"], 2, "-al → -aux: nationaux."],
+                    ["Paul et Marie sont ___.", ["content", "contente", "contents", "contentes"], 2, "Eril ve dişil birlikteyse eril çoğul: contents."]
+                ]
+            },
+            {
+                id: "l2", name: "Dönüşlü fiiller", gram: "pronominal",
+                quiz: [
+                    ["Nous ___ levons à sept heures.", ["se", "nous", "vous", "me"], 1, "Zamir özneye uyar: nous nous levons."],
+                    ["Je ___ appelle Ayşe.", ["me", "m'", "se", "je"], 1, "Sesli harf önünde me → m' : je m'appelle."],
+                    ["Elle ___ levée tôt.", ["a", "s'est", "est", "s'a"], 1, "Dönüşlü fiiller passé composé'de être alır: elle s'est levée."],
+                    ["Elle s'est ___ les mains.", ["lavée", "lavé", "lavées", "laver"], 1, "Ardından doğrudan nesne (les mains) gelince ortaç uymaz."],
+                    ["« Kalk ! » (tu)", ["Lève-toi !", "Te lève !", "Lève-te !", "Toi lève !"], 0, "Olumlu emirde zamir sonra gelir ve te → toi olur."],
+                    ["Je vais ___ coucher.", ["se", "me", "te", "nous"], 1, "Mastarda da zamir özneye uyar: je vais me coucher."],
+                    ["« Ils s'aiment. » ne demek?", ["Kendilerini seviyorlar.", "Birbirlerini seviyorlar.", "Onu seviyorlar.", "Sevilmiyorlar."], 1, "Çoğulda dönüşlü zamir karşılıklı anlam verebilir."]
+                ]
+            },
+            {
+                id: "l3", name: "Fiil + edat (à / de)", gram: "verb-prep",
+                quiz: [
+                    ["J'apprends ___ nager.", ["de", "à", "—", "pour"], 1, "apprendre à + mastar."],
+                    ["J'ai oublié ___ acheter du pain.", ["de", "d'", "à", "—"], 1, "oublier de; sesli harf önünde d'."],
+                    ["J'aime ___ voyager.", ["à", "de", "—", "pour"], 2, "aimer mastarı doğrudan alır: j'aime voyager."],
+                    ["Il joue ___ piano.", ["au", "du", "à la", "de"], 1, "Çalgı: jouer de → du piano."],
+                    ["Il joue ___ football.", ["du", "au", "de", "à"], 1, "Spor ve oyun: jouer à → au football."],
+                    ["Qu'est-ce que tu penses ___ ce film ?", ["à", "de", "sur", "pour"], 1, "Fikir sorarken penser de."],
+                    ["« Otobüsü bekliyorum »:", ["J'attends le bus.", "J'attends au bus.", "J'attends pour le bus.", "J'attends du bus."], 0, "attendre edatsız kullanılır."]
+                ]
+            }
+        ]
+    },
 
     /* ---------------- B1 ---------------- */
     {
@@ -450,6 +492,75 @@ SEED.academy = [
                     ["Je travaille ___ les jours.", ["tout", "toute", "tous", "toutes"], 2, "jours eril çoğul: tous."],
                     ["Je n'ai ___ idée.", ["aucun", "aucune", "quelque", "chaque"], 1, "idée dişil: aucune."],
                     ["Je voudrais quelque chose ___ chaud.", ["de", "du", "—", "le"], 0, "quelque chose de + sıfat."]
+                ]
+            }
+        ]
+    },
+    {
+        id: "b1-4", level: "B1", title: "Raconter", name: "Anlatmak ve Bağlamak",
+        desc: "Fikirleri bağlayıcılarla bağla, geçmişi plus-que-parfait ile sırala, başkasının sözünü aktar.",
+        lessons: [
+            {
+                id: "l1", name: "Bağlaçlar ve bağlayıcılar", gram: "connectors",
+                quiz: [
+                    ["Je reste à la maison ___ je suis malade.", ["donc", "parce que", "pourtant", "pour"], 1, "Neden: parce que."],
+                    ["Il est riche, ___ il n'est pas heureux.", ["donc", "car", "pourtant", "parce que"], 2, "Karşıtlık: pourtant (yine de)."],
+                    ["___ il pleut, je prends le bus. (cümle başında neden)", ["Car", "Comme", "Donc", "Pourtant"], 1, "car cümle başına gelmez; comme gelir."],
+                    ["Même s'il ___, je sors.", ["pleut", "pleuve", "pleuvra", "pleuvrait"], 0, "même si + indicatif."],
+                    ["Bien qu'il ___ fatigué, il travaille.", ["est", "soit", "était", "sera"], 1, "bien que + subjonctif."],
+                    ["Le train est en retard ___ la neige.", ["grâce à", "à cause de", "parce que", "malgré"], 1, "Olumsuz neden + isim: à cause de."],
+                    ["___ j'arrive, je t'appelle. (-er -mez)", ["Dès que", "Pendant que", "Alors que", "Avant"], 0, "dès que: -er -mez."]
+                ]
+            },
+            {
+                id: "l2", name: "Plus-que-parfait", gram: "plus-que-parfait",
+                quiz: [
+                    ["Quand je suis arrivé, le film ___ déjà commencé.", ["a", "avait", "était", "aura"], 1, "Daha önce olan: avait commencé (başlamıştı)."],
+                    ["Elle ___ déjà partie.", ["avait", "était", "a", "est été"], 1, "partir être ile çekilir: elle était partie."],
+                    ["Plus-que-parfait nasıl kurulur?", ["avoir / être présent + ortaç", "avoir / être imparfait + ortaç", "imparfait kökü + -ait", "futur kökü + -ais"], 1, "Yardımcı fiil imparfait'de: j'avais fini."],
+                    ["Plus-que-parfait Türkçede hangi ekle karşılanır?", ["-ıyordu", "-mıştı", "-acaktı", "-ırdı"], 1, "-mıştı: j'avais mangé = yemiştim."],
+                    ["Si j'___ su ! (Keşke bilseydim!)", ["ai", "avais", "aurais", "aurai"], 1, "Pişmanlık: si + plus-que-parfait."],
+                    ["Nous nous ___ rencontrés à Lyon.", ["avions", "étions", "sommes", "avons"], 1, "Dönüşlü fiil: être imparfait + ortaç."]
+                ]
+            },
+            {
+                id: "l3", name: "Dolaylı anlatım", gram: "reported",
+                quiz: [
+                    ["« Je suis fatigué. » → Il dit qu'il ___ fatigué.", ["suis", "est", "était", "sera"], 1, "Aktaran fiil présent'te: zaman değişmez, kişi değişir."],
+                    ["« Tu viens ? » → Il demande ___ je viens.", ["que", "si", "ce que", "qu'est-ce que"], 1, "Evet / hayır sorusu si ile aktarılır."],
+                    ["« Qu'est-ce que tu veux ? » → Elle demande ___ je veux.", ["qu'est-ce que", "ce que", "que", "ce qui"], 1, "qu'est-ce que → ce que."],
+                    ["« Ferme la porte ! » → Il me dit ___ fermer la porte.", ["de", "à", "que", "—"], 0, "Emir: dire de + mastar."],
+                    ["« Je viendrai. » → Il a dit qu'il ___.", ["viendra", "viendrait", "vient", "est venu"], 1, "Geçmişte aktarma: futur → conditionnel."],
+                    ["« J'ai fini. » → Il a dit qu'il ___ fini.", ["a", "avait", "aurait", "ait"], 1, "passé composé → plus-que-parfait."],
+                    ["« Je pars demain. » → Elle a dit qu'elle partait ___.", ["demain", "le lendemain", "la veille", "hier"], 1, "Geçmişte aktarırken demain → le lendemain."]
+                ]
+            }
+        ]
+    },
+    {
+        id: "b1-5", level: "B1", title: "Autrement dit", name: "Gérondif ve Edilgen Çatı",
+        desc: "en + -ant ile iki eylemi bağla, edilgen çatıyla eylemden etkileneni öne çıkar.",
+        lessons: [
+            {
+                id: "l1", name: "Gérondif", gram: "gerondif",
+                quiz: [
+                    ["faire → en ___", ["faisant", "fasant", "faiant", "fant"], 0, "nous faisons → en faisant."],
+                    ["Je chante ___ cuisinant.", ["en", "par", "à", "pour"], 0, "Gérondif: en + -ant."],
+                    ["On apprend une langue en ___.", ["pratiquer", "pratiquant", "pratiqué", "pratique"], 1, "en pratiquant: pratik yaparak."],
+                    ["être → en ___", ["étant", "êtant", "soyant", "ayant"], 0, "Düzensiz: être → étant."],
+                    ["« En partant maintenant, tu arriveras à l'heure. » Gérondif burada ne anlatıyor?", ["koşul", "neden", "amaç", "karşıtlık"], 0, "Şimdi çıkarsan: koşul."],
+                    ["Il mange ___ regardant la télé. (hem ... hem)", ["tout en", "en tout", "pendant", "alors"], 0, "tout en eşzamanlılığı vurgular."]
+                ]
+            },
+            {
+                id: "l2", name: "Edilgen çatı", gram: "passive",
+                quiz: [
+                    ["Cette maison a été ___ en 1900.", ["construit", "construite", "construits", "construire"], 1, "Ortaç özneye uyar: maison dişil → construite."],
+                    ["La souris est mangée ___ le chat.", ["de", "par", "à", "pour"], 1, "Eylemi yapan par ile verilir."],
+                    ["Ce professeur est aimé ___ ses élèves.", ["par", "de", "à", "avec"], 1, "Duygu fiillerinde de kullanılır."],
+                    ["La lettre ___ écrite demain. (futur)", ["est", "a été", "sera", "était"], 2, "Zamanı être gösterir: sera écrite."],
+                    ["« Burada Fransızca konuşulur »:", ["On parle français ici.", "Français est parlé ici par on.", "Il parle français ici.", "Le français parle ici."], 0, "Konuşmada edilgen yerine on tercih edilir."],
+                    ["Ce vin ___ boit frais.", ["se", "on", "est", "le"], 0, "se + fiil edilgen anlam verir: soğuk içilir."]
                 ]
             }
         ]

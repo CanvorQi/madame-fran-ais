@@ -92,14 +92,36 @@
         U.store.set(KEY.stats, stats);
     }
 
+    /* Spaced repetition (Leitner): `b` is the box, `d` the day (local midnight, ms) the word is due again. */
+    const DAY = 86400000;
+    const BOX_DAYS = [0, 1, 3, 7, 16, 35, 90];
+    const today = () => { const d = new Date(); d.setHours(0, 0, 0, 0); return d.getTime(); };
+
     function recordAnswer(id, ok) {
         const s = Object.assign({}, stat(id));
-        if (ok) { s.r++; s.s++; } else { s.w++; s.s = 0; delete s.k; }
+        if (ok) {
+            s.r++; s.s++;
+            s.b = Math.min((s.b || 0) + 1, BOX_DAYS.length - 1);
+            s.d = today() + BOX_DAYS[s.b] * DAY;
+        } else { s.w++; s.s = 0; delete s.k; s.b = 0; s.d = today(); }
         stats[id] = s;
     }
     const flushStats = () => U.store.set(KEY.stats, stats);
     const weakWords = () => merged.words.filter((w) => stat(w.id).w > 0 && !isKnown(w.id))
         .sort((a, b) => stat(b.id).w - stat(a.id).w);
+
+    /* Words answered before boxes existed are due only if still weak. Words marked known are skipped. */
+    function dueOn(id, day) {
+        const s = stats[id];
+        if (!s || s.k === true) return false;
+        if (s.d === undefined) return s.w > 0 && !isKnown(id);
+        return s.d < day + DAY;
+    }
+    const dueWords = (days) => {
+        const day = today() + (days || 0) * DAY;
+        return merged.words.filter((w) => dueOn(w.id, day)).sort((a, b) => (stat(a.id).d || 0) - (stat(b.id).d || 0));
+    };
+    const newWords = () => merged.words.filter((w) => !stats[w.id]).sort((a, b) => LEVELS.indexOf(a.level) - LEVELS.indexOf(b.level));
 
     /* ---------- Exam history and the in-progress exam ---------- */
     function addExam(result) {
@@ -171,6 +193,8 @@
                 if (safeId(id) !== id) return;
                 stats[id] = { r: +s.r || 0, w: +s.w || 0, s: +s.s || 0 };
                 if (typeof s.k === "boolean") stats[id].k = s.k;
+                if (s.b !== undefined) stats[id].b = Math.max(0, Math.min(BOX_DAYS.length - 1, Math.floor(+s.b) || 0));
+                if (s.d !== undefined && Number.isFinite(+s.d)) stats[id].d = +s.d;
             });
             flushStats();
         }
@@ -220,7 +244,7 @@
         userList: (name) => user[name],
         hiddenCount: () => Object.keys(user.hidden).length,
         topics: () => Array.from(new Set(merged.sentences.concat(merged.paragraphs).map((x) => x.topic).filter(Boolean))).sort(),
-        save, remove, revert, stat, isKnown, setKnown, recordAnswer, flushStats, weakWords,
+        save, remove, revert, stat, isKnown, setKnown, recordAnswer, flushStats, weakWords, dueWords, newWords,
         exams: () => exams, exam: (id) => exams.find((e) => e.id === id), addExam, live, setLive, academyScore, recordAcademy,
         exportData, importData, clearUser, restoreHidden,
     };

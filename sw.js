@@ -4,7 +4,7 @@
  * Bump CACHE_NAME after changing files so users receive the new version.
  */
 const CACHE_PREFIX = "madame-francaise-";
-const CACHE_NAME = CACHE_PREFIX + "v7";
+const CACHE_NAME = CACHE_PREFIX + "v14";
 const APP_SHELL = [
     "./",
     "./index.html",
@@ -19,6 +19,7 @@ const APP_SHELL = [
     "./js/content/academy.js",
     "./js/content/sentences.js",
     "./js/content/paragraphs.js",
+    "./js/content/dialogues.js",
     "./js/linker.js",
     "./js/data.js",
     "./js/exam.js",
@@ -27,6 +28,7 @@ const APP_SHELL = [
     "./js/pages-exam.js",
     "./js/pages-manage.js",
     "./js/pages-academy.js",
+    "./js/pages-talk.js",
     "./js/app.js",
     "./icons/icon.svg",
     "./icons/icon-192.png",

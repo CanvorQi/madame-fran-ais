@@ -7,12 +7,17 @@
     let current = null;
     let timerId = null;
 
-    const ALL = ["mean", "rmean", "gap", "write", "order", "read", "grammar", "custom"];
+    const ALL = ["mean", "rmean", "gap", "write", "order", "read", "grammar", "gender", "conj", "custom"];
+    const REVIEW_TYPES = ["mean", "rmean", "gap", "write", "gender", "conj"];
+    const REVIEW_MAX = 20;
+    const NEW_BATCH = 10;
     const PRESETS = [
         { id: "quick", name: "Hızlı Test", sub: "10 karışık soru, anında geri bildirim", cls: "red", cfg: { title: "Hızlı Test", types: ALL, count: 10, instant: true, minutes: 0 } },
         { id: "gap", name: "Texte à trous", sub: "Cümlelerdeki boşlukları doldur", cfg: { title: "Texte à trous", types: ["gap"], count: 10, instant: true, minutes: 0 } },
         { id: "vocab", name: "Kelime Sınavı", sub: "Anlam ve yazım, 20 soru", cfg: { title: "Kelime Sınavı", types: ["mean", "rmean", "write"], count: 20, instant: true, minutes: 0 } },
         { id: "order", name: "Cümle Kurma", sub: "Kelimeleri doğru sıraya diz", cfg: { title: "Cümle Kurma", types: ["order"], count: 10, instant: true, minutes: 0 } },
+        { id: "gender", name: "Artikel: un / une", sub: "İsimlerin cinsiyetini çalış", cfg: { title: "Artikel", types: ["gender"], count: 20, instant: true, minutes: 0 } },
+        { id: "conj", name: "Fiil Çekimi", sub: "Présent, passé composé, imparfait, futur", cfg: { title: "Fiil Çekimi", types: ["conj"], count: 15, instant: true, minutes: 0 } },
         { id: "read", name: "Okuma Sınavı", sub: "Paragraflara dayalı anlama soruları", cfg: { title: "Okuma Sınavı", types: ["read"], count: 10, instant: true, minutes: 0 } },
         { id: "mock", name: "Deneme Sınavı", sub: "30 soru, 30 dakika, sonuç sonda", cfg: { title: "Deneme Sınavı", types: ALL, count: 30, instant: false, minutes: 30 } },
     ];
@@ -47,6 +52,7 @@
             ${live ? `<div class="card" style="margin-bottom:12px"><b>Yarım kalan sınav:</b> ${esc(live.cfg.title)}
                 <div class="row-actions"><a class="btn" href="#/sinav">Devam et</a><button class="btn ghost" type="button" id="dropLive">Sil</button></div></div>` : ""}
             <div class="preset-grid">
+                <a class="preset red" href="#/tekrar"><b>Günlük Tekrar</b><span>${DB.dueWords().length ? `Bugün ${DB.dueWords().length} kelime tekrar bekliyor` : "Aralıklı tekrar ile kelimeleri kalıcı öğren"}</span></a>
                 ${PRESETS.map((p) => `<button class="preset${p.cls ? " " + p.cls : ""}" type="button" data-preset="${p.id}"><b>${p.name}</b><span>${p.sub}</span></button>`).join("")}
                 <button class="preset" type="button" id="weak" ${weak ? "" : "disabled"}><b>Yanlışlarım</b><span>${weak ? `${weak} zayıf kelimeyi tekrar et` : "Yanlış yaptığın kelimeler burada toplanır"}</span></button>
             </div>
@@ -100,6 +106,40 @@
         };
     };
 
+    /* ---------- Spaced repetition ---------- */
+    Pages.review = function () {
+        const due = DB.dueWords();
+        const tomorrow = DB.dueWords(1).length - due.length;
+        const fresh = DB.newWords();
+        const start = (title, words, types) => Pages.startExam({ title, words: words.map((w) => w.id), pools: [], levels: [], types, count: words.length, instant: true, minutes: 0 });
+        return {
+            nav: "review", title: "Günlük Tekrar",
+            html: `<div class="page-head"><h1>Günlük Tekrar</h1><p>Doğru bildiğin kelime 1, 3, 7, 16, 35 ve 90 gün sonra yeniden sorulur; yanlış bildiğin kelime aynı gün tekrar gelir. Tüm sınavlardaki cevapların bu takvimi günceller.</p></div>
+            <div class="stat-row">
+                <div class="stat"><b>${due.length}</b><span>bugün tekrar</span></div>
+                <div class="stat"><b>${Math.max(0, tomorrow)}</b><span>yarın eklenecek</span></div>
+                <div class="stat"><b>${fresh.length}</b><span>hiç çalışılmamış</span></div>
+            </div>
+            <div class="card" style="margin-top:12px">
+                ${due.length ? `<h2 style="font-size:19px">Bugün ${due.length} kelime tekrar bekliyor</h2>
+                    <p class="muted small" style="margin-top:4px">Bir oturumda en fazla ${REVIEW_MAX} kelime sorulur.</p>
+                    <div class="row-actions"><button class="btn" type="button" id="startReview">Tekrara başla</button></div>`
+                    : `<h2 style="font-size:19px">Bugünlük tekrar bitti</h2><p class="muted small" style="margin-top:4px">Yeni kelimelerle devam edebilirsin.</p>`}
+            </div>
+            <div class="card" style="margin-top:12px">
+                <h2 style="font-size:19px">Yeni kelimeler</h2>
+                <p class="muted small" style="margin-top:4px">${fresh.length ? `Seviye sırasıyla ${Math.min(NEW_BATCH, fresh.length)} yeni kelime: ${fresh.slice(0, NEW_BATCH).map((w) => `<span lang="fr">${esc(w.fr)}</span>`).join(", ")}` : "Tüm kelimeleri en az bir kez çalıştın."}</p>
+                ${fresh.length ? `<div class="row-actions"><button class="btn navy" type="button" id="startNew">Yeni kelime öğren</button></div>` : ""}
+            </div>`,
+            after() {
+                const r = document.getElementById("startReview");
+                if (r) r.addEventListener("click", () => start("Günlük Tekrar", due.slice(0, REVIEW_MAX), REVIEW_TYPES));
+                const n = document.getElementById("startNew");
+                if (n) n.addEventListener("click", () => start("Yeni Kelimeler", fresh.slice(0, NEW_BATCH), ["mean", "rmean", "gender", "write"]));
+            },
+        };
+    };
+
     /* ---------- Runner ---------- */
     const persist = () => DB.setLive(current);
     const answered = (a) => a !== null && a !== undefined && a !== "" && !(Array.isArray(a) && !a.length);
@@ -133,7 +173,7 @@
     function feedback(q, a) {
         const ok = Exam.isCorrect(q, a);
         const slip = Exam.accentSlip(q, a) ? " · Aksanlara dikkat" : "";
-        const show = ok ? `${q.explain}${slip}` : `Doğru cevap: ${Exam.answerText(q)}${q.explain && q.type !== "mean" && q.type !== "rmean" && q.type !== "write" ? ` · ${q.explain}` : ""}`;
+        const show = ok ? `${q.explain}${slip}` : `Doğru cevap: ${Exam.answerText(q)}${q.explain && !["mean", "rmean", "write", "conj"].includes(q.type) ? ` · ${q.explain}` : ""}`;
         return `<div class="feedback${ok ? "" : " bad"}"><b>${ok ? "Doğru" : "Yanlış"}</b>${show ? ` <span lang="fr">${esc(show)}</span>` : ""}</div>`;
     }
 
@@ -149,8 +189,8 @@
                 <p class="q-prompt">${esc(q.prompt)}</p>${q.sub ? `<p class="q-hint">${esc(q.sub)}</p>` : ""}`;
         }
         let body;
-        if (q.type === "write") {
-            body = `<div class="form-row" style="margin-top:14px"><input class="input" id="writeIn" autocomplete="off" autocapitalize="off" spellcheck="false" lang="fr" value="${esc(a || "")}" placeholder="Fransızcasını yaz" aria-label="Cevabın" ${locked ? "disabled" : ""}></div>
+        if (q.type === "write" || q.type === "conj") {
+            body = `<div class="form-row" style="margin-top:14px"><input class="input" id="writeIn" autocomplete="off" autocapitalize="off" spellcheck="false" lang="fr" value="${esc(a || "")}" placeholder="${q.type === "conj" ? "Çekimli hâlini yaz" : "Fransızcasını yaz"}" aria-label="Cevabın" ${locked ? "disabled" : ""}></div>
                 ${locked ? "" : `${Pages.accentBar()}<div class="row-actions"><button class="btn navy sm" type="button" id="checkWrite">Kontrol et</button></div>`}`;
         } else if (q.type === "order") body = orderBody(q, a, locked);
         else body = optionList(q, a, locked);

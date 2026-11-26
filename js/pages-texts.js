@@ -3,9 +3,7 @@
     "use strict";
 
     const { esc, icon } = U;
-    const tabs = (active) => `<div class="tabs">
-        <a class="tab${active === "s" ? " active" : ""}" href="#/cumleler">Cümleler</a>
-        <a class="tab${active === "p" ? " active" : ""}" href="#/paragraflar">Paragraflar</a></div>`;
+    const tabs = (active) => Pages.wordTabs(active);
 
     /* Shared sentence card; pass an editable record (with id) to get the edit link. */
     Pages.textCard = function (s, opts) {
@@ -61,8 +59,8 @@
 
     Pages.sentences = function () {
         return {
-            nav: "texts", title: "Cümleler",
-            html: `<div class="page-head"><h1>Cümle &amp; Paragraf</h1><p>Altı noktalı kelimeler havuzlara bağlıdır. Anlamını görmek için dokun; havuzda olmayan bir kelimeye dokunup ekleyebilirsin.</p></div>
+            nav: "words", title: "Cümleler",
+            html: `<div class="page-head"><h1>Cümleler</h1><p>Altı noktalı kelimeler havuzlara bağlıdır. Anlamını görmek için dokun; havuzda olmayan bir kelimeye dokunup ekleyebilirsin.</p></div>
             ${tabs("s")}
             <div class="row-actions" style="margin:0 0 14px"><a class="btn" href="#/ekle/cumle">${icon("plus")} Cümle ekle</a></div>
             ${filters(DB.sentences())}<div id="list"></div>`,
@@ -72,8 +70,8 @@
 
     Pages.paragraphs = function () {
         return {
-            nav: "texts", title: "Paragraflar",
-            html: `<div class="page-head"><h1>Cümle &amp; Paragraf</h1><p>Okuma parçalarında her kelimeye dokunabilir, metni dinleyebilir ve anlama sorularını çözebilirsin.</p></div>
+            nav: "words", title: "Paragraflar",
+            html: `<div class="page-head"><h1>Paragraflar</h1><p>Okuma parçalarında her kelimeye dokunabilir, metni dinleyebilir ve anlama sorularını çözebilirsin.</p></div>
             ${tabs("p")}
             <div class="row-actions" style="margin:0 0 14px"><a class="btn" href="#/ekle/paragraf">${icon("plus")} Paragraf ekle</a></div>
             ${filters(DB.paragraphs())}<div id="list"></div>`,
@@ -102,8 +100,8 @@
         const p = DB.paragraph(id);
         if (!p) return null;
         return {
-            nav: "texts", title: p.title,
-            html: `<div class="page-head"><div class="crumbs"><a href="#/paragraflar">Paragraflar</a> › ${esc(p.title)}</div>
+            nav: "words", title: p.title,
+            html: `<div class="page-head"><div class="crumbs"><a href="#/kelimeler">Kelimeler</a> › <a href="#/paragraflar">Paragraflar</a> › ${esc(p.title)}</div>
                 <h1 lang="fr">${esc(p.title)}</h1>
                 <div class="word-meta"><span class="badge red">${esc(p.level)}</span>${p.topic ? `<span class="badge">${esc(p.topic)}</span>` : ""}</div></div>
             <article class="card reader">

@@ -1065,3 +1065,126 @@ SEED.addThemed("materials", "adjectives", [
     ["solide", "sağlam", "A2", "", "Cette chaise est très solide.", "Bu sandalye çok sağlam."],
     ["fragile", "kırılgan", "A2", "", "Attention, ce vase est fragile.", "Dikkat, bu vazo kırılgan."]
 ]);
+
+/* ---------- Words used in the dialogues and chats ---------- */
+SEED.addThemed("greetings", "expressions", [
+    ["bravo", "bravo, aferin", "A1", "", "Bravo, tu as réussi !", "Bravo, başardın!"],
+    ["ah", "ah, öyle mi", "A1", "", "Ah oui ? C'est vrai ?", "Öyle mi? Gerçekten mi?", "Şaşırma ya da anlama bildirir: ah bon ? (öyle mi?)"],
+    ["un instant", "bir saniye, bir dakika", "A2", "", "Un instant, s'il vous plaît.", "Bir saniye lütfen."],
+    ["bonne soirée", "iyi akşamlar (vedalaşırken)", "A1", "", "Merci et bonne soirée !", "Teşekkürler, iyi akşamlar!", "Karşılaşırken bonsoir, ayrılırken bonne soirée denir."]
+]);
+SEED.addThemed("description", "adjectives", [
+    ["super", "süper, harika", "A1", "", "Ton idée est super !", "Fikrin harika!", "Konuşma dilinde; değişmez: des films super."],
+    ["parfait", "mükemmel, harika", "A2", "", "Parfait, on part à huit heures.", "Harika, saat sekizde çıkıyoruz."],
+    ["cool", "havalı, güzel", "A2", "cools", "Ton nouveau vélo est cool.", "Yeni bisikletin çok havalı.", "Konuşma dilinde; dişilde değişmez: une fille cool."]
+]);
+SEED.addThemed("food", "verbs", [
+    ["désirer", "arzu etmek, istemek", "A2", "", "Vous désirez un dessert ?", "Tatlı arzu eder misiniz?", "Garsonların kibar sorusu: Vous désirez ? (Ne arzu edersiniz?)"],
+    ["emporter", "götürmek, alıp gitmek", "A2", "", "J'emporte mon déjeuner au bureau.", "Öğle yemeğimi ofise götürüyorum."]
+]);
+SEED.addThemed("food", "expressions", [
+    ["à emporter", "paket (götürmek için)", "A1", "", "Un café à emporter, s'il vous plaît.", "Paket bir kahve lütfen.", "Karşıtı: sur place (burada)."]
+]);
+SEED.addThemed("travel", "adjectives", [
+    ["double", "çift, iki kişilik", "A2", "", "Je voudrais une chambre double.", "Çift kişilik bir oda istiyorum.", "Tek kişilik oda: une chambre simple."]
+]);
+SEED.addThemed("home", "nouns", [
+    ["le rez-de-chaussée", "zemin kat", "A2", "", "La cuisine est au rez-de-chaussée.", "Mutfak zemin katta.", "Çoğulu değişmez: des rez-de-chaussée."]
+]);
+SEED.addThemed("tech", "nouns", [
+    ["le wifi", "wifi, kablosuz internet", "A1", "", "Il y a le wifi dans l'hôtel ?", "Otelde wifi var mı?"],
+    ["l'informatique", "bilişim, bilgisayar bilimi", "A2", "", "Mon frère travaille dans l'informatique.", "Erkek kardeşim bilişim sektöründe çalışıyor.", "Dişil: une informatique. Sıfat olarak da kullanılır: un ingénieur informatique."]
+]);
+SEED.addThemed("tech", "adjectives", [
+    ["mobile", "mobil, taşınabilir", "A2", "", "J'ai téléchargé une application mobile.", "Bir mobil uygulama indirdim.", "le mobile: cep telefonu."]
+]);
+SEED.addThemed("body", "nouns", [
+    ["la gorge", "boğaz", "A2", "", "J'ai mal à la gorge.", "Boğazım ağrıyor."],
+    ["le virus", "virüs", "A2", "", "C'est un petit virus, ce n'est pas grave.", "Küçük bir virüs, ciddi değil.", "Çoğulu değişmez: des virus."],
+    ["le comprimé", "tablet, hap", "A2", "", "Prenez un comprimé après le repas.", "Yemekten sonra bir tablet alın."],
+    ["le docteur", "doktor", "A1", "", "Merci, docteur !", "Teşekkürler doktor!", "Hitap ederken docteur; genelde le médecin denir."]
+]);
+SEED.addThemed("body", "expressions", [
+    ["bon rétablissement", "geçmiş olsun", "A2", "", "Tu es malade ? Bon rétablissement !", "Hasta mısın? Geçmiş olsun!"]
+]);
+SEED.addThemed("arts", "nouns", [
+    ["la comédie", "komedi", "A2", "", "J'aime les comédies françaises.", "Fransız komedilerini severim."]
+]);
+SEED.addThemed("work", "verbs", [
+    ["présenter", "tanıtmak, sunmak", "A2", "", "Je vous présente mon collègue.", "Size iş arkadaşımı tanıtayım.", "Kendini tanıtmak: se présenter."]
+]);
+SEED.addThemed("work", "nouns", [
+    ["l'expérience", "deneyim", "A2", "", "J'ai cinq ans d'expérience.", "Beş yıllık deneyimim var.", "Dişil: une expérience"],
+    ["la qualité", "nitelik, kalite", "A2", "", "La patience est une grande qualité.", "Sabır büyük bir erdemdir."],
+    ["la distance", "mesafe", "B1", "", "Quelle est la distance entre Paris et Lyon ?", "Paris ile Lyon arasındaki mesafe ne kadar?"]
+]);
+SEED.addThemed("work", "expressions", [
+    ["à distance", "uzaktan", "B1", "", "Je travaille à distance deux jours par semaine.", "Haftada iki gün uzaktan çalışıyorum."]
+]);
+SEED.addThemed("work", "adjectives", [
+    ["innovant", "yenilikçi", "B1", "", "C'est une entreprise innovante.", "Bu yenilikçi bir şirket."]
+]);
+SEED.addThemed("school", "verbs", [
+    ["améliorer", "geliştirmek, iyileştirmek", "B1", "", "Je veux améliorer mon français.", "Fransızcamı geliştirmek istiyorum.", "Kendini geliştirmek: s'améliorer."]
+]);
+SEED.addThemed("feelings", "nouns", [
+    ["le défaut", "kusur, zayıf yön", "B1", "", "Tout le monde a des défauts.", "Herkesin kusurları vardır.", "Karşıtı: la qualité."]
+]);
+SEED.addThemed("feelings", "adjectives", [
+    ["impatient", "sabırsız", "A2", "", "Ne sois pas impatient !", "Sabırsız olma!"]
+]);
+SEED.addThemed("opinions", "verbs", [
+    ["hésiter", "tereddüt etmek", "B1", "", "N'hésitez pas à me poser des questions.", "Bana soru sormaktan çekinmeyin.", "sans hésiter: hiç düşünmeden."]
+]);
+SEED.addThemed("city", "nouns", [
+    ["le bruit", "gürültü, ses", "A2", "", "Il y a trop de bruit dans cette rue.", "Bu sokakta çok fazla gürültü var."]
+]);
+SEED.addThemed("nature", "nouns", [
+    ["l'air", "hava (solunan)", "A2", "", "À la montagne, l'air est frais.", "Dağda hava serin.", "Eril: un air. Hava durumu için le temps kullanılır."]
+]);
+SEED.addThemed("nature", "adjectives", [
+    ["pur", "saf, temiz", "B1", "", "L'eau de cette source est pure.", "Bu kaynağın suyu saf."]
+]);
+SEED.addThemed("travel", "verbs", [
+    ["revenir", "geri gelmek, dönmek", "A2", "reviens, reviens, revient, revenons, revenez, reviennent, revenu, fut=reviendr", "Je reviens dimanche soir.", "Pazar akşamı dönüyorum.", "Geçmiş zamanda être ile çekilir: je suis revenu."],
+    ["changer", "değiştirmek", "A2", "", "À Lyon, je dois changer de train.", "Lyon'da aktarma yapmam gerekiyor.", "changer de + artikelsiz isim: changer de train (aktarma yapmak). Nous biçimi: changeons."]
+]);
+SEED.addThemed("travel", "nouns", [
+    ["la voie", "peron, hat; yol", "A2", "", "Le train part de la voie trois.", "Tren üçüncü perondan kalkıyor."]
+]);
+SEED.addThemed("travel", "adjectives", [
+    ["direct", "direkt, aktarmasız", "A2", "", "C'est un vol direct pour Paris.", "Bu, Paris'e direkt bir uçuş."]
+]);
+SEED.addThemed("clothes", "nouns", [
+    ["le modèle", "model", "A2", "", "J'aime beaucoup ce modèle de robe.", "Bu elbise modelini çok seviyorum."],
+    ["la cabine", "kabin (deneme kabini)", "A2", "", "Je peux essayer ce pantalon dans la cabine ?", "Bu pantolonu kabinde deneyebilir miyim?"]
+]);
+SEED.addThemed("home", "nouns", [
+    ["le fond", "dip, arka taraf", "A2", "", "Les toilettes sont au fond du couloir.", "Tuvaletler koridorun sonunda.", "au fond de: -in dibinde, en arkasında."]
+]);
+SEED.addThemed("shopping", "nouns", [
+    ["la marque", "marka", "A2", "", "Tu préfères quelle marque de téléphone ?", "Hangi telefon markasını tercih edersin?"],
+    ["le remboursement", "para iadesi", "B1", "", "Je voudrais un remboursement, s'il vous plaît.", "Para iadesi istiyorum lütfen."],
+    ["le dérangement", "rahatsızlık", "B1", "", "Excusez-moi pour le dérangement.", "Rahatsız ettiğim için özür dilerim."]
+]);
+SEED.addThemed("feelings", "adjectives", [
+    ["désolé", "üzgün (özür dilerken)", "A1", "", "Je suis désolé, je suis en retard.", "Özür dilerim, geç kaldım.", "Özür dilemenin en yaygın yolu: Je suis désolé(e)."]
+]);
+SEED.addThemed("feelings", "verbs", [
+    ["manquer", "özlenmek; eksik olmak; kaçırmak", "B1", "", "Ma famille me manque.", "Ailemi özlüyorum.", "Özlenen şey öznedir: Tu me manques = Seni özlüyorum."]
+]);
+SEED.addThemed("family", "adjectives", [
+    ["unique", "tek, eşsiz", "A2", "", "Je suis fille unique.", "Tek çocuğum (kız).", "fils unique / fille unique: tek çocuk."]
+]);
+SEED.addThemed("description", "adjectives", [
+    ["génial", "harika, dâhiyane", "A2", "", "Ce concert était génial !", "Bu konser harikaydı!"]
+]);
+SEED.addThemed("daily", "verbs", [
+    ["montrer", "göstermek", "A2", "", "Tu peux me montrer tes photos ?", "Fotoğraflarını bana gösterebilir misin?"]
+]);
+SEED.addThemed("opinions", "adverbs", [
+    ["justement", "işte tam da; zaten", "B1", "", "Justement, je voulais te parler.", "Tam da seninle konuşmak istiyordum."]
+]);
+SEED.addThemed("time", "nouns", [
+    ["la soirée", "akşam (süresi); parti", "A1", "", "Nous passons la soirée chez des amis.", "Akşamı arkadaşlarda geçiriyoruz.", "le soir akşam vaktini, la soirée akşamın tamamını ya da bir partiyi anlatır."]
+]);

@@ -56,10 +56,17 @@
     Pages.wordRow = wordRow;
     Pages.speakBtn = speakBtn;
 
+    /* Kelimeler, Cümleler and Paragraflar share one nav entry and switch with these tabs. */
+    Pages.wordTabs = (active) => `<div class="tabs">
+        <a class="tab${active === "w" ? " active" : ""}" href="#/kelimeler">Kelimeler</a>
+        <a class="tab${active === "s" ? " active" : ""}" href="#/cumleler">Cümleler</a>
+        <a class="tab${active === "p" ? " active" : ""}" href="#/paragraflar">Paragraflar</a></div>`;
+
     Pages.pools = function () {
         return {
             nav: "words", title: "Kelimeler",
             html: `<div class="page-head"><h1>Kelimeler</h1><p>Kelimeler temaya ve türe göre ayrıldı. Bir kelimeye dokununca örnek cümlelerini ve geçtiği metinleri görürsün.</p></div>
+            ${Pages.wordTabs("w")}
             <div class="toolbar">
                 <div class="search">${icon("search")}<input id="q" type="search" placeholder="Tüm havuzlarda ara (Fransızca ya da Türkçe)" aria-label="Kelime ara"></div>
                 <a class="btn ghost" href="#/ekle/havuz">${icon("plus")} Yeni havuz</a>

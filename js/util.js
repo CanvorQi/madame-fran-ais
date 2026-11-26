@@ -20,6 +20,8 @@
         translate: "M4 6h9M8 4v2c0 4-2 7-4 8M6 10c1 2 3 3 5 4M12 20l4-9 4 9M13.5 17h5",
         arrow: "M9 6l6 6-6 6",
         cap: "M2 9l10-5 10 5-10 5zM6 11v5c3 2.5 9 2.5 12 0v-5M22 9v6",
+        repeat: "M4 12a8 8 0 0114-5.3M20 4v4h-4M20 12a8 8 0 01-14 5.3M4 20v-4h4",
+        chat: "M4 5h16v11H9l-5 4zM8 9h8M8 12h5",
     };
 
     const esc = (s) => String(s === null || s === undefined ? "" : s).replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
@@ -63,9 +65,10 @@
         return n ? (d.getFullYear() * 372 + d.getMonth() * 31 + d.getDate()) % n : 0;
     }
 
-    function speak(text) {
+    /* `queue` plays after whatever is already speaking instead of interrupting it. */
+    function speak(text, queue) {
         if (!("speechSynthesis" in window)) { toast("Bu tarayıcı sesli okumayı desteklemiyor"); return; }
-        speechSynthesis.cancel();
+        if (!queue) speechSynthesis.cancel();
         const u = new SpeechSynthesisUtterance(text);
         u.lang = "fr-FR";
         u.rate = 0.92;

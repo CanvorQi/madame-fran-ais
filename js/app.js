@@ -26,6 +26,7 @@
         const sentence = sentences[U.dayIndex(sentences.length)];
         const para = paragraphs[U.dayIndex(paragraphs.length)];
         const live = DB.live();
+        const due = DB.dueWords().length;
         return {
             nav: "home", title: "",
             html: `<section class="hero">${FLAG}<div>
@@ -35,6 +36,7 @@
                     <a class="btn" href="#/akademi">${icon("cap")} Akademi</a>
                     <a class="btn wh" href="#/sinavlar">${icon("exam")} ${live ? "Sınava devam et" : "Sınava başla"}</a>
                     <a class="btn wh" href="#/kelimeler">${icon("book")} Kelimeler</a>
+                    <a class="btn wh" href="#/diyaloglar">${icon("chat")} Sohbet</a>
                 </div></div></section>
             <div class="stat-row">
                 <div class="stat"><b>${words.length}</b><span>kelime</span></div>
@@ -42,6 +44,7 @@
                 <div class="stat"><b>${avg === null ? "–" : "%" + avg}</b><span>sınav ortalaması</span></div>
             </div>
             <h2 class="section-title">Bugün</h2>
+            <a class="preset red" href="#/tekrar" style="margin-bottom:12px"><b>Günlük Tekrar</b><span>${due ? `${due} kelime tekrar bekliyor` : "Bugünlük tekrar bitti, yeni kelime öğrenebilirsin"}</span></a>
             <div class="feature">
                 ${word ? `<div class="card"><p class="eyebrow">Günün kelimesi</p><h3 lang="fr"><a href="#/kelime/${encodeURIComponent(word.id)}" style="color:inherit">${esc(word.fr)}</a></h3>
                     <p>${esc(word.tr)}</p>${word.ex[0] ? `<p class="fr small" style="margin-top:8px" lang="fr">${Linker.linkify(word.ex[0].fr, word.id)}</p>` : ""}</div>` : ""}
@@ -76,6 +79,10 @@
             case "paragraflar": return Pages.paragraphs();
             case "paragraf": return Pages.paragraph(id(a));
             case "sinavlar": return Pages.exams();
+            case "tekrar": return Pages.review();
+            case "diyaloglar": return Pages.talk();
+            case "diyalog": return Pages.dialogue(id(a));
+            case "sohbet": return Pages.chat(id(a));
             case "sinav": return Pages.run();
             case "sonuc": return Pages.result(id(a));
             case "ekle":

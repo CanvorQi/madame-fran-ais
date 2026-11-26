@@ -14,6 +14,8 @@
         order: { label: "Cümle kurma", hint: "Kelimeleri doğru sıraya diz." },
         read: { label: "Okuma", hint: "Paragrafa göre cevapla." },
         grammar: { label: "Dilbilgisi", hint: "Doğru seçeneği seç." },
+        gender: { label: "Artikel (un / une)", hint: "İsmin cinsiyetini seç." },
+        conj: { label: "Fiil çekimi", hint: "Fiili istenen kişi ve zamana göre yaz." },
         custom: { label: "Benim sorularım", hint: "Soruyu cevapla." },
     };
 
@@ -42,7 +44,46 @@
         return Object.assign(q, { options, answer: options.indexOf(correct) });
     }
 
+    /* "m" / "f" from the stored article; l' nouns read the note ("Eril: un homme"). "Eril ve dişil" nouns are skipped. */
+    function genderOf(w) {
+        if (w.kind !== "noun") return "";
+        const fr = w.fr.toLowerCase();
+        if (/^(le|un)\s/.test(fr)) return "m";
+        if (/^(la|une)\s/.test(fr)) return "f";
+        if (/^l['’]/.test(fr)) {
+            if (/^Dişil\b/.test(w.note)) return "f";
+            if (/^Eril:/.test(w.note)) return "m";
+        }
+        return "";
+    }
+
+    const canon = (s) => String(s || "").toLowerCase().replace(/’/g, "'").replace(/\s+/g, " ").replace(/[\s.?!,;:]+$/g, "").replace(/' /g, "'").trim();
+    const PERSONS = ["je", "tu", "il/elle", "nous", "vous", "ils/elles"];
+    /* Present twice: drawn twice as often. */
+    const CONJ_TENSES = ["present", "present", "passe-compose", "imparfait", "futur-simple"];
+    const PRONOUN = /^(?:je\s+|j'|tu\s+|il\/elle\s+|ils\/elles\s+|ils\s+|elles\s+|il\s+|elle\s+|on\s+|nous\s+|vous\s+)/;
+
+    const dropPronoun = (s) => canon(s).replace(PRONOUN, "");
+
     const makers = {
+        gender(w) {
+            const g = genderOf(w);
+            if (!g) return null;
+            const noun = Linker.bare(w);
+            return { type: "gender", wordId: w.id, prompt: noun, sub: w.tr, options: ["un", "une"], answer: g === "m" ? 0 : 1, explain: `${g === "m" ? "un" : "une"} ${noun} (${g === "m" ? "eril" : "dişil"}) · ${w.fr}` };
+        },
+        conj(w) {
+            /* "prendre sa retraite": the possessive would have to follow the person ("vous avez pris votre retraite"). */
+            const table = /\s(sa|son|ses)\s/.test(w.fr) ? null : Linker.conjugation(w);
+            if (!table) return null;
+            const pick = shuffle(CONJ_TENSES)[0];
+            const tense = table.tenses.find((t) => t.id === pick);
+            const i = Math.floor(Math.random() * 6);
+            const row = tense.rows[i];
+            /* "allé(e)s" accepts both "allés" and "allées". */
+            const alts = Array.from(new Set([row.replace(/[()]/g, ""), row.replace(/\([^)]*\)/g, "")])).map(dropPronoun);
+            return { type: "conj", wordId: w.id, prompt: `${w.fr} → ${PERSONS[i]}`, sub: `${tense.name} · ${w.tr}`, answer: row, alts, explain: `${w.fr} = ${w.tr}` };
+        },
         mean(w) {
             const wrong = distractors(w, (x) => x.tr);
             if (wrong.length < 3) return null;
@@ -147,15 +188,17 @@
         return shuffle(out);
     }
 
-    const canon = (s) => String(s || "").toLowerCase().replace(/’/g, "'").replace(/\s+/g, " ").replace(/[\s.?!,;:]+$/g, "").replace(/' /g, "'").trim();
-
     /* Written answers: accents are forgiven (and flagged by accentSlip); a noun may omit its article, but a wrong article fails. */
     const writeMatch = (q, a, same) => same(canon(a), canon(q.answer)) || same(canon(a), canon(q.bare || q.answer));
-    const accentSlip = (q, a) => q.type === "write" && writeMatch(q, a, (x, y) => U.fold(x) === U.fold(y)) && !writeMatch(q, a, (x, y) => x === y);
+    /* Conjugation answers may include or omit the subject pronoun. */
+    /* Both readings are tried: "nous nous levons" may arrive without the subject as "nous levons". */
+    const conjMatch = (q, a, same) => q.alts.some((x) => same(dropPronoun(a), x) || same(canon(a), x));
+    const matcher = (q) => (q.type === "conj" ? conjMatch : writeMatch);
+    const accentSlip = (q, a) => (q.type === "write" || q.type === "conj") && matcher(q)(q, a, (x, y) => U.fold(x) === U.fold(y)) && !matcher(q)(q, a, (x, y) => x === y);
 
     function isCorrect(q, a) {
         if (a === null || a === undefined || a === "") return false;
-        if (q.type === "write") return writeMatch(q, a, (x, y) => U.fold(x) === U.fold(y));
+        if (q.type === "write" || q.type === "conj") return matcher(q)(q, a, (x, y) => U.fold(x) === U.fold(y));
         if (q.type === "order") return canon(Array.isArray(a) ? a.join(" ") : a) === canon(q.answer);
         return a === q.answer;
     }
