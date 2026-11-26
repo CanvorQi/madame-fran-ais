@@ -85,7 +85,7 @@
         const { reflexive, inf, rest } = verbParts(fr);
         const raw = word.forms || (verbTable.get(inf) || "");
         const c = conjugate(inf, raw);
-        const list = c ? [inf, ...c.all] : [inf, ...parseForms(raw).list];
+        const list = (c ? [inf, ...c.all] : [inf, ...parseForms(raw).list]).concat(SUBJ[inf] || [], IMPERATIVE[inf] || []);
         const tail = (f) => (rest ? `${f} ${rest}` : f);
         const out = list.map(tail);
         if (reflexive) list.forEach((f) => ["me", "te", "se", "nous", "vous"].forEach((p) => out.push(tail(withPronoun(p, f)))));
@@ -182,6 +182,8 @@
         const set = new Set([base, ...explicit]);
         if (word.kind === "noun" && !explicit.length) set.add(nounPlural(base));
         if (word.kind === "adj" && !explicit.length && !/\s/.test(base)) adjForms(base).forEach((f) => set.add(f));
+        /* "en face de" also reads "en face du / des / d'". */
+        if (/\s+de$/.test(base)) ["du", "des", "d'"].forEach((d) => set.add(base.replace(/de$/, d)));
         return Array.from(set);
     }
 

@@ -1188,3 +1188,326 @@ SEED.addThemed("opinions", "adverbs", [
 SEED.addThemed("time", "nouns", [
     ["la soirée", "akşam (süresi); parti", "A1", "", "Nous passons la soirée chez des amis.", "Akşamı arkadaşlarda geçiriyoruz.", "le soir akşam vaktini, la soirée akşamın tamamını ya da bir partiyi anlatır."]
 ]);
+
+/* ---------- Words used in the seed texts that had no entry ---------- */
+SEED.addThemed("daily", "verbs", [
+    ["apporter", "getirmek", "A1", "", "J'apporte un gâteau pour la fête.", "Parti için bir kek getiriyorum.", "Bir şeyi getirmek apporter, birini getirmek amener."],
+    ["laisser", "bırakmak", "A2", "", "J'ai laissé mes clés sur la table.", "Anahtarlarımı masanın üzerinde bıraktım.", "", "Laisse-moi tranquille !", "Beni rahat bırak!"],
+    ["terminer", "bitirmek", "A2", "", "Je termine mon travail à six heures.", "İşimi saat altıda bitiriyorum."]
+]);
+SEED.addThemed("feelings", "verbs", [
+    ["plaire", "hoşa gitmek", "A2", "plais, plais, plaît, plaisons, plaisez, plaisent, plu", "Ce film me plaît beaucoup.", "Bu film çok hoşuma gidiyor.", "Beğenen kişi dolaylı tümleçtir: ça me plaît. S'il vous plaît bu fiilden gelir."]
+]);
+SEED.addThemed("family", "verbs", [
+    ["réunir", "bir araya getirmek", "B1", "", "Noël réunit toute la famille.", "Noel bütün aileyi bir araya getirir.", "Dönüşlü hâli: se réunir (toplanmak)."]
+]);
+SEED.addThemed("materials", "verbs", [
+    ["envelopper", "sarmak, paketlemek", "B1", "", "J'enveloppe le cadeau dans du papier.", "Hediyeyi kâğıda sarıyorum."],
+    ["attacher", "bağlamak", "B1", "", "Attachez votre ceinture.", "Kemerinizi bağlayın."]
+]);
+SEED.addThemed("city", "nouns", [
+    ["l'endroit", "yer, mekân", "A2", "", "C'est un endroit très calme.", "Burası çok sakin bir yer.", "Eril: un endroit"],
+    ["le banc", "bank", "A2", "", "Une dame lit sur un banc.", "Bir kadın bankta okuyor."],
+    ["la fontaine", "çeşme, fıskiye", "A2", "", "Il y a une fontaine sur la place.", "Meydanda bir çeşme var."]
+]);
+SEED.addThemed("countries", "nouns", [
+    ["la région", "bölge", "A2", "", "La Bretagne est une belle région.", "Bretanya güzel bir bölgedir.", "Fransa 13 büyük bölgeye (région) ayrılır."]
+]);
+SEED.addThemed("school", "nouns", [
+    ["la page", "sayfa", "A1", "", "Ouvrez votre livre à la page dix.", "Kitabınızı onuncu sayfada açın."]
+]);
+SEED.addThemed("body", "nouns", [
+    ["l'odeur", "koku", "B1", "", "J'aime l'odeur du pain chaud.", "Sıcak ekmeğin kokusunu severim.", "Dişil: une odeur"]
+]);
+SEED.addThemed("emergency", "nouns", [
+    ["la fumée", "duman", "B1", "", "Il y a de la fumée dans la cuisine !", "Mutfakta duman var!"]
+]);
+SEED.addThemed("family", "nouns", [
+    ["la dame", "hanımefendi, kadın", "A1", "", "Cette dame est ma voisine.", "Bu hanım benim komşum.", "Kibar kullanım; erkek karşılığı le monsieur."]
+]);
+SEED.addThemed("home", "nouns", [
+    ["le meuble", "mobilya parçası", "A2", "", "Nous avons acheté de nouveaux meubles.", "Yeni mobilyalar aldık.", "Mobilya (toplu): les meubles."]
+]);
+SEED.addThemed("daily", "nouns", [
+    ["les affaires", "eşyalar; işler", "A2", "", "Range tes affaires, s'il te plaît.", "Eşyalarını topla, lütfen.", "Tekil l'affaire: iş, mesele."],
+    ["le besoin", "ihtiyaç", "A2", "", "Les outils dont nous avons besoin sont ici.", "İhtiyacımız olan aletler burada.", "Çoğunlukla avoir besoin de kalıbında."]
+]);
+SEED.addThemed("food", "nouns", [
+    ["le bonbon", "şeker (yenen)", "A1", "", "Les enfants adorent les bonbons.", "Çocuklar şekere bayılır.", "Toz şeker: le sucre."]
+]);
+SEED.addThemed("description", "adjectives", [
+    ["âgé", "yaşlı", "A2", "", "Mon grand-père est âgé de quatre-vingts ans.", "Dedem seksen yaşında.", "Kibar kullanım: une personne âgée."]
+]);
+SEED.addThemed("admin", "adjectives", [
+    ["complet", "tam, eksiksiz; dolu", "A2", "complète, complets, complètes", "Votre dossier est complet.", "Dosyanız eksiksiz.", "Otel veya tren için: dolu (c'est complet)."],
+    ["officiel", "resmî", "B1", "", "Il faut une traduction officielle.", "Resmî bir tercüme gerekiyor."],
+    ["périmé", "süresi geçmiş", "B1", "", "Mon passeport est périmé.", "Pasaportumun süresi geçmiş."]
+]);
+SEED.addThemed("time", "adverbs", [
+    ["dorénavant", "bundan sonra", "B1", "", "Dorénavant, la réunion sera le lundi.", "Bundan sonra toplantı pazartesi olacak.", "désormais ile aynı anlamda, daha resmî."]
+]);
+SEED.addThemed("city", "adverbs", [
+    ["autour", "etrafta", "A2", "", "Il y a une fontaine et les enfants jouent autour.", "Bir çeşme var ve çocuklar etrafında oynuyor.", "Ardından isim gelirse: autour de."]
+]);
+SEED.addThemed("home", "nouns", [
+    ["le frigo", "buzdolabı (konuşma dili)", "A1", "", "Il y a du lait dans le frigo.", "Buzdolabında süt var.", "Tam hâli: le réfrigérateur."]
+]);
+SEED.addThemed("tech", "nouns", [
+    ["la télé", "televizyon (konuşma dili)", "A1", "", "Le soir, on regarde la télé.", "Akşamları televizyon izleriz.", "Tam hâli: la télévision."]
+]);
+SEED.addThemed("greetings", "expressions", [
+    ["allô", "alo", "A1", "", "Allô ? C'est Marie.", "Alo? Ben Marie.", "Yalnızca telefonda kullanılır."]
+]);
+
+/* ---------- France: cities, regions and B1 culture ---------- */
+SEED.addThemed("france", "france", [
+    ["Paris", "Paris", "A1", "paris", "Paris est la capitale de la France.", "Paris Fransa'nın başkentidir."],
+    ["Lyon", "Lyon", "A1", "lyon", "Lyon est célèbre pour sa cuisine.", "Lyon mutfağıyla ünlüdür."],
+    ["Marseille", "Marsilya", "A1", "marseille", "Marseille est un grand port.", "Marsilya büyük bir limandır."],
+    ["Nice", "Nice", "A1", "nice", "Nice est au bord de la mer.", "Nice deniz kenarındadır."],
+    ["Toulouse", "Toulouse", "A2", "toulouse", "On fabrique des avions à Toulouse.", "Toulouse'da uçak üretilir."],
+    ["Bordeaux", "Bordeaux", "A2", "bordeaux", "Bordeaux est connue pour son vin.", "Bordeaux şarabıyla tanınır.", "Türkçedeki bordo rengi bu şehrin şarabından gelir."],
+    ["Strasbourg", "Strazburg", "A2", "strasbourg", "Le Parlement européen est à Strasbourg.", "Avrupa Parlamentosu Strazburg'dadır."],
+    ["Lille", "Lille", "A2", "lille", "Lille est près de la Belgique.", "Lille Belçika'ya yakındır."],
+    ["Nantes", "Nantes", "A2", "nantes", "Nantes est à l'ouest de la France.", "Nantes Fransa'nın batısındadır."],
+    ["Rennes", "Rennes", "A2", "rennes", "Rennes est la capitale de la Bretagne.", "Rennes Bretanya'nın başkentidir."],
+    ["la Bretagne", "Bretanya", "A2", "bretagne", "Nous passons l'été en Bretagne.", "Yazı Bretanya'da geçiriyoruz.", "Dişil bölge: en Bretagne"],
+    ["la Normandie", "Normandiya", "A2", "normandie", "La Normandie est célèbre pour ses pommes.", "Normandiya elmalarıyla ünlüdür.", "Dişil bölge: en Normandie"],
+    ["la Provence", "Provence", "A2", "provence", "La lavande pousse en Provence.", "Lavanta Provence'ta yetişir.", "Dişil bölge: en Provence"],
+    ["la Côte d'Azur", "Fransız Rivierası", "A2", "côte d'azur", "Nice est sur la Côte d'Azur.", "Nice Fransız Rivierası'ndadır."],
+    ["les Alpes", "Alpler", "A2", "alpes", "Nous faisons du ski dans les Alpes.", "Alplerde kayak yapıyoruz.", "Çoğul: dans les Alpes."],
+    ["la Loire", "Loire Nehri", "B1", "loire", "Il y a beaucoup de châteaux sur la Loire.", "Loire boyunca çok sayıda şato var."],
+    ["Victor Hugo", "Victor Hugo", "A2", "victor hugo, victor-hugo","Victor Hugo a écrit Les Misérables.", "Victor Hugo Sefiller'i yazdı."],
+    ["l'Hexagone", "Fransa (altıgen)", "B1", "hexagone", "Il fait beau dans tout l'Hexagone.", "Bütün Fransa'da hava güzel.", "Fransa'nın şekli nedeniyle kullanılan lakap. Eril."],
+    ["la Marseillaise", "Fransız millî marşı", "B1", "marseillaise", "On chante la Marseillaise le 14 juillet.", "14 Temmuz'da Marseillaise söylenir."],
+    ["la francophonie", "Fransızca konuşan dünya", "B1", "", "La francophonie compte plus de 300 millions de personnes.", "Frankofon dünya 300 milyondan fazla kişiyi kapsar."],
+    ["la laïcité", "laiklik", "B1", "", "La laïcité est un principe de la République.", "Laiklik Cumhuriyet'in bir ilkesidir."],
+    ["la Révolution française", "Fransız İhtilali", "B1", "révolution française", "La Révolution française a commencé en 1789.", "Fransız İhtilali 1789'da başladı."],
+    ["le département", "il (idari birim)", "B1", "", "La France compte 101 départements.", "Fransa'da 101 il vardır.", "Her département'ın bir numarası vardır: Paris 75."],
+    ["la Sécurité sociale", "sosyal güvenlik", "B1", "sécurité sociale", "La Sécurité sociale rembourse les médicaments.", "Sosyal güvenlik ilaç masraflarını öder.", "Konuşma dilinde: la Sécu."],
+    ["la carte Vitale", "sağlık kartı", "B1", "carte vitale, cartes vitale", "Présentez votre carte Vitale chez le médecin.", "Doktorda sağlık kartınızı gösterin."],
+    ["la mutuelle", "tamamlayıcı sağlık sigortası", "B1", "", "Ma mutuelle paie le dentiste.", "Tamamlayıcı sigortam dişçi masrafını ödüyor."],
+    ["le SMIC", "asgari ücret", "B1", "smic", "Il gagne le SMIC.", "Asgari ücret alıyor."]
+]);
+
+/* ---------- B1 layer ---------- */
+SEED.addThemed("feelings", "adjectives", [
+    ["épuisé", "bitkin", "B1", "", "Après ce voyage, je suis épuisé.", "Bu yolculuktan sonra bitkinim."],
+    ["ému", "duygulanmış", "B1", "", "Elle était très émue pendant le mariage.", "Düğün sırasında çok duygulanmıştı."],
+    ["bouleversé", "altüst olmuş, sarsılmış", "B1", "", "Il est bouleversé par cette nouvelle.", "Bu haberle sarsıldı."],
+    ["reconnaissant", "minnettar", "B1", "", "Je vous suis très reconnaissant.", "Size çok minnettarım."],
+    ["exigeant", "titiz, çok şey bekleyen", "B1", "", "Notre professeur est exigeant.", "Öğretmenimiz titizdir."]
+]);
+SEED.addThemed("opinions", "adjectives", [
+    ["efficace", "etkili, verimli", "B1", "", "Ce médicament est très efficace.", "Bu ilaç çok etkili."],
+    ["fiable", "güvenilir", "B1", "", "Cette voiture est fiable.", "Bu araba güvenilir."],
+    ["inquiétant", "endişe verici", "B1", "", "La situation est inquiétante.", "Durum endişe verici."],
+    ["indispensable", "vazgeçilmez", "B1", "", "Le téléphone est devenu indispensable.", "Telefon vazgeçilmez oldu."],
+    ["étonnant", "şaşırtıcı", "B1", "", "C'est étonnant, il n'est pas encore là.", "Şaşırtıcı, hâlâ gelmedi."],
+    ["évident", "açık, belli", "B1", "", "La réponse est évidente.", "Cevap açık."],
+    ["gênant", "rahatsız edici, utandırıcı", "B1", "", "Cette situation est un peu gênante.", "Bu durum biraz utandırıcı."],
+    ["actuel", "şimdiki, güncel", "B1", "", "La situation actuelle est difficile.", "Mevcut durum zor.", "İngilizce actual gibi gerçek demek değildir."]
+]);
+SEED.addThemed("work", "adjectives", [
+    ["compétent", "yetkin", "B1", "", "C'est une avocate très compétente.", "Çok yetkin bir avukat."],
+    ["précis", "kesin, net", "B1", "", "J'ai besoin d'une réponse précise.", "Net bir cevaba ihtiyacım var."]
+]);
+SEED.addThemed("opinions", "verbs", [
+    ["remarquer", "fark etmek", "B1", "", "Tu as remarqué sa nouvelle coiffure ?", "Yeni saç modelini fark ettin mi?"],
+    ["éviter", "kaçınmak", "B1", "", "J'évite de manger trop de sucre.", "Çok şeker yemekten kaçınırım."],
+    ["soutenir", "desteklemek", "B1", "soutiens, soutiens, soutient, soutenons, soutenez, soutiennent, soutenu, fut=soutiendr", "Mes parents me soutiennent toujours.", "Ailem beni hep destekler."],
+    ["regretter", "pişman olmak; üzülmek", "B1", "", "Je regrette d'être parti si tôt.", "Bu kadar erken gittiğime pişmanım."],
+    ["empêcher", "engellemek", "B1", "", "Le bruit m'empêche de dormir.", "Gürültü uyumamı engelliyor."],
+    ["supporter", "katlanmak", "B1", "", "Je ne supporte pas le froid.", "Soğuğa dayanamıyorum.", "Dikkat: desteklemek değil, katlanmak demektir."]
+]);
+SEED.addThemed("leisure", "verbs", [
+    ["profiter", "yararlanmak, tadını çıkarmak", "B1", "", "Nous profitons du beau temps.", "Güzel havanın tadını çıkarıyoruz.", "de ile kullanılır: profiter de."]
+]);
+SEED.addThemed("work", "verbs", [
+    ["prévoir", "öngörmek, planlamak", "B1", "prévois, prévois, prévoit, prévoyons, prévoyez, prévoient, prévu", "La réunion est prévue pour lundi.", "Toplantı pazartesiye planlandı."],
+    ["obtenir", "elde etmek", "B1", "obtiens, obtiens, obtient, obtenons, obtenez, obtiennent, obtenu, fut=obtiendr", "Elle a obtenu son diplôme.", "Diplomasını aldı."],
+    ["résoudre", "çözmek", "B1", "résous, résous, résout, résolvons, résolvez, résolvent, résolu", "Nous devons résoudre ce problème.", "Bu sorunu çözmeliyiz."],
+    ["exiger", "talep etmek, şart koşmak", "B1", "", "Le directeur exige une réponse.", "Müdür bir cevap talep ediyor."]
+]);
+SEED.addThemed("opinions", "pronominal", [
+    ["s'apercevoir", "farkına varmak", "B1", "aperçois, aperçois, aperçoit, apercevons, apercevez, aperçoivent, aperçu, fut=apercevr", "Je me suis aperçu de mon erreur.", "Hatamın farkına vardım.", "de ile kullanılır: s'apercevoir de."]
+]);
+SEED.addThemed("opinions", "conjunctions", [
+    ["en revanche", "buna karşılık", "B1", "", "Il est timide ; en revanche, sa sœur parle beaucoup.", "O utangaç; buna karşılık kız kardeşi çok konuşur."],
+    ["par conséquent", "dolayısıyla", "B1", "", "Il pleut ; par conséquent, le match est annulé.", "Yağmur yağıyor; dolayısıyla maç iptal edildi."],
+    ["néanmoins", "yine de", "B1", "", "C'est cher ; néanmoins, je vais l'acheter.", "Pahalı; yine de alacağım."],
+    ["à condition que", "... şartıyla", "B1", "à condition qu'", "Je viens, à condition que tu sois là.", "Senin orada olman şartıyla gelirim.", "Ardından subjonctif gelir."],
+    ["afin que", "... sın diye", "B1", "afin qu'", "Je parle lentement afin que tu comprennes.", "Anlayasın diye yavaş konuşuyorum.", "Ardından subjonctif gelir."]
+]);
+SEED.addThemed("time", "expressions", [
+    ["à l'époque", "o zamanlar", "B1", "", "À l'époque, il n'y avait pas d'internet.", "O zamanlar internet yoktu."],
+    ["au fur et à mesure", "yavaş yavaş, ... dikçe", "B1", "", "Tu vas progresser au fur et à mesure.", "Zamanla ilerleyeceksin."]
+]);
+SEED.addThemed("opinions", "expressions", [
+    ["il vaut mieux", "... daha iyi olur", "B1", "il valait mieux, il vaudrait mieux", "Il vaut mieux partir tôt.", "Erken çıkmak daha iyi olur."],
+    ["au fond", "aslında, özünde", "B1", "", "Au fond, il est gentil.", "Aslında o iyi biri."],
+    ["ça vaut la peine", "zahmetine değer", "B1", "ça valait la peine", "Ce musée, ça vaut la peine !", "Bu müze gezmeye değer!"]
+]);
+SEED.addThemed("school", "verbal", [
+    ["avoir du mal à", "... mekte zorlanmak", "B1", "", "J'ai du mal à comprendre cet accent.", "Bu aksanı anlamakta zorlanıyorum."]
+]);
+
+/* ---------- Thinner themes ---------- */
+SEED.addThemed("animals", "nouns", [
+    ["l'âne", "eşek", "A2", "", "L'âne porte des sacs.", "Eşek çuval taşıyor.", "Eril: un âne"],
+    ["le taureau", "boğa", "B1", "", "Le taureau est dans le champ.", "Boğa tarlada."],
+    ["le chameau", "deve", "A2", "", "Le chameau vit dans le désert.", "Deve çölde yaşar."],
+    ["le tigre", "kaplan", "A2", "", "Le tigre est un animal sauvage.", "Kaplan vahşi bir hayvandır."],
+    ["la girafe", "zürafa", "A2", "", "La girafe a un long cou.", "Zürafanın uzun bir boynu var."],
+    ["le dauphin", "yunus", "B1", "", "Nous avons vu des dauphins en mer.", "Denizde yunuslar gördük."],
+    ["la baleine", "balina", "B1", "", "La baleine est le plus grand animal.", "Balina en büyük hayvandır."],
+    ["le requin", "köpekbalığı", "B1", "", "Il n'y a pas de requins ici.", "Burada köpekbalığı yok."],
+    ["le perroquet", "papağan", "B1", "", "Mon perroquet parle français.", "Papağanım Fransızca konuşuyor."],
+    ["le pigeon", "güvercin", "A2", "", "Il y a beaucoup de pigeons sur la place.", "Meydanda çok güvercin var."],
+    ["l'aigle", "kartal", "B1", "", "L'aigle vole très haut.", "Kartal çok yüksekte uçar.", "Eril: un aigle"],
+    ["la grenouille", "kurbağa", "B1", "", "La grenouille saute dans l'eau.", "Kurbağa suya atlıyor."],
+    ["l'escargot", "salyangoz", "B1", "", "En France, on mange des escargots.", "Fransa'da salyangoz yenir.", "Eril: un escargot"],
+    ["le moustique", "sivrisinek", "B1", "", "Les moustiques m'empêchent de dormir.", "Sivrisinekler uyumamı engelliyor."],
+    ["la fourmi", "karınca", "B1", "", "Les fourmis travaillent beaucoup.", "Karıncalar çok çalışır."]
+]);
+SEED.addThemed("animals", "verbs", [
+    ["nourrir", "beslemek", "A2", "", "Je nourris le chat le matin.", "Kediyi sabahları beslerim."],
+    ["aboyer", "havlamak", "B1", "aboie, aboies, aboie, aboyons, aboyez, aboient, aboyé, fut=aboier", "Le chien du voisin aboie toute la nuit.", "Komşunun köpeği bütün gece havlıyor."]
+]);
+SEED.addThemed("animals", "adjectives", [
+    ["domestique", "evcil", "B1", "", "Le chat est un animal domestique.", "Kedi evcil bir hayvandır."]
+]);
+
+SEED.addThemed("colors", "adjectives", [
+    ["doré", "altın rengi", "B1", "", "Elle porte une robe dorée.", "Altın rengi bir elbise giyiyor."],
+    ["argenté", "gümüş rengi", "B1", "", "Mon téléphone est argenté.", "Telefonum gümüş rengi."],
+    ["turquoise", "turkuaz", "A2", "turquoise", "La mer est turquoise.", "Deniz turkuaz.", "Değişmez: des robes turquoise. Türkiye'den gelen taş anlamındadır."],
+    ["pâle", "soluk", "B1", "", "Tu es pâle, tu es malade ?", "Solgunsun, hasta mısın?"],
+    ["vif", "canlı (renk)", "B1", "", "J'aime les couleurs vives.", "Canlı renkleri severim."],
+    ["uni", "düz, tek renk", "B1", "", "Je préfère une chemise unie.", "Düz bir gömleği tercih ederim."],
+    ["rayé", "çizgili", "B1", "", "Il porte un pull rayé.", "Çizgili bir kazak giyiyor."],
+    ["ovale", "oval", "B1", "", "La table du salon est ovale.", "Salondaki masa oval."],
+    ["rectangulaire", "dikdörtgen", "B1", "", "Cette boîte est rectangulaire.", "Bu kutu dikdörtgen."],
+    ["pointu", "sivri", "B1", "", "Attention, ce couteau est pointu.", "Dikkat, bu bıçak sivri."]
+]);
+SEED.addThemed("colors", "nouns", [
+    ["le rectangle", "dikdörtgen", "A2", "", "Dessine un rectangle.", "Bir dikdörtgen çiz."],
+    ["la ligne", "çizgi, hat", "A2", "", "Tracez une ligne droite.", "Düz bir çizgi çizin."]
+]);
+
+SEED.addThemed("emergency", "nouns", [
+    ["l'alarme", "alarm", "A2", "", "L'alarme sonne la nuit.", "Alarm gece çalıyor.", "Dişil: une alarme"],
+    ["la trousse de secours", "ilk yardım çantası", "B1", "trousses de secours", "La trousse de secours est dans la voiture.", "İlk yardım çantası arabada."]
+]);
+SEED.addThemed("emergency", "verbs", [
+    ["blesser", "yaralamak", "B1", "", "Il s'est blessé en tombant.", "Düşerken yaralandı."],
+    ["évacuer", "tahliye etmek", "B1", "", "On évacue le bâtiment.", "Bina tahliye ediliyor."]
+]);
+
+SEED.addThemed("admin", "nouns", [
+    ["le permis de conduire", "ehliyet", "A2", "permis de conduire", "J'ai mon permis de conduire depuis dix ans.", "On yıldır ehliyetim var."],
+    ["la pièce d'identité", "kimlik belgesi", "A2", "pièces d'identité", "Une pièce d'identité est obligatoire.", "Kimlik belgesi zorunludur."],
+    ["l'acte de naissance", "doğum belgesi", "B1", "actes de naissance", "Il faut un acte de naissance traduit.", "Tercüme edilmiş doğum belgesi gerekiyor.", "Eril: un acte"],
+    ["la copie", "kopya, suret", "A2", "", "Envoyez une copie de votre diplôme.", "Diplomanızın bir suretini gönderin."],
+    ["le reçu", "makbuz", "B1", "", "Gardez bien votre reçu.", "Makbuzunuzu iyi saklayın."],
+    ["le certificat", "belge, sertifika", "B1", "", "Le médecin m'a donné un certificat.", "Doktor bana bir rapor verdi."]
+]);
+SEED.addThemed("admin", "verbs", [
+    ["déclarer", "beyan etmek, bildirmek", "B1", "", "Il faut déclarer vos revenus.", "Gelirlerinizi beyan etmeniz gerekiyor."],
+    ["joindre", "eklemek (belge); ulaşmak", "B1", "joins, joins, joint, joignons, joignez, joignent, joint", "Joignez une photo au formulaire.", "Forma bir fotoğraf ekleyin."]
+]);
+
+SEED.addThemed("celebrations", "nouns", [
+    ["la fête nationale", "ulusal bayram", "A2", "fêtes nationales", "La fête nationale française est le 14 juillet.", "Fransa'nın ulusal bayramı 14 Temmuz'dur."],
+    ["la fête de fin du ramadan", "Ramazan Bayramı", "B1", "", "Pour la fête de fin du ramadan, on mange des douceurs.", "Ramazan Bayramı'nda tatlı yenir."],
+    ["la fête des Mères", "Anneler Günü", "A2", "fête des mères", "J'offre des fleurs pour la fête des Mères.", "Anneler Günü için çiçek veriyorum."],
+    ["la Saint-Valentin", "Sevgililer Günü", "A2", "saint-valentin", "Ils dînent au restaurant pour la Saint-Valentin.", "Sevgililer Günü için restoranda yemek yiyorlar."],
+    ["le bal", "balo", "B1", "bals", "Il y a un bal sur la place le 14 juillet.", "14 Temmuz'da meydanda balo var."],
+    ["la décoration", "süsleme, dekorasyon", "A2", "", "Les enfants font les décorations.", "Süslemeleri çocuklar yapıyor."]
+]);
+SEED.addThemed("celebrations", "verbs", [
+    ["décorer", "süslemek", "A2", "", "Nous décorons le sapin de Noël.", "Noel ağacını süslüyoruz."],
+    ["trinquer", "kadeh tokuşturmak", "B1", "", "Trinquons à notre amitié !", "Dostluğumuza kadeh kaldıralım!"]
+]);
+SEED.addThemed("celebrations", "expressions", [
+    ["meilleurs vœux", "en iyi dileklerimle", "A2", "", "Meilleurs vœux pour la nouvelle année !", "Yeni yıl için en iyi dileklerimle!"],
+    ["bonnes fêtes", "iyi bayramlar, iyi tatiller", "A2", "", "Bonnes fêtes à toute la famille !", "Bütün aileye iyi bayramlar!"]
+]);
+
+SEED.addThemed("materials", "nouns", [
+    ["l'acier", "çelik", "B1", "", "Ce couteau est en acier.", "Bu bıçak çelikten.", "Eril: un acier"],
+    ["le béton", "beton", "B1", "", "Le pont est en béton.", "Köprü betondan."],
+    ["le cuivre", "bakır", "B1", "", "Ces casseroles sont en cuivre.", "Bu tencereler bakırdan."],
+    ["la corde", "halat, ip", "B1", "", "Il attache le bateau avec une corde.", "Tekneyi bir halatla bağlıyor."],
+    ["la ficelle", "sicim", "B1", "", "J'attache le paquet avec de la ficelle.", "Paketi sicimle bağlıyorum."],
+    ["le clou", "çivi", "B1", "", "Il plante un clou dans le mur.", "Duvara bir çivi çakıyor."],
+    ["la vis", "vida", "B1", "", "Il manque une vis.", "Bir vida eksik."]
+]);
+SEED.addThemed("materials", "adjectives", [
+    ["lisse", "pürüzsüz", "B1", "", "Cette pierre est lisse.", "Bu taş pürüzsüz."],
+    ["transparent", "şeffaf", "B1", "", "Le verre est transparent.", "Cam şeffaftır."]
+]);
+
+SEED.addThemed("arts", "nouns", [
+    ["l'orchestre", "orkestra", "B1", "", "L'orchestre joue du Mozart.", "Orkestra Mozart çalıyor.", "Eril: un orchestre; ch k okunur."],
+    ["la poésie", "şiir (sanatı)", "B1", "", "J'aime la poésie de Baudelaire.", "Baudelaire'in şiirini severim."],
+    ["le chef-d'œuvre", "başyapıt", "B1", "chefs-d'œuvre", "La Joconde est un chef-d'œuvre.", "Mona Lisa bir başyapıttır."],
+    ["le réalisateur", "yönetmen", "B1", "réalisatrice, réalisateurs, réalisatrices", "Ce réalisateur a gagné un prix à Cannes.", "Bu yönetmen Cannes'da ödül kazandı."],
+    ["le public", "seyirci, izleyici kitlesi", "B1", "", "Le public applaudit.", "Seyirci alkışlıyor."],
+    ["le rôle", "rol", "A2", "", "Elle joue le rôle principal.", "Başrolü oynuyor."],
+    ["l'opéra", "opera", "B1", "", "Nous allons à l'opéra ce soir.", "Bu akşam operaya gidiyoruz.", "Eril: un opéra"],
+    ["la galerie", "galeri", "B1", "", "Cette galerie expose de jeunes artistes.", "Bu galeri genç sanatçıları sergiliyor."]
+]);
+SEED.addThemed("arts", "verbs", [
+    ["exposer", "sergilemek", "B1", "", "Le musée expose des tableaux de Monet.", "Müze Monet'nin tablolarını sergiliyor."],
+    ["interpréter", "yorumlamak, icra etmek", "B1", "interprète, interprètes, interprète, interprétons, interprétez, interprètent, interprété", "Elle interprète une chanson d'Édith Piaf.", "Édith Piaf'ın bir şarkısını seslendiriyor."]
+]);
+SEED.addThemed("arts", "adjectives", [
+    ["classique", "klasik", "A2", "", "J'écoute de la musique classique.", "Klasik müzik dinliyorum."]
+]);
+
+/* ---------- Tanıdık Kelimeler: French words Turkish borrowed ---------- */
+SEED.addThemed("work", "familiar", [
+    ["le chauffeur", "şoför", "A2", "", "Le chauffeur de bus est très gentil.", "Otobüs şoförü çok kibar.", "Türkçe şoför buradan gelir."],
+    ["l'atelier", "atölye", "B1", "", "L'artiste travaille dans son atelier.", "Sanatçı atölyesinde çalışıyor.", "Eril: un atelier. Türkçe atölye buradan gelir."]
+]);
+SEED.addThemed("home", "familiar", [
+    ["l'abat-jour", "abajur", "B1", "abat-jour", "L'abat-jour de la lampe est blanc.", "Lambanın abajuru beyaz.", "Eril, değişmez. Türkçe abajur buradan gelir; Fransızcada lamba değil, şapkası demektir."],
+    ["le tire-bouchon", "tirbuşon", "B1", "tire-bouchons", "Tu as un tire-bouchon ?", "Tirbuşonun var mı?"],
+    ["le réchaud", "ocak (taşınabilir)", "B1", "", "Nous cuisinons sur un réchaud au camping.", "Kampta portatif ocakta yemek pişiriyoruz.", "Türkçe reşo buradan gelir."],
+    ["le radiateur", "radyatör, kalorifer peteği", "B1", "", "Le radiateur est froid.", "Kalorifer soğuk."],
+    ["le parquet", "parke", "B1", "", "Le salon a un parquet en bois.", "Salonda ahşap parke var."],
+    ["le lavabo", "lavabo", "A2", "", "Je me lave les mains au lavabo.", "Ellerimi lavaboda yıkıyorum.", "Mutfak lavabosu ise l'évier."],
+    ["la commode", "şifonyer", "B1", "", "Mes pulls sont dans la commode.", "Kazaklarım şifonyerde.", "Dikkat: komodin değil, çekmeceli dolaptır. Komodin: la table de nuit."]
+]);
+SEED.addThemed("clothes", "familiar", [
+    ["le pardessus", "pardösü", "B1", "", "Il met son pardessus gris.", "Gri pardösüsünü giyiyor."],
+    ["la fermeture éclair", "fermuar", "B1", "fermetures éclair", "La fermeture éclair de mon sac est cassée.", "Çantamın fermuarı bozuk.", "Türkçe fermuar fermoir (kilit, kopça) kelimesinden gelir."],
+    ["le costume", "takım elbise", "A2", "", "Il porte un costume pour le mariage.", "Düğün için takım elbise giyiyor.", "Dikkat: Türkçedeki kostüm değil, takım elbisedir. Kostüm: le déguisement."],
+    ["la blouse", "önlük", "B1", "", "Le médecin porte une blouse blanche.", "Doktor beyaz önlük giyiyor.", "Dikkat: bluz değil. Kadın bluzu: le chemisier."],
+    ["le maquillage", "makyaj", "A2", "", "Elle ne met pas de maquillage.", "Makyaj yapmıyor."]
+]);
+SEED.addThemed("shopping", "familiar", [
+    ["la vitrine", "vitrin", "A2", "", "Je regarde la vitrine du magasin.", "Mağazanın vitrinine bakıyorum."],
+    ["la boutique", "butik, küçük dükkân", "A2", "", "Cette boutique vend des vêtements.", "Bu dükkân giysi satıyor."],
+    ["l'étiquette", "etiket", "A2", "", "Le prix est sur l'étiquette.", "Fiyat etiketin üzerinde.", "Dişil: une étiquette"]
+]);
+SEED.addThemed("tech", "familiar", [
+    ["le magazine", "dergi", "A2", "", "Je lis un magazine dans le train.", "Trende dergi okuyorum.", "Dikkat: Türkçedeki magazin değil, her türlü dergidir. Mağaza ise le magasin."]
+]);
+SEED.addThemed("food", "familiar", [
+    ["la mayonnaise", "mayonez", "A2", "", "Je mets de la mayonnaise sur les frites.", "Patates kızartmasına mayonez koyuyorum."],
+    ["la purée", "püre", "A2", "", "Les enfants aiment la purée.", "Çocuklar püreyi sever."]
+]);
+SEED.addThemed("city", "familiar", [
+    ["le passage", "geçit, pasaj", "A2", "", "Traversez au passage piéton.", "Yaya geçidinden geçin."]
+]);
+SEED.addThemed("description", "familiar", [
+    ["la nuance", "nüans, ince fark", "B1", "", "Il y a une nuance entre ces deux mots.", "Bu iki kelime arasında ince bir fark var."]
+]);
+SEED.addThemed("materials", "familiar", [
+    ["le tournevis", "tornavida", "B1", "", "Passe-moi le tournevis, s'il te plaît.", "Tornavidayı uzatır mısın lütfen."]
+]);
+SEED.addThemed("travel", "familiar", [
+    ["le volant", "direksiyon", "B1", "", "Ne téléphone pas au volant !", "Direksiyondayken telefonla konuşma!", "Dikkat: la direction direksiyon değil, yön ve yönetim demektir."]
+]);

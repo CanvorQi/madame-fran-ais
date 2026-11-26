@@ -21,10 +21,21 @@ SEED.pools.push(
             expressions: ["salut", "d'accord", "bien sûr", "ça va", "voilà", "par contre", "en fait", "en effet", "d'ailleurs", "c'est-à-dire", "ah"],
             pronouns: ["n'importe quoi"],
             adjectives: ["sympa", "super", "génial"],
+            nouns: ["le frigo", "la télé"],
         },
     },
-    { id: "custom", name: "Benim Kelimelerim", title: "Mes mots", code: "15e", kind: "other" }
+    {
+        id: "familiar", name: "Tanıdık Kelimeler", title: "Les mots familiers", code: "15e", kind: "noun",
+        /* French words Turkish already borrowed; existing ones keep their own pool and id. */
+        also: {
+            nouns: ["l'ascenseur", "le coiffeur", "le garage", "le bureau", "la valise", "le pantalon", "le manteau", "la cravate", "le pyjama", "le balcon", "le salon", "le canapé", "la douche", "le trottoir", "le tramway", "le taxi", "la station", "la plage", "l'avenue", "l'adresse", "le passeport", "le visa", "le bagage", "le rendez-vous", "le dossier", "le carton", "l'avocat", "l'ambulance", "la police", "le docteur", "le dentiste", "l'artiste", "le concert", "le restaurant", "le portefeuille", "la bougie", "le garçon", "la surprise", "le festival", "le défilé"],
+            expressions: ["merci", "pardon", "bravo", "madame"],
+            adjectives: ["sportif"],
+        },
+    },
+    { id: "custom", name: "Benim Kelimelerim", title: "Mes mots", code: "16e", kind: "other" }
 );
+SEED.words.familiar = [];
 
 SEED.words.numbers = [
     ["zéro", "sıfır", "A1", "", "Il fait zéro degré.", "Hava sıfır derece."],
