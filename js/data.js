@@ -17,7 +17,9 @@
     let academy = U.store.get(KEY.academy, {});
 
     /* Seed rows -> records. Ids are derived from the pool and word, so they stay stable. */
-    const seedPools = SEED.pools.map((p) => Object.assign({ seed: true }, p));
+    const seedPools = SEED.pools.map((p) => Object.assign({ seed: true }, p, {
+        also: Object.entries(p.also || {}).flatMap(([pool, list]) => list.map((fr) => `${pool}:${U.slug(fr)}`)),
+    }));
     const seedWords = [];
     seedPools.forEach((p) => (SEED.words[p.id] || []).forEach((r) => {
         const ex = [{ fr: r[4], tr: r[5] }];
@@ -228,7 +230,10 @@
         pool: (id) => byId.pools[id],
         words: () => merged.words,
         word: (id) => byId.words[id],
-        wordsIn: (pool) => merged.words.filter((w) => w.pool === pool),
+        wordsIn: (pool) => {
+            const also = (byId.pools[pool] && byId.pools[pool].also) || [];
+            return merged.words.filter((w) => w.pool === pool || also.includes(w.id));
+        },
         themes: () => SEED.themes,
         theme: (id) => SEED.themes.find((t) => t.id === id),
         wordsInTheme: (theme) => merged.words.filter((w) => w.theme === theme),

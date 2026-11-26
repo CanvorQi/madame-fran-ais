@@ -12,7 +12,18 @@ SEED.pools.push(
     { id: "pronominal", name: "Dönüşlü Fiiller", title: "Les verbes pronominaux", code: "11e", kind: "verb" },
     { id: "verbal", name: "Fiil Kalıpları", title: "Les locutions verbales", code: "12e", kind: "verb" },
     { id: "expressions", name: "Kalıp İfadeler", title: "Les expressions", code: "13e", kind: "other" },
-    { id: "custom", name: "Benim Kelimelerim", title: "Mes mots", code: "14e", kind: "other" }
+    {
+        id: "spoken", name: "Günlük Konuşma ve Argo", title: "La langue parlée", code: "14e", kind: "other",
+        /* Existing words also listed here; they keep their own pool and id. */
+        also: {
+            adverbs: ["vraiment", "enfin", "peut-être", "comme ça", "exactement", "heureusement", "justement"],
+            conjunctions: ["donc", "alors"],
+            expressions: ["salut", "d'accord", "bien sûr", "ça va", "voilà", "par contre", "en fait", "en effet", "d'ailleurs", "c'est-à-dire", "ah"],
+            pronouns: ["n'importe quoi"],
+            adjectives: ["sympa", "super", "génial"],
+        },
+    },
+    { id: "custom", name: "Benim Kelimelerim", title: "Mes mots", code: "15e", kind: "other" }
 );
 
 SEED.words.numbers = [
@@ -320,6 +331,49 @@ SEED.words.expressions = [
     ["à gauche", "solda, sola", "A1", "", "Tournez à gauche.", "Sola dönün."],
     ["à droite", "sağda, sağa", "A1", "", "La poste est à droite.", "Postane sağda."],
     ["tout droit", "dümdüz", "A1", "", "Allez tout droit.", "Dümdüz gidin."]
+];
+
+SEED.words.spoken = [
+    ["au fait", "bu arada, aklıma gelmişken", "A2", "", "Au fait, tu as vu Marc ?", "Bu arada, Marc'ı gördün mü?", "Konuyu değiştirirken kullanılır; « en fait » (aslında) ile karıştırmayın."],
+    ["du coup", "o yüzden, haliyle", "B1", "", "Il pleuvait, du coup on est restés à la maison.", "Yağmur yağıyordu, o yüzden evde kaldık.", "Konuşma dilinde « donc » yerine çok sık kullanılır."],
+    ["bref", "kısacası", "A2", "", "Bref, la soirée était super.", "Kısacası, akşam harikaydı."],
+    ["quand même", "yine de; gerçekten de", "A2", "", "Il fait froid, mais je sors quand même.", "Hava soğuk ama yine de çıkıyorum."],
+    ["en gros", "kabaca, özetle", "B1", "", "En gros, le projet est fini.", "Kabaca, proje bitti."],
+    ["en tout cas", "her halükârda, neyse", "A2", "", "En tout cas, merci pour ton aide.", "Her halükârda, yardımın için teşekkürler."],
+    ["de toute façon", "zaten, nasılsa", "A2", "", "De toute façon, il est trop tard.", "Zaten çok geç."],
+    ["à vrai dire", "doğrusu, açıkçası", "B1", "", "À vrai dire, je n'ai pas aimé ce film.", "Doğrusu, bu filmi beğenmedim."],
+    ["franchement", "açıkçası, cidden", "A2", "", "Franchement, c'est trop cher.", "Açıkçası, bu çok pahalı."],
+    ["tant pis", "boş ver, olsun", "A2", "", "Le magasin est fermé ? Tant pis.", "Mağaza kapalı mı? Olsun."],
+    ["tant mieux", "ne güzel, daha iyi", "A2", "", "Tu es guéri ? Tant mieux !", "İyileştin mi? Ne güzel!"],
+    ["ça y est", "tamam, oldu işte", "A2", "", "Ça y est, j'ai fini !", "Tamam, bitirdim!"],
+    ["ça marche", "olur, anlaştık", "A2", "", "On se voit à huit heures ? — Ça marche !", "Saat sekizde görüşelim mi? — Anlaştık!"],
+    ["c'est ça", "evet öyle, aynen", "A1", "", "Tu habites à Lyon ? — Oui, c'est ça.", "Lyon'da mı yaşıyorsun? — Evet, aynen."],
+    ["ah bon", "öyle mi, sahi mi", "A1", "", "Il part demain. — Ah bon ?", "Yarın gidiyor. — Öyle mi?"],
+    ["pas mal", "fena değil", "A1", "", "Ce restaurant n'est pas mal.", "Bu restoran fena değil."],
+    ["pas du tout", "hiç, asla", "A2", "", "Je ne suis pas du tout fatigué.", "Hiç yorgun değilim."],
+    ["c'est pas grave", "önemli değil, sorun değil", "A1", "", "Tu es en retard ? C'est pas grave.", "Geç mi kaldın? Önemli değil.", "Konuşma dilinde « ne » düşer; yazıda: ce n'est pas grave."],
+    ["pas de souci", "sorun değil, tabii", "A2", "", "Tu peux m'aider ? — Pas de souci !", "Bana yardım edebilir misin? — Sorun değil!"],
+    ["dis donc", "baksana; vay be", "B1", "", "Dis donc, tu es en forme aujourd'hui !", "Vay be, bugün çok formdasın!"],
+    ["tu vois", "anlarsın ya", "A2", "", "C'est compliqué, tu vois ?", "Karışık, anlarsın ya?"],
+    ["je veux dire", "yani, demek istediğim", "A2", "", "Il est gentil, je veux dire, très poli.", "Kibar, yani çok nazik."],
+    ["on y va", "hadi gidelim", "A1", "", "Tout le monde est prêt ? On y va !", "Herkes hazır mı? Hadi gidelim!"],
+    ["euh", "ıı, şey", "A1", "", "Euh… je ne me souviens pas.", "Iı… hatırlamıyorum.", "Düşünürken araya giren ses."],
+    ["hein", "değil mi; ha", "A2", "", "C'est beau, hein ?", "Güzel, değil mi?", "Samimi konuşma dili."],
+    ["bof", "eh işte, pek değil", "A2", "", "Le film était bien ? — Bof.", "Film iyi miydi? — Eh işte.", "İlgisizlik ya da kararsızlık bildirir."],
+    ["bah", "eh, şey", "A2", "", "Bah, je ne sais pas.", "Şey, bilmiyorum.", "Samimi konuşma dili."],
+    ["ben", "yani, şey", "B1", "", "Ben oui, c'est évident !", "Yani evet, belli değil mi!", "Argo: « bien » sözcüğünün konuşmadaki hâli."],
+    ["ouais", "he, evet", "A1", "", "Tu viens ? — Ouais, j'arrive.", "Geliyor musun? — He, geliyorum.", "Argo: « oui » yerine."],
+    ["ouf", "oh be, neyse ki", "A2", "", "Ouf, on a eu le train !", "Oh be, treni yakaladık!", "Rahatlama ünlemi."],
+    ["carrément", "resmen, kesinlikle", "B1", "", "C'est carrément génial !", "Bu resmen harika!", "Argo."],
+    ["vachement", "çok, acayip", "B1", "", "Il fait vachement froid.", "Hava acayip soğuk.", "Argo: « très » yerine."],
+    ["trop bien", "çok iyi, süper", "A2", "", "Ce concert était trop bien !", "Bu konser süperdi!", "Argo: « trop » burada « çok » anlamındadır."],
+    ["c'est top", "süper, harika", "B1", "", "Ton idée ? C'est top !", "Fikrin mi? Süper!", "Argo."],
+    ["c'est nul", "berbat, saçma", "A2", "", "Ce film ? C'est nul.", "Bu film mi? Berbat.", "Argo."],
+    ["chelou", "tuhaf, garip", "B1", "", "Ce type est chelou.", "Bu adam tuhaf.", "Argo (verlan): « louche » sözcüğünün tersi."],
+    ["t'inquiète", "merak etme, takma", "B1", "", "T'inquiète, je m'occupe de tout.", "Merak etme, her şeyle ben ilgilenirim.", "Argo: « ne t'inquiète pas » kısaltması."],
+    ["mon pote", "kankam, arkadaşım", "A2", "", "C'est mon pote Julien.", "Bu kankam Julien.", "Argo: le pote = l'ami."],
+    ["au boulot", "işe, işte", "A2", "", "Je vais au boulot en métro.", "İşe metroyla gidiyorum.", "Argo: le boulot = le travail."],
+    ["la flemme", "üşengeçlik", "B1", "", "J'ai la flemme de faire la vaisselle.", "Bulaşık yıkamaya üşeniyorum.", "Argo; çoğunlukla « avoir la flemme » kalıbıyla."]
 ];
 
 SEED.words.custom = [];

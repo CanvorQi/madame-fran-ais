@@ -136,7 +136,7 @@
         const gramOk = (w) => !cfg.grams || !cfg.grams.length || cfg.grams.some((g) => (w.gram || []).includes(g));
         let words = cfg.weak ? DB.weakWords()
             : cfg.words ? cfg.words.map(DB.word).filter(Boolean)
-            : DB.words().filter((w) => (!cfg.pools || !cfg.pools.length || cfg.pools.includes(w.pool)) && themeOk(w) && gramOk(w) && levelOk(w));
+            : DB.words().filter((w) => (!cfg.pools || !cfg.pools.length || cfg.pools.some((p) => p === w.pool || ((DB.pool(p) || {}).also || []).includes(w.id))) && themeOk(w) && gramOk(w) && levelOk(w));
         words = cfg.weak ? words : shuffle(words);
 
         const texts = () => {
